@@ -2,30 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://cellistigs.github.io</id>
   <title>taiga_projectdoc Blog</title>
-  <updated>2021-08-10T18:36:02.897746+00:00</updated>
+  <updated>2021-08-10T21:32:28.544744+00:00</updated>
   <link href="https://cellistigs.github.io"/>
   <link href="https://cellistigs.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.19">ABlog</generator>
   <entry>
-    <id>https://cellistigs.github.io/Research/samplesgood/</id>
-    <title>Are More Training Samples Always Good?</title>
-    <updated>2020-08-10T00:00:00-04:00</updated>
-    <author>
-      <name>me</name>
-    </author>
-    <content type="html">&lt;p&gt;Common knowledge in the machine learning community is that adding more data is always a good idea, and low data methods like n-shot learning (for small n) normally require the introduction of strong inductive biases in order to achieve good performance. However, if we think about the eventual goal of our networks as generalization, does adding more training data really always help? Some recent studies would suggest that the answer is no.&lt;/p&gt;
-</content>
-    <link href="https://cellistigs.github.io/Research/samplesgood/" rel="alternate"/>
-    <summary>Common knowledge in the machine learning community is that adding more data is always a good idea, and low data methods like n-shot learning (for small n) normally require the introduction of strong inductive biases in order to achieve good performance. However, if we think about the eventual goal of our networks as generalization, does adding more training data really always help? Some recent studies would suggest that the answer is no.</summary>
-    <category term="data" label="data"/>
-    <category term="ml" label="ml"/>
-    <published>2020-08-10T00:00:00-04:00</published>
-  </entry>
-  <entry>
     <id>https://cellistigs.github.io/Literature/darrell_selfsupervise/</id>
     <title>Trevor Darrell’s Self Supervision Papers</title>
     <updated>2020-08-10T00:00:00-04:00</updated>
-    <content type="html">&lt;p&gt;Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (&lt;span id="id1"&gt;[&lt;a class="reference internal" href="../Research/samplesgood/#id32" title="Colorado J Reed, Sean Metzger, Aravind Srinivas, Trevor Darrell, and Kurt Keutzer. SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning. arXiv, 2020. arXiv:2009.07724."&gt;RMS+20&lt;/a&gt;, &lt;a class="reference internal" href="../Research/samplesgood/#id31" title="Colorado J Reed, Xiangyu Yue, Ani Nrusimha, Sayna Ebrahimi, Vivek Vijaykumar, Richard Mao, Bo Li, Shanghang Zhang, Devin Guillory, Sean Metzger, Kurt Keutzer, and Trevor Darrell. Self-Supervised Pretraining Improves Self-Supervised Pretraining. arXiv, 2021. arXiv:2103.12718."&gt;RYN+21&lt;/a&gt;]&lt;/span&gt;) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (&lt;span id="id1"&gt;[]&lt;/span&gt;) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.&lt;/p&gt;
 </content>
     <link href="https://cellistigs.github.io/Literature/darrell_selfsupervise/" rel="alternate"/>
     <summary>Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (Reed.2020,Reed.2021) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.</summary>

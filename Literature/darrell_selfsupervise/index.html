@@ -13,7 +13,6 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <link rel="author" title="About these documents" href="../../about/" />
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" /> 
    
@@ -65,7 +64,7 @@
           <div class="body" role="main">
              <section id="trevor-darrell-s-self-supervision-papers">
 <h1>Trevor Darrell’s Self Supervision Papers<a class="headerlink" href="#trevor-darrell-s-self-supervision-papers" title="Permalink to this headline">¶</a></h1>
-<p>Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (<span id="id1">[<a class="reference internal" href="../../Research/samplesgood/#id32" title="Colorado J Reed, Sean Metzger, Aravind Srinivas, Trevor Darrell, and Kurt Keutzer. SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning. arXiv, 2020. arXiv:2009.07724.">RMS+20</a>, <a class="reference internal" href="../../Research/samplesgood/#id31" title="Colorado J Reed, Xiangyu Yue, Ani Nrusimha, Sayna Ebrahimi, Vivek Vijaykumar, Richard Mao, Bo Li, Shanghang Zhang, Devin Guillory, Sean Metzger, Kurt Keutzer, and Trevor Darrell. Self-Supervised Pretraining Improves Self-Supervised Pretraining. arXiv, 2021. arXiv:2103.12718.">RYN+21</a>]</span>) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.</p>
+<p>Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (<span id="id1">[]</span>) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.</p>
 <section id="selfaugment-automatic-augmentation-policies-for-self-supervised-learning-reed-2020">
 <h2>SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning (Reed 2020)<a class="headerlink" href="#selfaugment-automatic-augmentation-policies-for-self-supervised-learning-reed-2020" title="Permalink to this headline">¶</a></h2>
 <p><strong>What is this paper doing?</strong> This paper assumes a current workflow for self supervised learning in which people first find good data augmentations with supervised learning based evaluations, and then use these data augmentations for instance contrastive learning (think comparing positive and negative examples via InfoNCE). This paper has two main results that demonstrate the usefulness of self-supervised training to learn good data representations for downstream supervised learning tasks. First, it shows that there are self-supervised tasks (in particular, identifying image rotations) that correlate well with supervised learning based representations, removing the need for supervised data to evaluate data augmentations. Second, it suggests an adaptation of existing data augmentation search strategies (which are themselves informed by the NAS literature) to this self-supervised setting, thereby establishing a fully self supervised pipeline for generation of good representations.</p>
@@ -75,49 +74,23 @@
 <li><p>We use pretrained imagenet networks that are supervised in pretraining. It might be interesting to replace these with self supervised ones (see the next area for more info on this).</p></li>
 <li><p>The approach taken here to data augmentation is very sophisticated compared to data augmentation that I’m familiar with. Could you find a good way to engage in smart data augmentation with your approach?</p></li>
 <li><p>Self supervision here means using contrastive estimation to learn good representations of the data. How does this relate with how John saw self supervision in your work? You showed that certain frames are actively detrimental to classification performance in a certain regime. Somehow, they detract from the generalization performance by enforcing spurious correlations in the data. How can ensembles fit into the self supervision framework? Compare them to something about supervised evaluation to come up with a data augmentation strategy. Maybe there’s something about frames that cause disagreement that you want to consider (or stand out) in a self-supervised task. <strong>What if we did self supervision to create a relational representation of the data?</strong> Not just about contrasting with other data points, but also establishing the right kinds of similarity. Self supervised clustering?</p></li>
+<li><p><strong>You can run self supervised pretraining on an entire behavioral video</strong>. Before you ever touch a video, do something like the contrastive task or SWaV. The benefit here is that you can show the entire evaluation dataset, i.e. the entire dataset of interest to the network before training and you should be able to learn good features on it. Self-supervision is a great idea when you actually know your entire evaluation dataset.</p></li>
 </ol>
 </dd>
 </dl>
 </section>
 <section id="self-supervised-pretraining-improves-self-supervised-pretraining-reed-2021">
 <h2>Self-Supervised Pretraining improves Self-Supervised Pretraining (Reed 2021)<a class="headerlink" href="#self-supervised-pretraining-improves-self-supervised-pretraining-reed-2021" title="Permalink to this headline">¶</a></h2>
-<p>This paper goes more into the</p>
-<p id="id2"><dl class="citation">
-<dt class="label" id="id32"><span class="brackets">Cha</span></dt>
-<dd><p><strong>missing author in Chapelle.2001</strong></p>
-</dd>
-<dt class="label" id="id33"><span class="brackets">FZ20</span></dt>
-<dd><p>Vitaly Feldman and Chiyuan Zhang. What Neural Networks Memorize and Why: Discovering the Long Tail via Influence Estimation. <em>arXiv</em>, 2020. This is a super cool paper to deal into heterogeneity in a training dataset, understood as the idea of long tails. Long tails in the dataset correspond to distinct groups of examples that might be very uncommon, but nevertheless reflect the true data distribution as might be represented in a test set. The paper gives a (more) efficient way to estimate per-datapoint values that can identify these distinct groups, and also quantify their usefulness in the test set. It still seems like the methods here are incredibly computationally intensive, but some nice ideas that might come out of this: - all data points in the training set are not equal. Some are essentially worthless, while others are uniquely valuable. This might lend itself to the idea of heterogeneous, hierarchical data representation, where certain examples capture a disproportionately large fraction of the model’s representative power, but that something about your data distribution justifies that. - a neural networks learned deep representation formation naturally performs some kind of data compression, triaging, something, so that the whole data distribution can be well represented. - it’s unclear how these ideas generalize to video data, or the kind of datasets that neuroscientists care about.</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets">NKB+19</span></dt>
-<dd><p>Preetum Nakkiran, Gal Kaplun, Yamini Bansal, Tristan Yang, Boaz Barak, and Ilya Sutskever. Deep Double Descent: Where Bigger Models and More Data Hurt. <em>arXiv</em>, 2019. Gives empirical evidence for the idea that you first learn a function with small generalization gap, then you memorize samples, and then afterwards if your model is large enough you can find a model configuration where you can accommodate the memorized samples and still carry through the right inference on test data. <a class="reference external" href="https://arxiv.org/abs/1912.02292">arXiv:1912.02292</a>.</p>
-</dd>
-<dt class="label" id="id16"><span class="brackets">PZEW20</span></dt>
-<dd><p>Geoff Pleiss, Tianyi Zhang, Ethan R Elenberg, and Kilian Q Weinberger. Identifying Mislabeled Data using the Area Under the Margin Ranking. <em>arXiv</em>, 2020. <a class="reference external" href="https://arxiv.org/abs/2001.10528">arXiv:2001.10528</a>.</p>
-</dd>
-<dt class="label" id="id28"><span class="brackets"><a class="fn-backref" href="#id1">RMS+20</a></span></dt>
-<dd><p>Colorado J Reed, Sean Metzger, Aravind Srinivas, Trevor Darrell, and Kurt Keutzer. SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning. <em>arXiv</em>, 2020. <a class="reference external" href="https://arxiv.org/abs/2009.07724">arXiv:2009.07724</a>.</p>
-</dd>
-<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id1">RYN+21</a></span></dt>
-<dd><p>Colorado J Reed, Xiangyu Yue, Ani Nrusimha, Sayna Ebrahimi, Vivek Vijaykumar, Richard Mao, Bo Li, Shanghang Zhang, Devin Guillory, Sean Metzger, Kurt Keutzer, and Trevor Darrell. Self-Supervised Pretraining Improves Self-Supervised Pretraining. <em>arXiv</em>, 2021. <a class="reference external" href="https://arxiv.org/abs/2103.12718">arXiv:2103.12718</a>.</p>
-</dd>
-<dt class="label" id="id21"><span class="brackets">ZCDLP17</span></dt>
-<dd><p>Hongyi Zhang, Moustapha Cisse, Yann N Dauphin, and David Lopez-Paz. mixup: Beyond Empirical Risk Minimization. <em>arXiv</em>, 2017. <a class="reference external" href="https://arxiv.org/abs/1710.09412">arXiv:1710.09412</a>.</p>
-</dd>
-</dl>
-</p>
-</section>
+<p><strong>What is this paper doing?</strong> This paper goes more into the empirics of how specific self-supervised pretraining schedules (in terms of datasets) can help performance. It considers a case where you fix a pretraining policy (as opposed to the above, where you were looking for one)- in this case, MoCo (Momentum contrast). Once you have a fixed self supervised pretraining policy, you then apply it to train a network on two to three different datasets: a large, general purpose <em>base</em> dataset, as well as a smaller, but still general <em>source</em> dataset (optional) and finally the dataset that you’re interested in, the <em>target</em> dataset. By successively applying self-supervised pretraining on these different datasets in sequence, the authors show that you can achieve good test performance on a large variety of downstream tasks in a large variety of contexts, as measured via linear evaluation (separable representations), transferability (test performance of model finetuned on new tasks and datasets), and semi-supervised learning (fine-tuning representations based on limited labeled data). Importantly, the authors show that by using hierarchical self-supervised pretraining, one can achieve in 5K iterations the same results as if you performed self supervised pre-training for 100 or 200K iterations on just the target dataset. Interestingly, they also consider in the appendix the case where you have a supervised base model, and then run self-supervised pretraining on top of it in the particular domain of interest. Interestingly, these models take longer to saturate (still see improvements at 50K), and are less robust to differences in the data augmentation strategy than a model trained in a self-supervised manner.</p>
+<p><strong>Why is it significant?</strong> This paper shows the general applicability of self-supervised pretraining to a computer vision task. It makes it clear that this is a great way to approach a wide variety of computer vision problems.</p>
+<p><strong>How does it relate to your work?</strong> This paper suggests that we should try a few things with our data. 1) we should attempt to train the same models we have now, but initialized with a base model pretrained on ImageNet. 2) We should try self-supervising on the video set that we’re trying to do tracking for on top of this, try with MoCo. 3) We should evaluate the influence functions of individual training frames in the resulting network.</p>
+<span class="target" id="id2"></span></section>
 </section>
 
 <div class="section">
      
 <div class="section">
   <span style="float: left">
-     Previous:
-    
-    <a href="../../Research/samplesgood/">
-       Are More Training Samples Always Good?
-    </a>
     
   </span>
   <span>&nbsp;</span>
@@ -227,9 +200,6 @@
 
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../about/">About Taiga Abe</a></li>
-</ul>
 
 
 <h3>
@@ -237,12 +207,6 @@
 </h3>
 <ul>
    
-  <li>
-    <a href="../../Research/samplesgood/"
-      >10 August - Are More Training Samples Always Good?</a
-    >
-  </li>
-  
 </ul>
 
 <h3><a href="../../blog/tag/">Tags</a></h3>
@@ -280,15 +244,7 @@
 <ul class="ablog-cloud">
    
   <li class="ablog-cloud ablog-cloud-3">
-    <a href="../../blog/tag/data/">data</a>
-  </li>
-    
-  <li class="ablog-cloud ablog-cloud-3">
     <a href="../../blog/tag/data-augmentation/">data augmentation</a>
-  </li>
-    
-  <li class="ablog-cloud ablog-cloud-3">
-    <a href="../../blog/tag/ml/">ml</a>
   </li>
     
   <li class="ablog-cloud ablog-cloud-3">
@@ -305,10 +261,6 @@
   <li>
     <a href="../../blog/category/lit/">Lit (1)</a>
   </li>
-    
-  <li>
-    <a href="../../blog/category/res/">Res (1)</a>
-  </li>
    
 </ul>
 
@@ -318,7 +270,7 @@
 <ul>
    
   <li>
-    <a href="../../blog/2020/">2020 (2)</a>
+    <a href="../../blog/2020/">2020 (1)</a>
   </li>
    
 </ul>
