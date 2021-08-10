@@ -1,0 +1,247 @@
+@article{Khan.2019, 
+year = {2019}, 
+title = {{Approximate Inference Turns Deep Networks into Gaussian Processes}}, 
+author = {Khan, Mohammad Emtiyaz and Immer, Alexander and Abedi, Ehsan and Korzepa, Maciej}, 
+journal = {arXiv}, 
+eprint = {1906.01930}, 
+abstract = {{Deep neural networks (DNN) and Gaussian processes (GP) are two powerful models with several theoretical connections relating them, but the relationship between their training methods is not well understood. In this paper, we show that certain Gaussian posterior approximations for Bayesian DNNs are equivalent to GP posteriors. This enables us to relate solutions and iterations of a deep-learning algorithm to GP inference. As a result, we can obtain a GP kernel and a nonlinear feature map while training a DNN. Surprisingly, the resulting kernel is the neural tangent kernel. We show kernels obtained on real datasets and demonstrate the use of the GP marginal likelihood to tune hyperparameters of DNNs. Our work aims to facilitate further research on combining DNNs and GPs in practical settings.}}
+}
+@misc{89p, 
+title = {{bartlett08a.pdf}}, 
+author = {}, 
+url = {https://www.jmlr.org/papers/volume9/bartlett08a/bartlett08a.pdf}, 
+urldate = {2021-07-26}
+}
+@article{Jiang.2020, 
+year = {2020}, 
+title = {{Characterizing Structural Regularities of Labeled Data in Overparameterized Models}}, 
+author = {Jiang, Ziheng and Zhang, Chiyuan and Talwar, Kunal and Mozer, Michael C}, 
+journal = {arXiv}, 
+eprint = {2002.03206}, 
+abstract = {{Humans are accustomed to environments that contain both regularities and exceptions. For example, at most gas stations, one pays prior to pumping, but the occasional rural station does not accept payment in advance. Likewise, deep neural networks can generalize across instances that share common patterns or structures, yet have the capacity to memorize rare or irregular forms. We analyze how individual instances are treated by a model via a consistency score. The score characterizes the expected accuracy for a held-out instance given training sets of varying size sampled from the data distribution. We obtain empirical estimates of this score for individual instances in multiple data sets, and we show that the score identifies out-of-distribution and mislabeled examples at one end of the continuum and strongly regular examples at the other end. We identify computationally inexpensive proxies to the consistency score using statistics collected during training. We show examples of potential applications to the analysis of deep-learning systems.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Jiang-Characterizing%20Structural%20Regularities%20of%20Labeled%20Data%20in%20Overparameterized%20Models-2020-arXiv.pdf}
+}
+@article{Shah.2020, 
+year = {2020}, 
+title = {{Choosing the Sample with Lowest Loss makes SGD Robust}}, 
+author = {Shah, Vatsal and Wu, Xiaoxia and Sanghavi, Sujay}, 
+journal = {arXiv}, 
+eprint = {2001.03316}, 
+abstract = {{The presence of outliers can potentially significantly skew the parameters of machine learning models trained via stochastic gradient descent (SGD). In this paper we propose a simple variant of the simple SGD method: in each step, first choose a set of k samples, then from these choose the one with the smallest current loss, and do an SGD-like update with this chosen sample. Vanilla SGD corresponds to k = 1, i.e. no choice; k >= 2 represents a new algorithm that is however effectively minimizing a non-convex surrogate loss. Our main contribution is a theoretical analysis of the robustness properties of this idea for ML problems which are sums of convex losses; these are backed up with linear regression and small-scale neural network experiments}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Shah-Choosing%20the%20Sample%20with%20Lowest%20Loss%20makes%20SGD%20Robust-2020-arXiv.pdf}
+}
+@article{Jun.2019, 
+year = {2019}, 
+title = {{Conditional entropy based classifier chains for multi-label classification}}, 
+author = {Jun, Xie and Lu, Yu and Lei, Zhu and Guolun, Duan}, 
+journal = {Neurocomputing}, 
+issn = {0925-2312}, 
+doi = {10.1016/j.neucom.2019.01.039}, 
+abstract = {{In many real-world problems, data samples are simultaneously associated with multiple labels, instead of a single label. Multi-label classification deals with such problems, and has extensive applications in many fields. Among the many methods proposed for multi-label classification tasks, classifier chains (CC) is an appealing one. In the classifier chains method, the label order has a strong effect on the classification performance. However, it is difficult to determine a proper order. In this paper, we propose ordering methods based on the conditional entropy of labels. We generate a single order instead of multiple orders. Unlike existing ordering methods, there is no need to train more classifiers than CC. Experimental results on nine benchmark datasets evaluated by eight measures show that the proposed methods achieve good performance.}}, 
+pages = {185--194}, 
+volume = {335}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Jun-Conditional%20entropy%20based%20classifier%20chains%20for%20multi-label%20classification-2019-Neurocomputing.pdf}
+}
+@article{Bengio.2009, 
+year = {2009}, 
+title = {{Curriculum learning}}, 
+author = {Bengio, Yoshua and Louradour, Jérôme and Collobert, Ronan and Weston, Jason}, 
+doi = {10.1145/1553374.1553380}, 
+abstract = {{Humans and animals learn much better when the examples are not randomly presented but organized in a meaningful order which illustrates gradually more concepts, and gradually more complex ones. Here, we formalize such training strategies in the context of machine learning, and call them "curriculum learning". In the context of recent research studying the difficulty of training in the presence of non-convex training criteria (for deep deterministic and stochastic neural networks), we explore curriculum learning in various set-ups. The experiments show that significant improvements in generalization can be achieved. We hypothesize that curriculum learning has both an effect on the speed of convergence of the training process to a minimum and, in the case of non-convex criteria, on the quality of the local minima obtained: curriculum learning can be seen as a particular form of continuation method (a general strategy for global optimization of non-convex functions).}}, 
+pages = {41--48}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/dl.acm.org%20692021,%20121734%20PM.pdf}
+}
+@article{Soviany.2021, 
+year = {2021}, 
+title = {{Curriculum self-paced learning for cross-domain object detection}}, 
+author = {Soviany, Petru and Ionescu, Radu Tudor and Rota, Paolo and Sebe, Nicu}, 
+journal = {Computer Vision and Image Understanding}, 
+issn = {1077-3142}, 
+doi = {10.1016/j.cviu.2021.103166}, 
+abstract = {{Training (source) domain bias affects state-of-the-art object detectors, such as Faster R-CNN, when applied to new (target) domains. To alleviate this problem, researchers proposed various domain adaptation methods to improve object detection results in the cross-domain setting, e.g. by translating images with ground-truth labels from the source domain to the target domain using Cycle-GAN. On top of combining Cycle-GAN transformations and self-paced learning in a smart and efficient way, in this paper, we propose a novel self-paced algorithm that learns from easy to hard. Our method is simple and effective, without any overhead during inference. It uses only pseudo-labels for samples taken from the target domain, i.e. the domain adaptation is unsupervised. We conduct experiments on four cross-domain benchmarks, showing better results than the state of the art. We also perform an ablation study demonstrating the utility of each component in our framework. Additionally, we study the applicability of our framework to other object detectors. Furthermore, we compare our difficulty measure with other measures from the related literature, proving that it yields superior results and that it correlates well with the performance metric.}}, 
+pages = {103166}, 
+volume = {204}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Soviany-Curriculum%20self-paced%20learning%20for%20cross-domain%20object%20detection-2021-Computer%20Vision%20and%20Image%20Understanding.pdf}
+}
+@article{Yun.2019, 
+year = {2019}, 
+title = {{CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features}}, 
+author = {Yun, Sangdoo and Han, Dongyoon and Oh, Seong Joon and Chun, Sanghyuk and Choe, Junsuk and Yoo, Youngjoon}, 
+journal = {arXiv}, 
+eprint = {1905.04899}, 
+abstract = {{Regional dropout strategies have been proposed to enhance the performance of convolutional neural network classifiers. They have proved to be effective for guiding the model to attend on less discriminative parts of objects (e.g. leg as opposed to head of a person), thereby letting the network generalize better and have better object localization capabilities. On the other hand, current methods for regional dropout remove informative pixels on training images by overlaying a patch of either black pixels or random noise. Such removal is not desirable because it leads to information loss and inefficiency during training. We therefore propose the CutMix augmentation strategy: patches are cut and pasted among training images where the ground truth labels are also mixed proportionally to the area of the patches. By making efficient use of training pixels and retaining the regularization effect of regional dropout, CutMix consistently outperforms the state-of-the-art augmentation strategies on CIFAR and ImageNet classification tasks, as well as on the ImageNet weakly-supervised localization task. Moreover, unlike previous augmentation methods, our CutMix-trained ImageNet classifier, when used as a pretrained model, results in consistent performance gains in Pascal detection and MS-COCO image captioning benchmarks. We also show that CutMix improves the model robustness against input corruptions and its out-of-distribution detection performances. Source code and pretrained models are available at https://github.com/clovaai/CutMix-PyTorch .}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Yun-CutMix-%20Regularization%20Strategy%20to%20Train%20Strong%20Classifiers%20with%20Localizable%20Features-2019-arXiv.pdf}
+}
+@article{sar, 
+title = {{Data Parameters: A New Family of Parameters for Learning a Differentiable Curriculum}}, 
+author = {}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/proceedings.neurips.cc%20692021,%20121904%20PM.pdf}
+}
+@article{Nakkiran.2019, 
+year = {2019}, 
+title = {{Deep Double Descent: Where Bigger Models and More Data Hurt}}, 
+author = {Nakkiran, Preetum and Kaplun, Gal and Bansal, Yamini and Yang, Tristan and Barak, Boaz and Sutskever, Ilya}, 
+journal = {arXiv}, 
+eprint = {1912.02292}, 
+abstract = {{We show that a variety of modern deep learning tasks exhibit a "double-descent" phenomenon where, as we increase model size, performance first gets worse and then gets better. Moreover, we show that double descent occurs not just as a function of model size, but also as a function of the number of training epochs. We unify the above phenomena by defining a new complexity measure we call the effective model complexity and conjecture a generalized double descent with respect to this measure. Furthermore, our notion of model complexity allows us to identify certain regimes where increasing (even quadrupling) the number of train samples actually hurts test performance.}}, 
+note = {Gives empirical evidence for the idea that you first learn a function with small generalization gap, then you memorize samples, and then afterwards if your model is large enough you can find a model configuration where you can accommodate the memorized samples and still carry through the right inference on test data. }, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Nakkiran-Deep%20Double%20Descent-%20Where%20Bigger%20Models%20and%20More%20Data%20Hurt-2019-arXiv.pdf}
+}
+@misc{se7, 
+title = {{Fantastic Generalization Measures and Where to Find Them}}, 
+author = {}, 
+url = {https://openreview.net/pdf?id=SJgIPJBFvH}, 
+urldate = {2021-08-03}
+}
+@article{j0a, 
+title = {{Fast AutoAugment}}, 
+author = {}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/papers.nips.cc%20822021,%20110111%20AM.pdf}
+}
+@article{Khan.2013, 
+year = {2013}, 
+title = {{Fast Dual Variational Inference for Non-Conjugate LGMs}}, 
+author = {Khan, Mohammad Emtiyaz and Aravkin, Aleksandr Y and Friedlander, Michael P and Seeger, Matthias}, 
+journal = {arXiv}, 
+eprint = {1306.1052}, 
+abstract = {{Latent Gaussian models (LGMs) are widely used in statistics and machine learning. Bayesian inference in non-conjugate LGMs is difficult due to intractable integrals involving the Gaussian prior and non-conjugate likelihoods. Algorithms based on variational Gaussian (VG) approximations are widely employed since they strike a favorable balance between accuracy, generality, speed, and ease of use. However, the structure of the optimization problems associated with these approximations remains poorly understood, and standard solvers take too long to converge. We derive a novel dual variational inference approach that exploits the convexity property of the VG approximations. We obtain an algorithm that solves a convex optimization problem, reduces the number of variational parameters, and converges much faster than previous methods. Using real-world data, we demonstrate these advantages on a variety of LGMs, including Gaussian process classification, and latent Gaussian Markov random fields.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/1306.1052.pdf}
+}
+@article{Pleiss.2020, 
+year = {2020}, 
+title = {{Identifying Mislabeled Data using the Area Under the Margin Ranking}}, 
+author = {Pleiss, Geoff and Zhang, Tianyi and Elenberg, Ethan R and Weinberger, Kilian Q}, 
+journal = {arXiv}, 
+eprint = {2001.10528}, 
+abstract = {{Not all data in a typical training set help with generalization; some samples can be overly ambiguous or outrightly mislabeled. This paper introduces a new method to identify such samples and mitigate their impact when training neural networks. At the heart of our algorithm is the Area Under the Margin (AUM) statistic, which exploits differences in the training dynamics of clean and mislabeled samples. A simple procedure - adding an extra class populated with purposefully mislabeled threshold samples - learns a AUM upper bound that isolates mislabeled data. This approach consistently improves upon prior work on synthetic and real-world datasets. On the WebVision50 classification task our method removes 17\% of training data, yielding a 1.6\% (absolute) improvement in test error. On CIFAR100 removing 13\% of the data leads to a 1.2\% drop in error.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Pleiss-Identifying%20Mislabeled%20Data%20using%20the%20Area%20Under%20the%20Margin%20Ranking-2020-arXiv.pdf}
+}
+@article{DeVries.2017, 
+year = {2017}, 
+title = {{Improved Regularization of Convolutional Neural Networks with Cutout}}, 
+author = {DeVries, Terrance and Taylor, Graham W}, 
+journal = {arXiv}, 
+eprint = {1708.04552}, 
+abstract = {{Convolutional neural networks are capable of learning powerful representational spaces, which are necessary for tackling complex learning tasks. However, due to the model capacity required to capture such representations, they are often susceptible to overfitting and therefore require proper regularization in order to generalize well. In this paper, we show that the simple regularization technique of randomly masking out square regions of input during training, which we call cutout, can be used to improve the robustness and overall performance of convolutional neural networks. Not only is this method extremely easy to implement, but we also demonstrate that it can be used in conjunction with existing forms of data augmentation and other regularizers to further improve model performance. We evaluate this method by applying it to current state-of-the-art architectures on the CIFAR-10, CIFAR-100, and SVHN datasets, yielding new state-of-the-art results of 2.56\%, 15.20\%, and 1.30\% test error respectively. Code is available at https://github.com/uoguelph-mlrg/Cutout}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/DeVries-Improved%20Regularization%20of%20Convolutional%20Neural%20Networks%20with%20Cutout-2017-arXiv.pdf}
+}
+@misc{fx, 
+title = {{Information Bottleneck Rebuttal}}, 
+author = {}, 
+url = {https://openreview.net/pdf?id=ry\_WPG-A-}, 
+urldate = {2021-07-26}
+}
+@article{g8r, 
+title = {{MentorNet: Learning Data-Driven Curriculum for Very Deep Neural Networks on Corrupted Labels}}, 
+author = {}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/proceedings.mlr.press%20692021,%20121810%20PM.pdf}
+}
+@misc{ksm, 
+title = {{MITPress- SemiSupervised Learning.pdf}}, 
+author = {}, 
+url = {http://www.acad.bg/ebook/ml/MITPress-\%20SemiSupervised\%20Learning.pdf}, 
+urldate = {2021-07-29}
+}
+@article{Zhang.2017, 
+year = {2017}, 
+title = {{mixup: Beyond Empirical Risk Minimization}}, 
+author = {Zhang, Hongyi and Cisse, Moustapha and Dauphin, Yann N and Lopez-Paz, David}, 
+journal = {arXiv}, 
+eprint = {1710.09412}, 
+abstract = {{Large deep neural networks are powerful, but exhibit undesirable behaviors such as memorization and sensitivity to adversarial examples. In this work, we propose mixup, a simple learning principle to alleviate these issues. In essence, mixup trains a neural network on convex combinations of pairs of examples and their labels. By doing so, mixup regularizes the neural network to favor simple linear behavior in-between training examples. Our experiments on the ImageNet-2012, CIFAR-10, CIFAR-100, Google commands and UCI datasets show that mixup improves the generalization of state-of-the-art neural network architectures. We also find that mixup reduces the memorization of corrupt labels, increases the robustness to adversarial examples, and stabilizes the training of generative adversarial networks.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Zhang-mixup-%20Beyond%20Empirical%20Risk%20Minimization-2017-arXiv.pdf}
+}
+@article{97n, 
+title = {{On the Number of Linear Regions of Deep Neural Networks}}, 
+author = {}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/papers.nips.cc%207152021,%2062801%20PM.pdf}
+}
+@article{Pascanu.2013, 
+year = {2013}, 
+title = {{On the number of response regions of deep feed forward networks with piece-wise linear activations}}, 
+author = {Pascanu, Razvan and Montufar, Guido and Bengio, Yoshua}, 
+journal = {arXiv}, 
+eprint = {1312.6098}, 
+abstract = {{This paper explores the complexity of deep feedforward networks with linear pre-synaptic couplings and rectified linear activations. This is a contribution to the growing body of work contrasting the representational power of deep and shallow network architectures. In particular, we offer a framework for comparing deep and shallow models that belong to the family of piecewise linear functions based on computational geometry. We look at a deep rectifier multi-layer perceptron (MLP) with linear outputs units and compare it with a single layer version of the model. In the asymptotic regime, when the number of inputs stays constant, if the shallow model has \$kn\$ hidden units and \$n\_0\$ inputs, then the number of linear regions is \$O(k\textasciicircum\{n\_0\}n\textasciicircum\{n\_0\})\$. For a \$k\$ layer model with \$n\$ hidden units on each layer it is \$\textbackslashOmega(\textbackslashleft\textbackslashlfloor \{n\}/\{n\_0\}\textbackslashright\textbackslashrfloor\textasciicircum\{k-1\}n\textasciicircum\{n\_0\})\$. The number \$\textbackslashleft\textbackslashlfloor\{n\}/\{n\_0\}\textbackslashright\textbackslashrfloor\textasciicircum\{k-1\}\$ grows faster than \$k\textasciicircum\{n\_0\}\$ when \$n\$ tends to infinity or when \$k\$ tends to infinity and \$n \textbackslashgeq 2n\_0\$. Additionally, even when \$k\$ is small, if we restrict \$n\$ to be \$2n\_0\$, we can show that a deep model has considerably more linear regions that a shallow one. We consider this as a first step towards understanding the complexity of these models and specifically towards providing suitable mathematical tools for future analysis.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Pascanu-On%20the%20number%20of%20response%20regions%20of%20deep%20feed%20forward%20networks%20with%20piece-wise%20linear%20activations-2013-arXiv.pdf}
+}
+@article{Osawa.2019, 
+year = {2019}, 
+title = {{Practical Deep Learning with Bayesian Principles}}, 
+author = {Osawa, Kazuki and Swaroop, Siddharth and Jain, Anirudh and Eschenhagen, Runa and Turner, Richard E and Yokota, Rio and Khan, Mohammad Emtiyaz}, 
+journal = {arXiv}, 
+eprint = {1906.02506}, 
+abstract = {{Bayesian methods promise to fix many shortcomings of deep learning, but they are impractical and rarely match the performance of standard methods, let alone improve them. In this paper, we demonstrate practical training of deep networks with natural-gradient variational inference. By applying techniques such as batch normalisation, data augmentation, and distributed training, we achieve similar performance in about the same number of epochs as the Adam optimiser, even on large datasets such as ImageNet. Importantly, the benefits of Bayesian principles are preserved: predictive probabilities are well-calibrated, uncertainties on out-of-distribution data are improved, and continual-learning performance is boosted. This work enables practical deep learning while preserving benefits of Bayesian principles. A PyTorch implementation is available as a plug-and-play optimiser.}}
+}
+@article{j2b, 
+title = {{R EFINING THE VARIATIONAL POSTERIOR THROUGH ITERATIVE OPTIMIZATION}}, 
+author = {}, 
+keywords = {}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/30333438343136312d326638622d343364392d396133392d336639393839306432623663.pdf}
+}
+@article{32b, 
+title = {{RW\_GP.pdf}}, 
+author = {}, 
+local-url = {file://localhost/Users/taigaabe/Library/Containers/com.apple.Preview/Data/Desktop/Rotation%20Background/Motion_Tracking/RW_GP.pdf}
+}
+@article{Reed.2021, 
+year = {2021}, 
+title = {{Self-Supervised Pretraining Improves Self-Supervised Pretraining}}, 
+author = {Reed, Colorado J and Yue, Xiangyu and Nrusimha, Ani and Ebrahimi, Sayna and Vijaykumar, Vivek and Mao, Richard and Li, Bo and Zhang, Shanghang and Guillory, Devin and Metzger, Sean and Keutzer, Kurt and Darrell, Trevor}, 
+journal = {arXiv}, 
+eprint = {2103.12718}, 
+abstract = {{While self-supervised pretraining has proven beneficial for many computer vision tasks, it requires expensive and lengthy computation, large amounts of data, and is sensitive to data augmentation. Prior work demonstrates that models pretrained on datasets dissimilar to their target data, such as chest X-ray models trained on ImageNet, underperform models trained from scratch. Users that lack the resources to pretrain must use existing models with lower performance. This paper explores Hierarchical PreTraining (HPT), which decreases convergence time and improves accuracy by initializing the pretraining process with an existing pretrained model. Through experimentation on 16 diverse vision datasets, we show HPT converges up to 80x faster, improves accuracy across tasks, and improves the robustness of the self-supervised pretraining process to changes in the image augmentation policy or amount of pretraining data. Taken together, HPT provides a simple framework for obtaining better pretrained representations with less computational resources.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Reed-Self-Supervised%20Pretraining%20Improves%20Self-Supervised%20Pretraining-2021-arXiv.pdf}
+}
+@article{Reed.2020, 
+year = {2020}, 
+title = {{SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning}}, 
+author = {Reed, Colorado J and Metzger, Sean and Srinivas, Aravind and Darrell, Trevor and Keutzer, Kurt}, 
+journal = {arXiv}, 
+eprint = {2009.07724}, 
+abstract = {{A common practice in unsupervised representation learning is to use labeled data to evaluate the quality of the learned representations. This supervised evaluation is then used to guide critical aspects of the training process such as selecting the data augmentation policy. However, guiding an unsupervised training process through supervised evaluations is not possible for real-world data that does not actually contain labels (which may be the case, for example, in privacy sensitive fields such as medical imaging). Therefore, in this work we show that evaluating the learned representations with a self-supervised image rotation task is highly correlated with a standard set of supervised evaluations (rank correlation \$> 0.94\$). We establish this correlation across hundreds of augmentation policies, training settings, and network architectures and provide an algorithm (SelfAugment) to automatically and efficiently select augmentation policies without using supervised evaluations. Despite not using any labeled data, the learned augmentation policies perform comparably with augmentation policies that were determined using exhaustive supervised evaluations.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Reed-SelfAugment-%20Automatic%20Augmentation%20Policies%20for%20Self-Supervised%20Learning-2020-arXiv.pdf}
+}
+@article{Li.2019, 
+year = {2019}, 
+title = {{Towards Explaining the Regularization Effect of Initial Large Learning Rate in Training Neural Networks}}, 
+author = {Li, Yuanzhi and Wei, Colin and Ma, Tengyu}, 
+journal = {arXiv}, 
+eprint = {1907.04595}, 
+abstract = {{Stochastic gradient descent with a large initial learning rate is widely used for training modern neural net architectures. Although a small initial learning rate allows for faster training and better test performance initially, the large learning rate achieves better generalization soon after the learning rate is annealed. Towards explaining this phenomenon, we devise a setting in which we can prove that a two layer network trained with large initial learning rate and annealing provably generalizes better than the same network trained with a small learning rate from the start. The key insight in our analysis is that the order of learning different types of patterns is crucial: because the small learning rate model first memorizes easy-to-generalize, hard-to-fit patterns, it generalizes worse on hard-to-generalize, easier-to-fit patterns than its large learning rate counterpart. This concept translates to a larger-scale setting: we demonstrate that one can add a small patch to CIFAR-10 images that is immediately memorizable by a model with small initial learning rate, but ignored by the model with large learning rate until after annealing. Our experiments show that this causes the small learning rate model's accuracy on unmodified images to suffer, as it relies too much on the patch early on.}}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Li-Towards%20Explaining%20the%20Regularization%20Effect%20of%20Initial%20Large%20Learning%20Rate%20in%20Training%20Neural%20Networks-2019-arXiv.pdf}
+}
+@article{Allen-Zhu.2020, 
+year = {2020}, 
+title = {{Towards Understanding Ensemble, Knowledge Distillation and Self-Distillation in Deep Learning}}, 
+author = {Allen-Zhu, Zeyuan and Li, Yuanzhi}, 
+journal = {arXiv}, 
+eprint = {2012.09816}, 
+abstract = {{We formally study how Ensemble of deep learning models can improve test accuracy, and how the superior performance of ensemble can be distilled into a single model using Knowledge Distillation. We consider the challenging case where the ensemble is simply an average of the outputs of a few independently trained neural networks with the SAME architecture, trained using the SAME algorithm on the SAME data set, and they only differ by the random seeds used in the initialization. We empirically show that ensemble/knowledge distillation in deep learning works very differently from traditional learning theory, especially differently from ensemble of random feature mappings or the neural-tangent-kernel feature mappings, and is potentially out of the scope of existing theorems. Thus, to properly understand ensemble and knowledge distillation in deep learning, we develop a theory showing that when data has a structure we refer to as "multi-view", then ensemble of independently trained neural networks can provably improve test accuracy, and such superior test accuracy can also be provably distilled into a single model by training a single model to match the output of the ensemble instead of the true label. Our result sheds light on how ensemble works in deep learning in a way that is completely different from traditional theorems, and how the "dark knowledge" is hidden in the outputs of the ensemble -- that can be used in knowledge distillation -- comparing to the true data labels. In the end, we prove that self-distillation can also be viewed as implicitly combining ensemble and knowledge distillation to improve test accuracy.}}, 
+note = {Interesting paper. Applies to the context of multi-class classification, which is relevant to us.  
+Works on the premise that there are multiple features that correctly identify an object class, and the value of ensembles is that different instances pick up on different features as their key marker. By directly averaging the output, we are able to mimic the performance of the ensemble in a single network.  }, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/ensemble%20distialltion.pdf}
+}
+@misc{mnp, 
+title = {{Vicinal Risk Minimization}}, 
+author = {}, 
+url = {https://papers.nips.cc/paper/2000/file/ba9a56ce0a9bfa26e8ed9e10b2cc8f46-Paper.pdf}, 
+urldate = {2021-06-28}
+}
+@article{Chapelle.2001, 
+title = {{Vicinal Risk Minimization}}, 
+author = {}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/www0.cs.ucl.ac.uk%207292021,%2015953%20PM.pdf}
+}
+@article{Feldman.2020, 
+year = {2020}, 
+title = {{What Neural Networks Memorize and Why: Discovering the Long Tail via Influence Estimation}}, 
+author = {Feldman, Vitaly and Zhang, Chiyuan}, 
+journal = {arXiv}, 
+abstract = {{Deep learning algorithms are well-known to have a propensity for fitting the training data very well and often fit even outliers and mislabeled data points. Such fitting requires memorization of training data labels, a phenomenon that has attracted significant research interest but has not been given a compelling explanation so far. A recent work of Feldman (2019) proposes a theoretical explanation for this phenomenon based on a combination of two insights. First, natural image and data distributions are (informally) known to be long-tailed, that is have a significant fraction of rare and atypical examples. Second, in a simple theoretical model such memorization is necessary for achieving close-to-optimal generalization error when the data distribution is long-tailed. However, no direct empirical evidence for this explanation or even an approach for obtaining such evidence were given. In this work we design experiments to test the key ideas in this theory. The experiments require estimation of the influence of each training example on the accuracy at each test example as well as memorization values of training examples. Estimating these quantities directly is computationally prohibitive but we show that closely-related subsampled influence and memorization values can be estimated much more efficiently. Our experiments demonstrate the significant benefits of memorization for generalization on several standard benchmarks. They also provide quantitative and visually compelling evidence for the theory put forth in (Feldman, 2019).}}, 
+note = {This is a super cool paper to deal into heterogeneity in a training dataset, understood as the idea of long tails. Long tails in the dataset correspond to distinct groups of examples that might be very uncommon, but nevertheless reflect the true data distribution as might be represented in a test set. The paper gives a (more) efficient way to estimate per-datapoint values that can identify these distinct groups, and also quantify their usefulness in the test set. It still seems like the methods here are incredibly computationally intensive, but some nice ideas that might come out of this: - all data points in the training set are not equal. Some are essentially worthless, while others are uniquely valuable. This might lend itself to the idea of heterogeneous, hierarchical data representation, where certain examples capture a disproportionately large fraction of the model’s representative power, but that something about your data distribution justifies that. 
+- a neural networks learned deep representation formation naturally performs some kind of data compression, triaging, something, so that the whole data distribution can be well represented. 
+- it’s unclear how these ideas generalize to  video data, or the kind of datasets that neuroscientists care about. }, 
+keywords = {}, 
+local-url = {file://localhost/Users/taigaabe/Documents/Papers%20Library/Feldman-What%20Neural%20Networks%20Memorize%20and%20Why-%20Discovering%20the%20Long%20Tail%20via%20Influence%20Estimation-2020-arXiv.pdf}
+}
