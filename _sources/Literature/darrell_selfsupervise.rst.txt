@@ -29,4 +29,6 @@ Self-Supervised Pretraining improves Self-Supervised Pretraining (Reed 2021)
 
 **How does it relate to your work?** This paper suggests that we should try a few things with our data. 1) we should attempt to train the same models we have now, but initialized with a base model pretrained on ImageNet. 2) We should try self-supervising on the video set that we're trying to do tracking for on top of this, try with MoCo. 3) We should evaluate the influence functions of individual training frames in the resulting network.  
 
+Bibliography
+------------
 .. bibliography:: 

@@ -36,6 +36,7 @@ Conclusion
 All of these examples assume or show that there is some noise in the training labels, whether that noise be misassignments, or simple ambiguity. While some might argue that there is no label noise in large datasets (see citations of :cite:p:`Pleiss.2020,Feldman.2020`) it appears that we'll always have these kinds of ambiguities in our training set. For the case of keypoint detection, this is more true than in many other cases, as target maps might overlap with bad features and create distractors. Understanding the level of ambiguity introduced by a certain training point, and incorporating that ambiguity into the training cost, as considered by other training objectives (:cite:p:`Chapelle.2001,Zhang.2017`) 
 
 
-
+Bibliography
+------------
 .. bibliography:: 
 
