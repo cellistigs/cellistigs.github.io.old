@@ -1,4 +1,4 @@
-.. post:: August 10, 2020
+.. post:: 
    :tags: self-supervised learning, data augmentation
    :category: Lit
 

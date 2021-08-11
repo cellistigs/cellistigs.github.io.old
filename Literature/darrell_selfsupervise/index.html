@@ -65,7 +65,7 @@
           <div class="body" role="main">
              <section id="trevor-darrell-s-self-supervision-papers">
 <h1>Trevor Darrell’s Self Supervision Papers<a class="headerlink" href="#trevor-darrell-s-self-supervision-papers" title="Permalink to this headline">¶</a></h1>
-<p>Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (<span id="id1">[<a class="reference internal" href="../../Research/samplesgood/#id34" title="Colorado J Reed, Sean Metzger, Aravind Srinivas, Trevor Darrell, and Kurt Keutzer. SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning. arXiv, 2020. arXiv:2009.07724.">RMS+20</a>, <a class="reference internal" href="../../Research/samplesgood/#id33" title="Colorado J Reed, Xiangyu Yue, Ani Nrusimha, Sayna Ebrahimi, Vivek Vijaykumar, Richard Mao, Bo Li, Shanghang Zhang, Devin Guillory, Sean Metzger, Kurt Keutzer, and Trevor Darrell. Self-Supervised Pretraining Improves Self-Supervised Pretraining. arXiv, 2021. arXiv:2103.12718.">RYN+21</a>]</span>) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.</p>
+<p>Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (<span id="id1">[<a class="reference internal" href="#id30" title="Colorado J Reed, Sean Metzger, Aravind Srinivas, Trevor Darrell, and Kurt Keutzer. SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning. arXiv, 2020. arXiv:2009.07724.">RMS+20</a>, <a class="reference internal" href="#id29" title="Colorado J Reed, Xiangyu Yue, Ani Nrusimha, Sayna Ebrahimi, Vivek Vijaykumar, Richard Mao, Bo Li, Shanghang Zhang, Devin Guillory, Sean Metzger, Kurt Keutzer, and Trevor Darrell. Self-Supervised Pretraining Improves Self-Supervised Pretraining. arXiv, 2021. arXiv:2103.12718.">RYN+21</a>]</span>) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.</p>
 <section id="selfaugment-automatic-augmentation-policies-for-self-supervised-learning-reed-2020">
 <h2>SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning (Reed 2020)<a class="headerlink" href="#selfaugment-automatic-augmentation-policies-for-self-supervised-learning-reed-2020" title="Permalink to this headline">¶</a></h2>
 <p><strong>What is this paper doing?</strong> This paper assumes a current workflow for self supervised learning in which people first find good data augmentations with supervised learning based evaluations, and then use these data augmentations for instance contrastive learning (think comparing positive and negative examples via InfoNCE). This paper has two main results that demonstrate the usefulness of self-supervised training to learn good data representations for downstream supervised learning tasks. First, it shows that there are self-supervised tasks (in particular, identifying image rotations) that correlate well with supervised learning based representations, removing the need for supervised data to evaluate data augmentations. Second, it suggests an adaptation of existing data augmentation search strategies (which are themselves informed by the NAS literature) to this self-supervised setting, thereby establishing a fully self supervised pipeline for generation of good representations.</p>
@@ -116,53 +116,7 @@
 </section>
 
 <div class="section">
-     
-<div class="section">
-  <span style="float: left">
-     Previous:
-    
-    <a href="../../Research/samplesgood/">
-       Are More Training Samples Always Good?
-    </a>
-    
-  </span>
-  <span>&nbsp;</span>
-  <span style="float: right">
-    
-  </span>
-</div>
-  
-  <div class="section">
-    <h2>Comments</h2>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-      var disqus_shortname = "taiga_projdoc";
-      var disqus_identifier = "/Literature/darrell_selfsupervise/";
-      var disqus_title = "Trevor Darrell’s Self Supervision Papers";
-      var disqus_url = "https://cellistigs.github.io/Literature/darrell_selfsupervise";
-
-      (function () {
-        var dsq = document.createElement("script");
-        dsq.type = "text/javascript";
-        dsq.async = true;
-        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-        (
-          document.getElementsByTagName("head")[0] ||
-          document.getElementsByTagName("body")[0]
-        ).appendChild(dsq);
-      })();
-    </script>
-    <noscript
-      >Please enable JavaScript to view the
-      <a href="https://disqus.com/?ref_noscript"
-        >comments powered by Disqus.</a
-      ></noscript
-    >
-    <a href="https://disqus.com" class="dsq-brlink"
-      >comments powered by <span class="logo-disqus">Disqus</span></a
-    >
-  </div>
-  
+       
 </div>
 
           </div>
@@ -182,8 +136,7 @@
 
   
 <h2>
-   
-  10 August 2020 
+     Draft  
 </h2>
 
 <ul>
@@ -192,45 +145,16 @@
   <span
     >Category:</span
   >
-   
-  <a href="../../blog/category/lit/">Lit</a>  
+   Lit 
 </li>
  
 <li id="tags">
   <span
     >Tags: </span
   >
-   
-  <a href="../../blog/tag/self-supervised-learning/">self-supervised learning</a>   
-  <a href="../../blog/tag/data-augmentation/">data augmentation</a>  
+   self-supervised learning  data augmentation 
 </li>
  
-<li id="comments">
-  <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = "taiga_projdoc"; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-      var s = document.createElement("script");
-      s.async = true;
-      s.type = "text/javascript";
-      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
-      (
-        document.getElementsByTagName("HEAD")[0] ||
-        document.getElementsByTagName("BODY")[0]
-      ).appendChild(s);
-    })();
-  </script>
-  
-  <a
-    href="#disqus_thread"
-    data-disqus-identifier="/Literature/darrell_selfsupervise/"
-  >
-    Comments</a
-  >
-</li>
-
 </ul>
 <h3>Navigation</h3>
 <ul>
@@ -288,30 +212,18 @@
   <li class="ablog-cloud ablog-cloud-3">
     <a href="../../blog/tag/data/">data</a>
   </li>
-    
-  <li class="ablog-cloud ablog-cloud-3">
-    <a href="../../blog/tag/data-augmentation/">data augmentation</a>
-  </li>
-    
+      
   <li class="ablog-cloud ablog-cloud-3">
     <a href="../../blog/tag/ml/">ml</a>
   </li>
-    
-  <li class="ablog-cloud ablog-cloud-3">
-    <a href="../../blog/tag/self-supervised-learning/">self-supervised learning</a>
-  </li>
-   
+     
 </ul>
 
 <h3>
   <a href="../../blog/category/">Categories</a>
 </h3>
 <ul>
-   
-  <li>
-    <a href="../../blog/category/lit/">Lit (1)</a>
-  </li>
-    
+     
   <li>
     <a href="../../blog/category/res/">Res (1)</a>
   </li>
@@ -324,7 +236,7 @@
 <ul>
    
   <li>
-    <a href="../../blog/2020/">2020 (2)</a>
+    <a href="../../blog/2020/">2020 (1)</a>
   </li>
    
 </ul>
