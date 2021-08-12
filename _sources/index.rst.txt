@@ -38,4 +38,6 @@ Documentation:
    :hidden:
 
    about.rst
+   README.md
+   mission_statement.rst
 
