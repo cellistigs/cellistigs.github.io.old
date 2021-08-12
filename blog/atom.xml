@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://cellistigs.github.io</id>
   <title>taiga_projectdoc Blog</title>
-  <updated>2021-08-11T16:10:51.448913+00:00</updated>
+  <updated>2021-08-12T18:09:50.384715+00:00</updated>
   <link href="https://cellistigs.github.io"/>
   <link href="https://cellistigs.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.19">ABlog</generator>
@@ -20,5 +20,19 @@
     <category term="data" label="data"/>
     <category term="ml" label="ml"/>
     <published>2020-08-10T00:00:00-04:00</published>
+  </entry>
+  <entry>
+    <id>https://cellistigs.github.io/Literature/piketty_capital/</id>
+    <title>Capital in the 21st Century: Notes</title>
+    <updated>2020-08-12T00:00:00-04:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p&gt;Some notes on Thomas Piketty’s book &lt;em&gt;Capital in the 21st Century&lt;/em&gt;. I don’t have an economics background, so lots of the stuff will be me figuring out basic economics concepts from Piketty’s analysis of them.&lt;/p&gt;
+</content>
+    <link href="https://cellistigs.github.io/Literature/piketty_capital/" rel="alternate"/>
+    <summary>Some notes on Thomas Piketty’s book Capital in the 21st Century. I don’t have an economics background, so lots of the stuff will be me figuring out basic economics concepts from Piketty’s analysis of them.</summary>
+    <category term="economics" label="economics"/>
+    <published>2020-08-12T00:00:00-04:00</published>
   </entry>
 </feed>

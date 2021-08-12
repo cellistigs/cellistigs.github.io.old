@@ -65,7 +65,7 @@
           <div class="body" role="main">
              <section id="trevor-darrell-s-self-supervision-papers">
 <h1>Trevor Darrell’s Self Supervision Papers<a class="headerlink" href="#trevor-darrell-s-self-supervision-papers" title="Permalink to this headline">¶</a></h1>
-<p>Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (<span id="id1">[<a class="reference internal" href="#id30" title="Colorado J Reed, Sean Metzger, Aravind Srinivas, Trevor Darrell, and Kurt Keutzer. SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning. arXiv, 2020. arXiv:2009.07724.">RMS+20</a>, <a class="reference internal" href="#id29" title="Colorado J Reed, Xiangyu Yue, Ani Nrusimha, Sayna Ebrahimi, Vivek Vijaykumar, Richard Mao, Bo Li, Shanghang Zhang, Devin Guillory, Sean Metzger, Kurt Keutzer, and Trevor Darrell. Self-Supervised Pretraining Improves Self-Supervised Pretraining. arXiv, 2021. arXiv:2103.12718.">RYN+21</a>]</span>) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.</p>
+<p>Due to the ensembling results I was getting, John recommended that I take a look at Trevor Darrell’s recent work with self supervised learning. Here I’m going to describe two papers by his group (<span id="id1">[<a class="reference internal" href="../../Research/samplesgood/#id34" title="Colorado J Reed, Sean Metzger, Aravind Srinivas, Trevor Darrell, and Kurt Keutzer. SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning. arXiv, 2020. arXiv:2009.07724.">RMS+20</a>, <a class="reference internal" href="../../Research/samplesgood/#id33" title="Colorado J Reed, Xiangyu Yue, Ani Nrusimha, Sayna Ebrahimi, Vivek Vijaykumar, Richard Mao, Bo Li, Shanghang Zhang, Devin Guillory, Sean Metzger, Kurt Keutzer, and Trevor Darrell. Self-Supervised Pretraining Improves Self-Supervised Pretraining. arXiv, 2021. arXiv:2103.12718.">RYN+21</a>]</span>) that apply self supervision to the task of representation learning- learning good representations that you can use to initialize networks for a variety of downstream tasks. In general, lots of work in self supervision is then evaluated by sticking on a linear layer at the top, which gets trained for certain downstream tasks (sometimes the main network is fine tuned, sometimes not). In general though, these self supervision papers assume the goal of self supervision is good representation learning for downstream tasks, which is a little different from what I’m doing.</p>
 <section id="selfaugment-automatic-augmentation-policies-for-self-supervised-learning-reed-2020">
 <h2>SelfAugment: Automatic Augmentation Policies for Self-Supervised Learning (Reed 2020)<a class="headerlink" href="#selfaugment-automatic-augmentation-policies-for-self-supervised-learning-reed-2020" title="Permalink to this headline">¶</a></h2>
 <p><strong>What is this paper doing?</strong> This paper assumes a current workflow for self supervised learning in which people first find good data augmentations with supervised learning based evaluations, and then use these data augmentations for instance contrastive learning (think comparing positive and negative examples via InfoNCE). This paper has two main results that demonstrate the usefulness of self-supervised training to learn good data representations for downstream supervised learning tasks. First, it shows that there are self-supervised tasks (in particular, identifying image rotations) that correlate well with supervised learning based representations, removing the need for supervised data to evaluate data augmentations. Second, it suggests an adaptation of existing data augmentation search strategies (which are themselves informed by the NAS literature) to this self-supervised setting, thereby establishing a fully self supervised pipeline for generation of good representations.</p>
@@ -145,7 +145,8 @@
   <span
     >Category:</span
   >
-   Lit 
+   
+  <a href="../../blog/category/lit/">Lit</a>  
 </li>
  
 <li id="tags">
@@ -167,6 +168,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../piketty_capital/"
+      >12 August - Capital in the 21st Century: Notes</a
+    >
+  </li>
+  
   <li>
     <a href="../../Research/samplesgood/"
       >10 August - Are More Training Samples Always Good?</a
@@ -214,6 +221,10 @@
   </li>
       
   <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/economics/">economics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
     <a href="../../blog/tag/ml/">ml</a>
   </li>
      
@@ -223,7 +234,11 @@
   <a href="../../blog/category/">Categories</a>
 </h3>
 <ul>
-     
+   
+  <li>
+    <a href="../../blog/category/lit/">Lit (1)</a>
+  </li>
+    
   <li>
     <a href="../../blog/category/res/">Res (1)</a>
   </li>
@@ -236,7 +251,7 @@
 <ul>
    
   <li>
-    <a href="../../blog/2020/">2020 (1)</a>
+    <a href="../../blog/2020/">2020 (2)</a>
   </li>
    
 </ul>

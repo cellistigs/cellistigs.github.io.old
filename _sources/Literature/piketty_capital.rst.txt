@@ -1,0 +1,27 @@
+.. post:: August 12, 2020
+   :tags: economics 
+   :category: Lit
+   :author: me
+   :location: NYC
+   :language: en
+
+Capital in the 21st Century: Notes
+==================================
+Some notes on Thomas Piketty's book *Capital in the 21st Century*. I don't have an economics background, so lots of the stuff will be me figuring out basic economics concepts from Piketty's analysis of them. 
+
+The Capital-Labor Split in the 21st Century
+-------------------------------------------
+
+This section takes a hard look at the "First fundamental law of capital" that Piketty showed us: 
+
+.. math::
+   \alpha = r\times\beta
+
+Where :math:`\alpha` is the proportion of income that goes to capital, :math:`r` is the rate of return on capital, and :math:`\beta` is the capital income ratio. When Piketty introduces this, he explains that this is a pure accounting identity- there is no theory or assumptions that go into this equation, and if you measure any combination of two quantities, you will know the value of the third. However, in this section, he discusses the factors that influence these quantities, and how the change in one of these quantities might be expected to influence the others. In particular, what happens when the capital income ratio, :math:`\beta` changes? In particular, how do changes in :math:`\beta` influence :math:`\alpha`? Or, stated another way, how does an increase in capital impact the proportion of income that goes to capital?  
+
+The fundamental mechanism that we use to study this question is to predict the change in :math:`r` as :math:`\beta` changes, or the rate of return that one can expect on capital. This is measured as a percentage: :math:`r = 5` implies that for every 100 euros worth of land that you own, you make 5 euros in rent (and likewise, that every 100 euros of computer servers that you own contributes 5 euros to your business's profits, etc.). The simplest mathematical model might suggest that we consider :math:`r` constant as :math:`\beta` changes- thus as your stock of capital increases more and more of income goes to that capital. However, this doesn't make much sense. If the amount of available land in a country goes up by a factor of 100, you should expect that everyone's rent is going to go down- likewise, if compute becomes vastly more available, the value your computer servers can provide will decrease (as long as you're not the only one setting the price- see Piketty's discussion on how the rate of return on capital is related to the marginal utility of capital). Therefore, it's somehow more reasonable to assume that as :math:`\beta` increases, :math:`r` will decrease, and in general that these two quantities will vary inversely with each other. However, the degree to which :math:`r` increases or decreases to compensate for :math:`\beta` still leaves room for many different economic dynamics. These are discussed in the context of *elasticity*.    
+
+Elasticity 
+~~~~~~~~~~
+
+The elasticity of a (market?) asks to what degree you can shift the proportion of capital and labor in order to produce a certain amount of output. As :math:`\beta` increases, one natural way to measure that is to consider how the amount of capital is increasing relative to the labor force available to work it. I.e. how much does adding another computer server add to the value of my business? How does it compare to the value of hiring one more employee to work with the same number of computer servers? In general, elasticity measures the degree of flexibility one has in putting together capital and people to work that capital in order to produce some kind of valuable output. Elasticity is generally modelled in the context of production functions (more research needed). If elasticity is infinite, this means that you can add more capital, and it will increase output totally independent of the amount of labor available (:math:`r` is constant with respect to :math:`beta`). If elasticity is zero, it means that you must tightly match the amount of capital to the proportion of available labor, and increasing or capital beyond some optimal proportion has zero value (:math:`r` decreases much faster than :math:`\beta` increases, maybe something like :math:`\frac{c}{\beta^2}` so that :math:`\alpha` itself is inversely proportional to :math:`\beta`). In the middle, elasticity of 1 implies some sort of equilibrium: increases in the stock of capital are exactly balanced by the rate of return, implying that :math:`\alpha` is constant. This view has all sorts of political implications: that capitalism remains fair to labor over the course of growth, for example. Piketty will next go on to show that in modern societies, elasticity is greater than one, implying that as capital increases, a greater proportion of income will go back to capital.  

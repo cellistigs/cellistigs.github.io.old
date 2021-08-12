@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Capital in the 21st Century: Notes &#8212; taiga_projectdoc  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" /> 
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="taiga_projectdoc Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+             <section id="capital-in-the-21st-century-notes">
+<h1>Capital in the 21st Century: Notes<a class="headerlink" href="#capital-in-the-21st-century-notes" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on Thomas Piketty’s book <em>Capital in the 21st Century</em>. I don’t have an economics background, so lots of the stuff will be me figuring out basic economics concepts from Piketty’s analysis of them.</p>
+<section id="the-capital-labor-split-in-the-21st-century">
+<h2>The Capital-Labor Split in the 21st Century<a class="headerlink" href="#the-capital-labor-split-in-the-21st-century" title="Permalink to this headline">¶</a></h2>
+<p>This section takes a hard look at the “First fundamental law of capital” that Piketty showed us:</p>
+<div class="math notranslate nohighlight">
+\[\alpha = r\times\beta\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\alpha\)</span> is the proportion of income that goes to capital, <span class="math notranslate nohighlight">\(r\)</span> is the rate of return on capital, and <span class="math notranslate nohighlight">\(\beta\)</span> is the capital income ratio. When Piketty introduces this, he explains that this is a pure accounting identity- there is no theory or assumptions that go into this equation, and if you measure any combination of two quantities, you will know the value of the third. However, in this section, he discusses the factors that influence these quantities, and how the change in one of these quantities might be expected to influence the others. In particular, what happens when the capital income ratio, <span class="math notranslate nohighlight">\(\beta\)</span> changes? In particular, how do changes in <span class="math notranslate nohighlight">\(\beta\)</span> influence <span class="math notranslate nohighlight">\(\alpha\)</span>? Or, stated another way, how does an increase in capital impact the proportion of income that goes to capital?</p>
+<p>The fundamental mechanism that we use to study this question is to predict the change in <span class="math notranslate nohighlight">\(r\)</span> as <span class="math notranslate nohighlight">\(\beta\)</span> changes, or the rate of return that one can expect on capital. This is measured as a percentage: <span class="math notranslate nohighlight">\(r = 5\)</span> implies that for every 100 euros worth of land that you own, you make 5 euros in rent (and likewise, that every 100 euros of computer servers that you own contributes 5 euros to your business’s profits, etc.). The simplest mathematical model might suggest that we consider <span class="math notranslate nohighlight">\(r\)</span> constant as <span class="math notranslate nohighlight">\(\beta\)</span> changes- thus as your stock of capital increases more and more of income goes to that capital. However, this doesn’t make much sense. If the amount of available land in a country goes up by a factor of 100, you should expect that everyone’s rent is going to go down- likewise, if compute becomes vastly more available, the value your computer servers can provide will decrease (as long as you’re not the only one setting the price- see Piketty’s discussion on how the rate of return on capital is related to the marginal utility of capital). Therefore, it’s somehow more reasonable to assume that as <span class="math notranslate nohighlight">\(\beta\)</span> increases, <span class="math notranslate nohighlight">\(r\)</span> will decrease, and in general that these two quantities will vary inversely with each other. However, the degree to which <span class="math notranslate nohighlight">\(r\)</span> increases or decreases to compensate for <span class="math notranslate nohighlight">\(\beta\)</span> still leaves room for many different economic dynamics. These are discussed in the context of <em>elasticity</em>.</p>
+<section id="elasticity">
+<h3>Elasticity<a class="headerlink" href="#elasticity" title="Permalink to this headline">¶</a></h3>
+<p>The elasticity of a (market?) asks to what degree you can shift the proportion of capital and labor in order to produce a certain amount of output. As <span class="math notranslate nohighlight">\(\beta\)</span> increases, one natural way to measure that is to consider how the amount of capital is increasing relative to the labor force available to work it. I.e. how much does adding another computer server add to the value of my business? How does it compare to the value of hiring one more employee to work with the same number of computer servers? In general, elasticity measures the degree of flexibility one has in putting together capital and people to work that capital in order to produce some kind of valuable output. Elasticity is generally modelled in the context of production functions (more research needed). If elasticity is infinite, this means that you can add more capital, and it will increase output totally independent of the amount of labor available (<span class="math notranslate nohighlight">\(r\)</span> is constant with respect to <span class="math notranslate nohighlight">\(beta\)</span>). If elasticity is zero, it means that you must tightly match the amount of capital to the proportion of available labor, and increasing or capital beyond some optimal proportion has zero value (<span class="math notranslate nohighlight">\(r\)</span> decreases much faster than <span class="math notranslate nohighlight">\(\beta\)</span> increases, maybe something like <span class="math notranslate nohighlight">\(\frac{c}{\beta^2}\)</span> so that <span class="math notranslate nohighlight">\(\alpha\)</span> itself is inversely proportional to <span class="math notranslate nohighlight">\(\beta\)</span>). In the middle, elasticity of 1 implies some sort of equilibrium: increases in the stock of capital are exactly balanced by the rate of return, implying that <span class="math notranslate nohighlight">\(\alpha\)</span> is constant. This view has all sorts of political implications: that capitalism remains fair to labor over the course of growth, for example. Piketty will next go on to show that in modern societies, elasticity is greater than one, implying that as capital increases, a greater proportion of income will go back to capital.</p>
+</section>
+</section>
+</section>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     Previous:
+    
+    <a href="../../Research/samplesgood/">
+       Are More Training Samples Always Good?
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "taiga_projdoc";
+      var disqus_identifier = "/Literature/piketty_capital/";
+      var disqus_title = "Capital in the 21st Century: Notes";
+      var disqus_url = "https://cellistigs.github.io/Literature/piketty_capital";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">taiga_projectdoc</a></h1>
+
+
+
+
+
+
+
+
+  
+<h2>
+   
+  12 August 2020 
+</h2>
+
+<ul>
+   
+<li id="author">
+  <span
+    >Author:</span
+  >
+   
+  <a href="../../blog/author/me/">me</a>  
+</li>
+ 
+<li id="location">
+  <span
+    >Location:</span
+  >
+   
+  <a href="../../blog/location/nyc/">NYC</a>  
+</li>
+ 
+<li id="language">
+  <span
+    >Language:</span
+  >
+   
+  <a href="../../blog/language/en/">en</a>  
+</li>
+ 
+<li id="category">
+  <span
+    >Category:</span
+  >
+   
+  <a href="../../blog/category/lit/">Lit</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    >Tag:</span
+  >
+   
+  <a href="../../blog/tag/economics/">economics</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "taiga_projdoc"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/Literature/piketty_capital/"
+  >
+    Comments</a
+  >
+</li>
+
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About Taiga Abe</a></li>
+</ul>
+
+
+<h3>
+  <a href="../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../Research/samplesgood/"
+      >10 August - Are More Training Samples Always Good?</a
+    >
+  </li>
+  
+</ul>
+
+<h3><a href="../../blog/tag/">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/data/">data</a>
+  </li>
+      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/economics/">economics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/ml/">ml</a>
+  </li>
+     
+</ul>
+
+<h3>
+  <a href="../../blog/category/">Categories</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/category/lit/">Lit (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../blog/category/res/">Res (1)</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2020/">2020 (2)</a>
+  </li>
+   
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Taiga Abe.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/Literature/piketty_capital.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
