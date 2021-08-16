@@ -1,0 +1,543 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="../style.css" />
+    <title>16</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="../index.html">Index</a> |
+    <a href="../diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li class="done4">
+Add new authors  #eb378768
+
+<ul>
+<li>
+Ian
+
+<li>
+Shreya
+
+<li>
+E. Kelly Buchanan
+
+<li>
+Joao Couto (Department of Neurobiology, University of California, Los Angeles, CA, USA) 
+
+<li>
+Jack Briggs 
+
+<li>
+Sian Lee Kitt  
+
+<li>
+Ryan Glassman
+
+<li>
+John Zhou
+
+<li class="done4">
+check in on new authors  #f0c3e14e
+
+</ul>
+<li class="done4">
+Big change: intro too long. remove the three new paragraphs about wfci and ensembling. Replace 5 paragraphs starting with "to demonstrate the novelty" with single paragraph for rest of paper."Below, we provide further details about the methods of neurocaas. next we show how neurocaas can do two cool new things that weren't possible before. Then we compare the cost and speeed to iags.  "  #5c4cc6f3
+
+<ul>
+<li>
+Right now:  
+
+<ul>
+<li>
+P1: intro two novel analyses that solve issues. 
+
+<li>
+P2: WFCI 
+
+<li>
+P3: Deep markerless tracking. 
+
+<li>
+P4: blueprints encoding new stuff. We quantify  
+
+<li>
+P5: infrastructure can be bad as it is now, or good. 
+
+</ul>
+<li>
+New: there's some redundancy with WFCI, so remove here. 
+
+<ul>
+<li>
+1 paragraph. What do you want to say for sure? ? 
+
+<li>
+"Below, we first outline the structure of the \ncap platform and details about its implementation of IaC \ref{methods}"
+
+<li>
+"Next, we present two analyses that are made possible by \ncap's design in the domains of widefield calcium imaging (WFCI) and markerless tracking models for behavioral video. These analyses are representative of novel IaC solutions for areas of neuroscience that depend upon new and evolving technologies for data analysis (handling big data for WFCI, and training deep networks for markerless tracking), where moving away from \iags has outsize scientific benefits"
+
+<li>
+Finally, we quantify the time and cost performance of existing popular neuroscience analyses on \ncap, and find that analyses encoded on \ncap are cheaper and faster than analogues based on conservatively chosen "on-premises" infrastructure across the sampled range of data analyses and use cases.   
+
+<li>
+Last paragraph keep as is. 
+
+</ul>
+</ul>
+<li class="done4">
+First paragraph of 2.1 needs to be split in 2.  #7219fcd5
+
+<li class="done4">
+p5, over a period of 10 months: this is a results, not methods paragraph. Move to after cost quantification  #d34703ff
+
+<ul>
+<li class="done4">
+Moved to section 3.1  maybe put this after service after all.  #bb3f844c
+
+</ul>
+<li class="done4">
+Say more about not being a black box in discussion.  #66e95150
+
+<ul>
+<li>
+Everything is open to inspection, examination,   
+
+<li>
+Should be open to a local environment
+
+<li>
+There are new ways of examining analysis performance that become available at scale. 
+
+</ul>
+<li class="done4">
+spell out acronyms on first use (BIDS, NSG) and only first use. reference xsede?  #5a91d4c9
+
+<li class="done4">
+p11, "create and destroyes the relevant hardware" doesn't work for matter. "Activates/deactivates?"  #69b17227
+
+<li class="done4">
+2.3.3: point to the detailed methods about dataset dependent instance.  #0fed1fc8
+
+<li class="done4">
+"perhaps the most difficult infrasturcutre component to specify in code " : difficult to unintuitive  #ffc5470c
+
+<li class="done4">
+2.3.4: a great deal of ink sounds provicative here.  #b739134f
+
+<li class="done4">
+last sentence of "great deal of ink" point isn't clear.  #3357e503
+
+<ul>
+<li>
+Fundamentally, blueprints totally decouple the design of data analyses analyses from their implementation: an infrastructure stack built from a blueprint can be torn down without the loss of any information that impacts analysis reproducibility. 
+
+</ul>
+<li class="done4">
+fig 8 : Name erica as sharing this data, thank them in ack  #7d43fe1e
+
+<li class="done4">
+p15: "faced with these issues, bandwidth limitations preclude" doesn't follow logically from above. :w  #aa7e387e
+
+<ul>
+<li>
+Given appropriate scale of infrastructure, a researcher could compensate for these glitches by considering several different models, and measuring the variance across them. However, restricted bandwidth of computational resources precludes the effective use of approaches like these, biasing the researcher towards time consuming manual curation of datasets or ad-hoc error detection techniques.  
+
+<li>
+One well founded approach to analyze the effects of initialization on model  
+
+<li>
+One well founded approach to detect, characterize, and solve these idiosyncratic issues is a statistical analysis of markerless tracking models, considering quantities such as the bias and variance of tracking models, across their initialization parameters.   
+
+</ul>
+<li class="done4">
+fig 8: refer to a , b, c instead of top left. Clarify number of labels per panel. don't repeat n = 9 three times.  #5a1e7765
+
+<li class="done4">
+epi statement doesn't fit.  #b41042eb
+
+<li class="done4">
+Make Figure refs for Figure 6 use lettters.  #d70d0c27
+
+<li class="done4">
+p18: typo in "across the analyses that we considered"  #8d17647e
+
+<li class="done4">
+3.1 and 3.2 could use one last pass to shorten, avoid repetition  #74727a4c
+
+<li class="done4">
+Detailed methods? (see above)  #fb7677d7
+
+<li class="done4">
+More on colab in discussion  #ae413167
+
+<li class="done4">
+compress/reduce discussion  #b54849dd
+
+<li class="done4">
+It feels pretty wordy for my tired brain, with not enough structure.  #ce0050f6
+
+<li class="done4">
+1. add in new biblio and check 2 refs to make sure.  #90b809a3
+
+<li class="done4">
+2. make your edits from revision 04 19  #9d4aa449
+
+<li class="done4">
+3. send out.  #7947230a
+
+<li>
+Discuss with john.  #7ca24583
+
+<li>
+Gotta be a bit more top down here: 
+
+<ul>
+<li>
+The main and only point you're trying to make is what \ncap is, and why that's a thing that science needs. 
+
+<li>
+IaC is an emerging toolset that automates any given infrastructure. 
+
+<li>
+An IaC platform first requires a document that completely specifies each infrastructure component in an infrastructure tool () required to support any given tool.  
+
+<li>
+From this document, the corresponding resources can be activated and assembled automatically on the IaC platform in a process called \emph{deployment}.  
+
+<li>
+After deployment, anyone with access to the platform can use the tool with the assurance that it has been built exactly as intended by the tool developer, skirting all of the issues shown in Figure \ref{1}B.
+
+<li>
+\ncap is a IaC platform that encapsulates the entire infrastructure stack for a given analysis in an automatically managed environment.  
+
+<ul>
+<li>
+Automatic management means reproducibility, removal of extra work, and low cost. 
+
+<li>
+Entire infrastructure stack means that there's no new conventions to learn: just do what you'd normally do, and we can save that and make it transportable. 
+
+</ul>
+<li>
+\ncap is platform that lets you document the entire analysis process in a replicable and automated way. 
+
+<li>
+\ncap is a platform that ties documentation to data analysis. 
+
+<li>
+NeuroCAAS is a platform that uses IaC for science. What is the value of IaC to science?  
+
+<ul>
+<li>
+You have full replicability of the whole computing environment. Everything that is done can be done automatically. 
+
+<li>
+you have total decoupling of analysis workflow from undocumented design decisions. 
+
+</ul>
+</ul>
+<li>
+These comments diverge from the feedback you've given in the past. Has something changed?  
+
+<ul>
+<li>
+Abstract: get your highest level terms straight  
+
+<ul>
+<li class="done4">
+John edits.  #f6e38c67
+
+</ul>
+<li>
+Intro: cut out lots of the material that makes this accessible to a neuroscience audience. 
+
+<ul>
+<li class="done4">
+Implement compression that john suggested in intro.  #0ee63864
+
+<li class="done4">
+Move all information about "dandi, datajoint, etc" to after "Major efforts", and before "However, these important efforts "- restore the end of this paragraph to rhetorical clarity.  #9bfb015b
+
+<li class="done4">
+clarify iac: the important impression here is one of 1) packaging everything together, and 2) making the result automatically accessible.  #cbe3064f
+
+<li>
+with the replicability and determinism ... -&gt; with the replicability of automation.  
+
+<li>
+An IaC paradigm divides the process of building infrastructure into . 
+
+<li>
+IaC first requires a document that lists all identifying details for each infrastructure resource (each colored block in Figure \ref{fig:1}A) in the infrastruture stack for any given tool.  
+
+<li>
+This document must be a complete specification of an infrastructure stack, so that the task of actually deploying the corresponding infrastructure involves no additional degrees of freedom.   
+
+<li class="done4">
+The flow feels right, but it's a little sad. You can add stuff that earns your authority and communicates your goals as a clear-eyed researcher who will be doing this for a long time.  #52cd601c
+
+</ul>
+<li>
+Methods: I can change this back. 
+
+<ul>
+<li class="done4">
+2.0: NeuroCAAS is fundamentally a platform. It is a collection of blah blah blah, blah blah blah  #d8509eb2
+
+<ul>
+<li>
+\ncap is fundamentally a platform that supports a given analysis with a standardized infrastructure stack. 
+
+<li>
+This platform hosts a collection of different infrastructure components that can be customized by analysis developers and subsequently referenced in a code document.  
+
+<li>
+The \ncap platform is a collection of customizable infrastructure components linked to a library of analysis \emph{blueprints}: each blueprint specifies a configuration of infrastructure components which can be deployed on demand. 
+
+<li>
+As an IaC platform, \ncap differs in usage than standard \IaGS approaches. As such, we will first discuss the interface to the \ncap platform in section \S \ref{sec 2.1}
+
+<li>
+Next, we will describe each component of the \ncap platform in \S \ref{sec 2.2} 
+
+<li>
+Finally, we survey related systems in \S \ref \sec{2.3 } to contrast against \ncap and its IaC design.  
+
+<li>
+We will start by talking about the interface to the platform, cloud service and developer api, after which we describe how the box is built.  
+
+<li>
+To really understand how it is a platform and not these other things, we provide a survey of related systems in 2.3 
+
+<li>
+Although many parts of system level infrastructure ... one key component is an effective communication channel between a user, who submits only data and a configuration file, and the \ncap infrastructure that processes that data . running autonomously on our platform. move analysis inputs from the user to the infrastructure stack, efficiently transf while effectively transferring data with the user.  
+
+</ul>
+<li>
+Be less website-heavy in 2.1, and really make platform the centerpiece. 
+
+<li class="done4">
+flip 2.2 and 2.3  #e41accd9
+
+<ul>
+<li class="done4">
+Reference other platforms more directly? can take out of discussion.  #d3255559
+
+</ul>
+<li class="done4">
+write compression for methods.  #b93f52ed
+
+<li class="done4">
+Implement compression for methods.  #80c54bc2
+
+</ul>
+<li>
+Results: wfield: do we need more new work here? What are you suggesting? 
+
+<ul>
+<li class="done4">
+Outline in terms of existing blocks of text.  #3a001bf0
+
+<li class="done4">
+Implement:  #399edbfa
+
+<ul>
+<li>
+Leading text: here we demonstrate the value of IaC in \ncap native analyses to analyze large datasets (\S \ref{3.1}) and deep learning analyses (\S \ref{3.2}), as well as performance quantifications measuring time and cost.  
+
+<li>
+3.1:
+
+<ul>
+<li>
+Some of the most infrastructure intensive analyses in neuroscience are preprocessing steps that work directly with big data in raw format. 
+
+<li>
+The analysis of any given dataset can require many separate preprocessing steps each with their own infrastructure needs.
+
+<li>
+One notable example is widefield imaging (WFCI): an imaging technique that collects .. (Couto). High throughput. 
+
+<li>
+In the protocol paper Couto et al. 2020, we described a complete WFCI analysis pipeline that links together ... 
+
+<li>
+This is great, but first step is optimized for multicore, the second is optimized for GPUs.  
+
+<li>
+Makes it diffult for IaGS: sparsely documented preprocessing steps are an issue (from intro)
+
+<li>
+This is easy on \ncap. On \ncap, we solve this issue by creating an infrastructure stack for each step independently, and then linking them through the job manager.  
+
+<li>
+Remove reproducibility. The point is clear. 
+
+<li>
+WFCI is accessible through a GUI, users can do manual configuration easily. 
+
+<li>
+For full, we refer users to Couto, which has a step by step description of how users can use via website.
+
+</ul>
+<li>
+3.2
+
+<ul>
+<li>
+Deep learning analyses require the largest up front investment in specific infrastructure: memory, gpus, storage and management of training data. 
+
+<li>
+Even after this investment, the black box nature of deep learning can lead to unpredictable performance, and drag down the ability to scale to big datasets that was the whole point. 
+
+<li>
+For markerless tracking, this shows up with glitches. 
+
+<li>
+One popular solution to this issue is ensembling: better performance, better estimates of uncertainty, an altogether better time. 
+
+<li>
+Makes it diffuclt for IaGS: an even bigger investment in infrastructure than already required: models across gpus, or replicating across stacks = a maintenance cost that can quickly explode. 
+
+<li>
+This is easy on \ncap. On \ncap, we solve the issue by creating many copies of the same infrastrcutrue stack, then linking them through the job manaer. 
+
+<li>
+We probably don't need reproducibility here either. 
+
+</ul>
+<li>
+3.3: 
+
+<ul>
+<li>
+In order to compare the usage cost of \ncap jobs directly with 
+
+</ul>
+</ul>
+<li>
+Defend only what you have to defend: not pmd, not ensembling, just neurocaas.  
+
+<li>
+Structure is: this is what people want to do; this is why it's been prohibited by iags; here is how you can do it on \ncap.  
+
+<li>
+Widefield: prohibitive was chaining together analyses. 
+
+<ul>
+<li>
+One notable example here is widefield imaging. 
+
+<li>
+In widefield specifically, the first is optimized for multicore, the second is optimized for gpu. 
+
+<li>
+Trying to do this with IaGS is a disaster. 
+
+<li>
+We're not trying to argue that extracting features, PMD is a good idea. 
+
+</ul>
+<li>
+Ensembling: this is a thing that people want to do: IaGs
+
+<ul>
+<li>
+NeuroCAAS can make this easy as pie.  
+
+<li>
+Glitches are bad. Ensembling can fix this. NeuroCAAS 
+
+<li>
+In response we built -&gt; However, \ncap trivially allows ensemble methods. 
+
+<li>
+Miscalibration is subtle; go direct to glitches.  
+
+<li>
+Bury the scientific interest in ensembling, for the sake of making a broad point.  
+
+</ul>
+<li class="done4">
+draft compress for 3.1-3.2: wordy in parts.  #81cc4052
+
+<li class="done4">
+draft compress for 3.3  #9ffff1bc
+
+<ul>
+<li>
+on John's revision.
+
+<ul>
+<li>
+Cost paragraph:
+
+<ul>
+<li>
+Finally, we compare the cost of ncap directly to the cost of purchasing local infrastructure. To be (extremely) conservative, we assume local infrastructure is set up, neglecting all of the time associated with installing and maintaining software and hardware. We use a total cost of ownership (TCO) metric (Morey and Nambiar, 2009) that includes the purchase cost of local hardware, plus reasonable maintenance costs over estimates of hardware lifetime; see x10.3 for full details.
+
+<li>
+We first ask, how frequently would have to run data analysis on ncap before it becomes worthwhile to purchase dedicated local infrastructure. 
+
+<li>
+This question is answered by the Local Cost Crossover (LCC): the threshold rate at which a user would have to... (existing sentence)
+
+<li>
+The LCC rates depicted in Figure 9B show that in all use cases, ncap is more cost efficient than local infrastructure unless one is generating 10s-100s of datasets per week over the course of several years.
+
+<li>
+While such use cases are certainly feasible, managing these use cases on local infrastructure via \iags involves an inordinate amount of human labor. 
+
+<li>
+In Figure 9C, we present the LUC for each analysis: the actual time cost of analyzing data on a local machine at the corresponding LCC rate. 
+
+<li>
+Across the analyses that we considered, ... threshold, corresponding to 6-12 hours every day, over the course of several years.  
+
+<li>
+This would involve an inordinate amount of human effort to manage, or build the custom infrastructure to automate/ parallelize. 
+
+<li>
+For most reasonable datasets, it will be cheaper to use ncap. 
+
+<li>
+While there are certainly cases where it will not be cheaper, they will most likely be so unwieldy and large that you will have to set up custom infrastructure to manage it, which is exactly the case where ncap becomes useful again.
+
+<li>
+How often does one have to be running data analysis on ncap before it becomes worthwhile to purchase local infrastructure, cost wise? 
+
+<li>
+If you were actually running that much data, how long would it take? 
+
+<li>
+This is a nice argument: The amount of data you need to be collecting in order to merit the purchase of local hardware is obscene. If you're collecting anything less than obscene amounts of data, it will be cheaper to run ncap. Furthermore, if you are actually collecting that level of data, the amount of human effort required to run that data (i.e. 6 hours a day, every day or building custom infrastructure to automate this process) is also obscene. If you're actually collecting obscene amounts of data, it might not be cheaper to run on ncap, but it'd definitely going to be worth your trouble.  
+
+</ul>
+<li>
+Cost paragraph: to directly compare the cost of ncap with local infrastructure we follow the lead of standard methods in infrastructure benchmarking to first estimate the total cost of ownership (TCO) of infrastructure, as opposed to a simple price tag (insert TCO sentence)
+
+<li>
+We use this TCO to ask, how often would one have to use ncap before it becomes more cost effective to purchase dedicated infrastructure? 
+
+</ul>
+</ul>
+<li class="done4">
+write Compress for 3.3  #2134d250
+
+</ul>
+<li class="done4">
+Write compression for discussion  #63ec731a
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

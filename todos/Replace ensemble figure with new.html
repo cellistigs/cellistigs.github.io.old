@@ -1,0 +1,150 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Replace ensemble figure with new</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li class="done4">
+Run new data through code  #eb89d179
+
+<li class="done4">
+Erica data (2021-04-07 22:00)  #c0ba970a
+
+<ul>
+<li>
+set up your testing instance once more. Try starting via the cli! 
+
+<ul>
+<li class="done4">
+get/extend time limit via the cli  #293a8821
+
+<li class="done4">
+memory cache should take cache location for ensmeble as optional argument  #fc22857b
+
+<li class="done4">
+prediction on new videos [time:30mins].  #c1a856d5
+
+</ul>
+</ul>
+<li class="done4">
+Actual per datapoint errors for supplement. (2021-04-07 22:00)  #9519fa38
+
+<li class="done4">
+Zoom in on parts to show errors.  #91c93307
+
+<li>
+entropy calculation. For erica's datA: especially the tail.  #d6a823bd
+
+<ul>
+<li>
+interesting, but not necessary. 
+
+</ul>
+<li class="done4">
+Say more in text about ensembling value- the number of networks you trained, the evaluation of uncertainty, etc.  #bf769eac
+
+<li class="done4">
+Update the inputs (2021-04-14 14:00)  #ac96f9b5
+
+<ul>
+<li>
+get a test folder X 
+
+<li>
+figure out a good way to handle unzipping. X
+
+<li>
+make it not have to be labeled rawdata. X
+
+<li>
+pull neurocaas-contrib again. X
+
+<li>
+remove datasets. X
+
+<li>
+clear cache. X
+
+<li class="done4">
+run test job  #884b7280
+
+<li class="done4">
+Run real job  #59e04d5d
+
+<ul>
+<li>
+Send zoom link x
+
+<li>
+reset amy password
+
+<li>
+add kelly X
+
+<li>
+put example in everyone's folder
+
+<ul>
+<li>
+use the mathis data example 
+
+<li>
+make a neurocaas config for it 
+
+<li>
+put it in everyone's folders
+
+</ul>
+<li>
+run example + check 
+
+</ul>
+</ul>
+<li class="done0">
+Figure out the prediction step.  #047e3054
+
+<li class="done4">
+Make it so that cli does not have to be initialized to do remote tasks.  #f57110bd
+
+<li class="done0">
+Ensemble logging needs to be neater all to same file [time:60mins].  #7a16a416
+
+<ul>
+<li>
+The way to do this is to handle it in the lambda, not try to do it in the instance. This is bc the log file will already exist at this point.
+
+</ul>
+<li class="done4">
+make template config work better: it would be good to streamline this.  #7a05b2ef
+
+<li class="done4">
+If you stop working, come back to the same analysis, then your neurocaas_contrib config file will throw an error. Handle this. [time:20mins]  #a96a7566
+
+<ul>
+<li>
+The issue is with the instance id. The instance id will point to an instance that does not exist. In this case you should just default to no instance.   
+
+</ul>
+<li class="done4">
+Set restriction on ensemble size for general use.  #9f8a6aca
+
+<ul>
+<li>
+Currently 9 
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

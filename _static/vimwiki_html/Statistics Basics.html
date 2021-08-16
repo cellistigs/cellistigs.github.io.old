@@ -1,0 +1,45 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Statistics Basics</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Basic Statistics"><h1 id="Basic Statistics" class="header"><a href="#Basic Statistics">Basic Statistics</a></h1></div>
+
+<div id="T test"><h1 id="T test" class="header"><a href="#T test">T test</a></h1></div>
+<p>
+A T-test is a test that measures the value of a test statistic that follows the Student's t distribution. A common use for the T test is in determining if two samples are likely to come from different distributions.   
+</p>
+
+<div id="Effect size"><h1 id="Effect size" class="header"><a href="#Effect size">Effect size</a></h1></div>
+<p>
+The effect size is a quantity that measures the relationship between two variables: in this case, the difference in means of two samples as a function of if training data contains an outlier or not. There are several ways of measuring the effect size, which are all scaled in terms of the standard deviation of one or both samples. In this way we might consider the effect size related to the SNR, or the dynamic range of a signaling mechanism. 
+</p>
+
+<div id="Significance"><h1 id="Significance" class="header"><a href="#Significance">Significance</a></h1></div>
+<p>
+Significance, or alpha, is the false positive rate. It is the probability of mistakenly detecting an effect when none is present. Generally, Power and Significance will be directly related (increase power, i.e. decrease the false negative rate, will increase the false positive rate given a certain number of observations and effect size). To see this, imagine choosing different decision cutoffs for samples drawn from two 1D gaussians. 
+</p>
+
+<div id="Power"><h1 id="Power" class="header"><a href="#Power">Power</a></h1></div>
+<p>
+Power is 1-(FN), where FN is the false negative rate. It is the probability of detecting an effect if it is truly present. A default setting for the power is 0.8, or 80% chance of detecting a true event. 
+</p>
+
+<div id="Power Analysis"><h1 id="Power Analysis" class="header"><a href="#Power Analysis">Power Analysis</a></h1></div>
+<p>
+Within the context of a t test, the effect size, number of observations, Significance, and Power (and the ration of samples if they are unequal) mutually determine another- given a number of observations, desired significance and power, we can determine the effect size necessary to achieve that significance and power. Therefore, giving any 3(4) out of the 4(5) measures allows us to determine the remaining quantity. We use this most often to determine the number of observations necessary to observe a significant effect given a significance, power, ratio of samples and estimated effect size. Note that post hoc power analysis is an ill-founded practice. 
+</p>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

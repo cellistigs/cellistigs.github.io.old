@@ -1,0 +1,203 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Ensembles Tasks</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Outlier Study"><h1 id="Outlier Study" class="header"><a href="#Outlier Study">Outlier Study</a></h1></div>
+<ul>
+<li class="done0">
+
+
+</ul>
+<div id="Tracking Ensembles"><h1 id="Tracking Ensembles" class="header"><a href="#Tracking Ensembles">Tracking Ensembles</a></h1></div>
+<ul>
+<li class="done0">
+Read Curriculum-based Teacher Ensemble for Robust Neural Network Distillation  #3fa60126
+
+<ul>
+<li class="done0">
+Decide if this is the same as deciding a curriculum for student depending on teacher disagreement.  #f40d65da
+
+</ul>
+<li class="done4">
+Send Ibl  #94ed8408
+
+<li class="done0">
+Lit review: specific comparisons  #08229553
+
+<li class="done4">
+make changes to lighting, blurriness [time:60mins]  #a2015409
+
+<ul>
+<li class="done4">
+Make a git repo for corrupted data. DGP_videocorruptions. [time:30mins]  #648cb6d6
+
+<ul>
+<li>
+Repo organization:  #853692e0
+
+<ul>
+<li>
+data
+
+<ul>
+<li>
+ibl1
+
+<ul>
+<li>
+orig_video
+
+<ul>
+<li>
+1000
+
+<li>
+full
+
+</ul>
+<li>
+corrupted_videos
+
+<ul>
+<li>
+1000_gauss
+
+<li>
+full_gauss
+
+</ul>
+<li>
+ground_truth
+
+<ul>
+<li>
+__.mat
+
+</ul>
+</ul>
+<li>
+ericadata
+
+<ul>
+<li>
+""
+
+</ul>
+</ul>
+<li>
+src
+
+<ul>
+<li>
+corruption
+
+<li>
+train_ensemble_dgp 
+
+<li>
+train_efficientnets
+
+</ul>
+</ul>
+</ul>
+<li class="done4">
+Run ensemble dgp on all different videos  #25586f8d
+
+<ul>
+<li>
+We have a predict function now.  
+
+<li>
+Make notebook to generate predictions on this new data. Copy the erica fig data notebook for how to run this prediction. 
+
+<li>
+get the videos that you just generated onto this instance and run your predict functions. 
+
+</ul>
+<li class="done0">
+Check with kelly about the video structure.  #5e90787f
+
+<li class="done0">
+Run on full datasets.  #d7d2be3f
+
+<li class="done0">
+Run simple convnets as the distillation target.  #2048a773
+
+<li class="done0">
+Run efficientnets [time:480mins]  #65b74e8a
+
+<ul>
+<li>
+Looks like these aren't documented yet.  
+
+<li>
+However looks like people are using them.  
+
+<li class="done4">
+0. start with dlc ami, and update dlc ami while you're at it exciting.  #eddfbd9b
+
+<li>
+1. Install dlc 2.2 
+
+<li>
+2. get your model folder from the ibl project (raw_data.zip). 
+
+<li>
+3. take your config file, and just update the model to efficientnet_b0. (this is the name of the model to pass to the config: <a href="https://github.com/DeepLabCut/DeepLabCut/issues/1144)">https://github.com/DeepLabCut/DeepLabCut/issues/1144)</a> 
+
+<li>
+4. see if this trains.
+
+<li>
+5. extract dlc into its own env. 
+
+</ul>
+</ul>
+<li class="done0">
+Look into batch of size 5 with strangely good results at low values (seed 52). Is it bad to have some data that has a distractor?  #4db6ad06
+
+<li class="done4">
+Start distillation  #d6198d36
+
+<li class="done0">
+Implement selection over pretraining weights with approach from <a href="https://arxiv.org/pdf/2010.06866.pdf">https://arxiv.org/pdf/2010.06866.pdf</a>  #c3503760
+
+</ul>
+<div id="Ensemble VAEs"><h1 id="Ensemble VAEs" class="header"><a href="#Ensemble VAEs">Ensemble VAEs</a></h1></div>
+<ul>
+<li class="done0">
+Github repo for vae-ensembling from your neurocaas-contrib project.  #96f86d7e
+
+<li class="done0">
+Create that graph of diff ensembles and the amortization curves generated.  #757bd56f
+
+</ul>
+<div id="NTK"><h1 id="NTK" class="header"><a href="#NTK">NTK</a></h1></div>
+<ul>
+<li class="done4">
+Look into the connection between Neural Tangents and Ensembling (Novak et al. 2019).  #477335af
+
+<ul>
+<li>
+Looks to be much more implementation. Read more about NNGP (Lee 2018) and NTK (Jacot)   #e32d509b
+
+</ul>
+<li class="done0">
+Look into Learning Curves with NTK (Bordelon et al. 2020) as well ask Convolutional Neural Tangent Kernels and genralizations (Greg Yang).  #f8d6bcec
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

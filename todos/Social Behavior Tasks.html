@@ -1,0 +1,257 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Social Behavior Tasks</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Looking at Neurons and Behavior together"><h1 id="Looking at Neurons and Behavior together" class="header"><a href="#Looking at Neurons and Behavior together">Looking at Neurons and Behavior together</a></h1></div>
+
+<ul>
+<li class="done0">
+Build visualization tool 
+
+<li>
+Neural activity is linked to the motor outputs of an animal and the sensory environment in complex ways. 
+
+<li>
+Recent studies have shown (Musall, Stringer(?)) that analysis of cortical activity in awake behaving mice 
+  reflects spontaneous behavioral activity, just as much as it does the sensory environment. 
+
+<li>
+Simultaneously, there has been increasing interest in understanding the neural correlates underlying complex free behavior,
+  most often captured through videography.  
+
+<li>
+Faced with the task of understanding how free behavior in interaction with the sensory environment relates to neural activity,  
+  much of the difficulty comes in specifying behavioral and neural correlates out of a multitude of possible inputs.  
+
+<li>
+This challenge is the focus of methods like stimulus filtering, where one must select one output out of a set of several which cause a neuron to fire.    
+
+<li>
+More generally, one of the foci of neural encoding models is to provide an interpretation for aspects of stimuli which are responsible for some facet of neural activity. 
+
+<li>
+Importantly, we do not expect that each area of the brain can reliably encode an aspect of the visual scene at all points in time.  
+
+<li>
+This constraint motivates the use of statistical inference, and a confidence interval around the estimate. 
+
+<li>
+
+
+<li>
+Furthermore, we expect that learning in the neural signal will affect the ability of that signal to carry relevant information. 
+
+<li>
+Mala Murthy and J Pillow Fly dance paper. 
+
+<li>
+fMRI and attention network for neural encoding: <a href="https://papers.nips.cc/paper/2020/file/b71f5aaf3371c2cdfb7a7c0497f569d4-Paper.pdf">https://papers.nips.cc/paper/2020/file/b71f5aaf3371c2cdfb7a7c0497f569d4-Paper.pdf</a>
+
+<li>
+Attention regression: <a href="https://www.ijcai.org/proceedings/2017/0558.pdf">https://www.ijcai.org/proceedings/2017/0558.pdf</a>
+
+<li>
+Spike and slab: <a href="https://projecteuclid.org/journals/bayesian-analysis/volume-16/issue-1/Dynamic-Variable-Selection-with-Spike-and-Slab-Process-Priors/10.1214/20-BA1199.full">https://projecteuclid.org/journals/bayesian-analysis/volume-16/issue-1/Dynamic-Variable-Selection-with-Spike-and-Slab-Process-Priors/10.1214/20-BA1199.full</a>
+
+<li>
+Variable Selection VB: <a href="https://arxiv.org/pdf/1809.03031.pdf">https://arxiv.org/pdf/1809.03031.pdf</a>
+
+<li>
+Attention + lstm: <a href="https://ieeexplore.ieee.org/abstract/document/8365878">https://ieeexplore.ieee.org/abstract/document/8365878</a>
+
+<li>
+Show, attend and tell (classic) <a href="https://arxiv.org/pdf/1502.03044.pdf">https://arxiv.org/pdf/1502.03044.pdf</a>
+
+<li>
+Recurrent neural encode for attention with temporal structure: <a href="https://openaccess.thecvf.com/content_cvpr_2016/papers/Pan_Hierarchical_Recurrent_Neural_CVPR_2016_paper.pdf">https://openaccess.thecvf.com/content_cvpr_2016/papers/Pan_Hierarchical_Recurrent_Neural_CVPR_2016_paper.pdf</a>
+
+<li>
+3d attention <a href="https://openaccess.thecvf.com/content_iccv_2015/html/Yao_Describing_Videos_by_ICCV_2015_paper.html">https://openaccess.thecvf.com/content_iccv_2015/html/Yao_Describing_Videos_by_ICCV_2015_paper.html</a>
+
+</ul>
+<div id="Looking at Neurons and Behavior together-Read Kay Tye's Papers"><h2 id="Read Kay Tye's Papers" class="header"><a href="#Looking at Neurons and Behavior together-Read Kay Tye's Papers">Read Kay Tye's Papers</a></h2></div>
+<ul>
+<li class="done0">
+Nieh et al 2016 [control center]
+
+<li class="done0">
+Miller et al. 2015 [output]
+
+<li class="done0">
+Allsop et al. 2018 [input/detector]
+
+</ul>
+<div id="Looking at Neurons and Behavior together-Visualization"><h2 id="Visualization" class="header"><a href="#Looking at Neurons and Behavior together-Visualization">Visualization</a></h2></div>
+<ul>
+<li class="done0">
+Visualize neural data with the videos of behavior (V116 mice) !!! 
+
+</ul>
+<div id="Looking at Neurons and Behavior together-Lit Papers for Anqi and Ari"><h2 id="Lit Papers for Anqi and Ari" class="header"><a href="#Looking at Neurons and Behavior together-Lit Papers for Anqi and Ari">Lit Papers for Anqi and Ari</a></h2></div>
+<ul>
+<li class="done4">
+Send papers and mAP 
+
+</ul>
+<div id="Looking at Neurons and Behavior together-Generative Models"><h2 id="Generative Models" class="header"><a href="#Looking at Neurons and Behavior together-Generative Models">Generative Models</a></h2></div>
+<p>
+Look at Ruoxi's paper for this ("Scalable Approximate Bayesian Inference")
+</p>
+
+<div id="Looking at Neurons and Behavior together-Image Processing"><h2 id="Image Processing" class="header"><a href="#Looking at Neurons and Behavior together-Image Processing">Image Processing</a></h2></div>
+<ul>
+<li class="done0">
+Take another pass at fitting contours to data, but instead of direct gradient signal, use the iterative CNN error correction approach from: !!  #1948c4fa
+
+<ul>
+<li>
+Human Pose Estimation with Iterative Error Feedback  #6e317ce7
+
+</ul>
+<li class="done0">
+Recreate your RPCA plot.  #092c4f5b
+
+<ul>
+<li>
+Advice from Ian: 
+
+<ul>
+<li>
+Partial svd instead of full svd? 
+
+<li>
+Truncation ahead of time. 
+
+<li>
+decimate field of view? and get scaling factor. Some implementation level issues.  
+
+<li>
+Linearity assumption in high dimensions with low rank 
+
+<li>
+Robust pca paper to ian. 
+
+</ul>
+</ul>
+<li class="done4">
+RPCA on the skeleton?  #ae769ce3
+
+<ul>
+<li>
+Update 4/1/21: it's hard to find a convincing path forward after having applied RPCA to the data (see social_pursuit/tests/performance_tests): RPCA indeed seems able to pick up the relevant points in time, but not robustly enough that it's clear what to do next. Attempt a reconstruction? localize the issue to a certain part? You have to think further ahead than this.   
+
+<li>
+Read the robust pca for graphs paper, and plotted out doing rpca on the skeleton  
+
+<ul>
+<li>
+There doesn't seem to be a direct application to the pose problem that we care about.  
+
+</ul>
+<li>
+Step by step: 
+
+<ul>
+<li>
+5. see how well you do. X hard to say. would be good to think about what reconstructions look like. 
+
+<li>
+6. apply to real data, and evaluate the silhouette based metric. 
+
+<ul>
+<li>
+0. forgot about nans. figure out how to handle this case. (i think RPCA paper mentions it)  
+
+<ul>
+<li>
+We just frame the same problem in terms of nans. Maybe this implementation is fine... 
+
+</ul>
+<li>
+1. review silhouette based metrics. 
+
+<li>
+2. denoise data based on RPCA before feeding into the analysis framework/ after making invariant.  
+
+</ul>
+</ul>
+<li>
+Compare to hungarian assignment. 
+
+<ul>
+<li>
+One difference is that hungarian solves an assignment problem, while RPCA does outlier detection  
+
+</ul>
+</ul>
+<li class="done0">
+RPCA with the spatial median.  #918a0cc8
+
+<ul>
+<li>
+Some kind of monte carlo simulation of the error distribution? As a function of distance?  
+
+<ul>
+<li>
+Using this you can calculate the variance in skeleton shape as a function of distance between the agents. You can then calculate a decision threshold for when there is likely an error as a function of the configuration of the mice. 
+
+</ul>
+</ul>
+<li class="done0">
+Look into online methods.  #98a94673
+
+<li class="done0">
+Apply to your silhouette methods.  #b6597435
+
+<li class="done0">
+Read paper that discusses how VAEs do something like RPCA: Connections with Robust PCA and the Role of Emergent Sparsity in Variational Autoencoder Models  #a140db4d
+
+<li>
+Is there anything to learn here from NMF methods for calcium data? I.e. what do we care about which animal is on top when they're overlapping? I haven't seen too much about treating images as column vectors as RPCA does. 
+
+<ul>
+<li>
+Is it possible to frame the movement of a foreground part on a background as a convolution operation (or actually, anything linear?) 
+
+</ul>
+<li>
+Median based methods in general for your data representation would be good. 
+
+<ul>
+<li>
+how can you represent data s.t. the structure of the body relative to the median detection can be learned from training data, and then used to generate reasonable medians on noisy test data? 
+
+<ul>
+<li>
+Given a generative model, this should be easier? Esp. if the model is parametrized relative to the median. Reread the geometric median paper. 
+
+</ul>
+</ul>
+<li>
+Semisupervised learning of full appearance models. Given an appearance model on the training data, can you extend this to test data? looks like the badger paper. 
+
+</ul>
+<div id="Looking at Neurons and Behavior together-Random Forests for Ethology"><h2 id="Random Forests for Ethology" class="header"><a href="#Looking at Neurons and Behavior together-Random Forests for Ethology">Random Forests for Ethology</a></h2></div>
+<p>
+Random forests for the competition: This has been done by SIMBA
+</p>
+<ul>
+<li class="done0">
+Look into Generative random forests with joints.  #ae7aa4c4
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

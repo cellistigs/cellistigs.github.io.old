@@ -1,0 +1,69 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Differential Equations</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Differential Equations"><h1 id="Differential Equations" class="header"><a href="#Differential Equations">Differential Equations</a></h1></div>
+<p>
+This document contains notes on differential equations and calculus that I am relearning as a consequence of reading "Chases and Escapes: The mathematics of Pursuit and Evasion" by Paul J. Nahin.
+</p>
+
+<div id="Differential Equations-Separation of Variables"><h2 id="Separation of Variables" class="header"><a href="#Differential Equations-Separation of Variables">Separation of Variables</a></h2></div>
+<p>
+One thing that I have always been confused by is the use of differentials. In particular, I am confused whenever a quantity is defined as \( \frac{dy}{dx}=f(x)g(y) \), but then later is expanded out into \( \frac{dy}{g(y)}=dxfx \) for the purposes of integration of both sides. This is known as integration by separation of variables. As long as you can write y as a function of x, we can do the following:   
+</p>
+
+\begin{align}
+\int\frac{dy}{g(y)} = \int fxdx
+\end{align}
+
+<p>
+I don't like this because it's not clear how the two sides of the equation are linked any longer: what connects the infinitesimals for which we are taking integral?
+</p>
+
+<p>
+There is a formulation that makes more sense to me, without using Leibniz notation: 
+</p>
+
+\begin{align}
+\frac{dy}{dx}g(y) &amp;= fx \\
+\int\frac{dy}{dx}g(y)dx &amp;= \int fxdx  \\
+\int g(y)dy &amp;= \int fxdx \tag{Change of Variables} \\
+\end{align}
+
+<p>
+Basically I should just remember that what's really happening here is a notational trick: we assume that we will be taking an integral immediately after performing the separation of variables, and then performing a change of variables. This allows us to take apart the derivative as a fraction and not worry too much.  
+</p>
+
+<div id="Differential Equations-Differentials"><h2 id="Differentials" class="header"><a href="#Differential Equations-Differentials">Differentials</a></h2></div>
+<p>
+I got interested in learning more about differentials (i.e. dx, df). The wikipedia page on this topic is interesting, and it lays out several different ways to define them. The most straightforward one seems to be to define the differential as a linear map. The argument goes as follows:  
+</p>
+
+<p>
+Assume that when we write the function f(x), this is not simply f evaluated at the point x, but f evaluated at the identity function \(x(p) = 1*p,\forall p \in \mathcal{R} \). This makes the differential \(df\) a function from \(\mathcal{R}\) to \(F\), where \(F\) consists of linear maps from \(\mathcal{R} to \mathcal{R}\)- i.e., \(df\) evaulated at any point \(p\) (\(df_p\) is a linear map). Note that this gives us dx as a linear operator as well. In any case, we can now write: 
+</p>
+   
+   
+\begin{align}
+df_p &amp;= f'(p)dx_p \tag{linear maps are scalar multiples} \\
+df &amp;= f'dx \tag{} \tag{applies over all p} \\
+\end{align}
+
+<p>
+This generalizes well to various multivariate cases, is invariant to changes in coordinates, and works on other spaces. 
+</p>
+
+    </div>
+    <p><small>Page created on 2021-03-30</small></p>
+</body>
+</html>

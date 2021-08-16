@@ -1,0 +1,54 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Chases and Escapes Paul J Nahin</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Chases and Escapes"><h1 id="Chases and Escapes" class="header"><a href="#Chases and Escapes">Chases and Escapes</a></h1></div>
+<p>
+This section is devoted to the challenge problems in the book Chases and Escapes by Paul J. Nahin.
+</p>
+
+<div id="Chases and Escapes-Chapter 1: The Classic Pursuit problem"><h2 id="Chapter 1: The Classic Pursuit problem" class="header"><a href="#Chases and Escapes-Chapter 1: The Classic Pursuit problem">Chapter 1: The Classic Pursuit problem</a></h2></div>
+<ol>
+<li>
+What is the total distance traveled by the pirate vessel before capture for n &lt; 1? We can answer this question by calculating the time, t, that is taken for capture to occur. This can be done as follows. 
+
+<ul>
+<li>
+Calculate the y position at which capture occurs.  
+
+<li>
+Calculate time from the y position via the merchant vessel's velocity, as \(t = \frac{y}{V_m}\)
+
+<li>
+Calculate the distance traveled by the pirate vessel d as \(d = V_d*t\) 
+
+</ul>
+</ol>
+<p>
+Thus for a given \(x_0, V_m, V_p\),      
+</p>
+\begin{align}
+d &amp;= \frac{V_d}{V_m}*\frac{n}{1-n^2}x_0 \tag{$n = \frac{V_m}{V_p}$} \\ 
+d &amp;= \frac{x_0}{1-n^2}
+\end{align}
+
+<ol>
+<li>
+The tail chase lag distance is the distance at which the pirate ship trails the merchant ship in the case where \(n = 1\), or \(V_m = V_p\). Critically, this means that the two vessels cover distance at the same rate, and that at any time they have moved the same distance from their original starting points. We can use this to calculate the distance traveled by the merchant ship as a function of x, using the formula for the total distance traveled as a function of time. (see attached note). <a href="/Users/taigaabe/vimwiki/images/c_and_e_ch1_p_2.pdf">file:/Users/taigaabe/vimwiki/images/c_and_e_ch1_p_2.pdf</a>   Your solution is off by a factor of \(\frac{1}{2}x_0\)!
+
+</ol>
+
+    </div>
+    <p><small>Page created on 2021-04-01</small></p>
+</body>
+</html>

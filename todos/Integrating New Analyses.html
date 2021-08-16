@@ -1,0 +1,66 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Integrating New Analyses</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Integrating new analyses into NeuroCAAS"><h1 id="Integrating new analyses into NeuroCAAS" class="header"><a href="#Integrating new analyses into NeuroCAAS">Integrating new analyses into NeuroCAAS</a></h1></div>
+<p>
+One of the major sticking points so far has been managing developer permissions. In particular, it's not great that we have to give developers permission to deploy directly to our AWS account, especially because it's difficult to restrict permissions in the right way so that they can only deploy particular stacks, etc. 
+</p>
+
+<p>
+The solution is that we delegate deployment to Github Actions. Github Actions is a CI/CD system that allows you to programmatically execute actions in a new environment every time a certain action is performed in Github. We trigger Github Actions on a seemingly strange event- comments on an issue or pull request. However, this allows us to do the following: 
+</p>
+
+<ol>
+<li>
+Have developers or collaborators open forks/branches into the neurocaas repository. Developers can develop their analyses according to the instructions in neurocaas-contrib, and then submit a pull request when they are ready.  
+
+<li>
+When users submit a pull request, it opens up their fork/branch for a code review. Then an administrator can come in, and make sure that the proposed changes are sound (i.e. there's nothing malicious going on, and that it's basically just a blueprint addition).
+
+<li>
+If everything looks good, we can deploy the new analysis by commenting #deploy:{stackname}. This triggers a github action to install the repository, pull the fork/branch that's responsible for the pr, and then build the analysis in that repository. We can then run further tests to ensure the analysis works as expected before launching. 
+
+</ol>
+<p>
+In the future, it would be great to add additional features: 
+</p>
+<ul>
+<li>
+run tests automatically on pull request to make sure nothing fishy is going on (although we'd have to approve tests running on forks somehow too). 
+
+<ul>
+<li>
+This is already done! The pr requires that status checks pass before starting a deployment. Kind of annoying, but okay. 
+
+</ul>
+<li>
+have additional tags #develop:{stackname}, #test:{stackname} to deploy a testing version, or even a localstack version before touching production analyses. 
+
+<ul>
+<li>
+you can link these to the iac_utils/build.sh and iac_utils/test_main.sh scripts IF you correctly format and put data into the given buckets. 
+
+</ul>
+<li>
+have additional deployment environments, and link those urls to the analyses, or websites in aws. 
+
+<li>
+Handle different regions. 
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

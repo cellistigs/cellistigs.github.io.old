@@ -1,0 +1,660 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="../style.css" />
+    <title>diary</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="../index.html">Index</a> |
+    <a href="../diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<p>
+Diary. Things to do this week.  
+</p>
+
+<p>
+6/21
+Goals for this week: 
+</p>
+<ul>
+<li>
+Do lots of reading 
+
+<li>
+fix for wfield
+
+<ul>
+<li>
+simon
+
+<ul>
+<li>
+no configs given!
+
+<li>
+sent default config. 
+
+</ul>
+<li>
+cli fixes to make this fun 
+
+<li class="done4">
+datastatus won't work with old-style (no std field)- fixing this would be great. 
+
+<li class="done0">
+certificates won't work with in progress - probably works, just haven't seen in action yet. 
+
+<li class="done0">
+both datastatus and certificate give dummy versions when not done yet- this is super confusing for job monitor. 
+
+<li>
+"see outputs" function based on submit or group and jobname
+
+<li>
+make start-session a real thing 
+
+<li>
+"describe jobs"
+
+<li>
+"see job output"
+
+</ul>
+<li>
+plan picnic 
+
+<li>
+send to neuron 
+
+</ul>
+<p>
+6/14
+Goals for the week: 
+</p>
+<ul>
+<li>
+Social behavior question of interest
+
+<li>
+Fix for wfield 
+
+<li>
+send to neuron 
+
+<li>
+Reasonableness of AUM for pose
+
+<li>
+report for social behavior fix steps 
+
+<li>
+labeling gui 
+
+<li>
+simon 
+
+</ul>
+<p>
+Monday: 
+</p>
+<ul>
+<li class="done4">
+Check in with John about letter
+
+<li class="done4">
+pinpoint error with wfield. check if your neurocaas code shows anything (legacy wfield preprocess function). 
+
+<ul>
+<li>
+this appears to be the pipeline permissions from the bucket side. 
+
+</ul>
+<li>
+Meeting with Geoff and Matt 
+
+<ul>
+<li>
+Two areas of application. 
+
+<ul>
+<li>
+With classification tasks to be found in neuroscience. (go now, with Matt? )
+
+<ul>
+<li>
+As a method for curating soft labels. 
+
+<li>
+As a method for supervising heuristic labels. 
+
+<li>
+Question: How do you think this would work in the small data regime? 
+
+</ul>
+<li>
+With pose tracking, as a new application. (need a pytorch network or tensorflow AUM.)
+
+<ul>
+<li>
+Pose tracking can be formulated as a multi-label classification task, with categories that tile the image. 
+
+<li>
+This could be an interesting application too: We have cases where the presence of distractors or occluders can make pose tracking difficult, especially in the low data regime. 
+
+<li>
+A straightforward extension would be margin within a valid subset of pixels vs. outside of it. 
+
+</ul>
+</ul>
+</ul>
+<li>
+set up labeling gui: set up postprocessing lambda as the function, add pandas and other dependencies, and see if it works (or ask nick to). 
+
+<ul>
+<li class="done4">
+add in the requirements in the build function. 
+
+<ul>
+<li>
+yaml
+
+<li>
+pandas
+
+</ul>
+<li class="done4">
+move postprocessing to the protocols bucket. 
+
+<li class="done0">
+Test locally with pre existing bucket and folder. 
+
+</ul>
+<li>
+Meeting with Geoff and Matt 
+
+<ul>
+<li>
+Accentuate stochasticity: small batch, high learning rate. 
+
+<li>
+Image classification is best. 
+
+<li>
+Failure case: textual data classification: subjective labels, multi-label, where it's not necessarily clear how to apply.  
+
+<li>
+Threshold samples are not too great in this context. 
+
+<ul>
+<li>
+XValidation instead? 
+
+</ul>
+<li>
+Robust to choice of base metric (i.e. margin)  
+
+<ul>
+<li>
+RMSE loss might be fine to use instead! 
+
+<li>
+the key is Averaging 
+
+<li>
+20 is okay, 50 is better (for averaging )
+
+</ul>
+<li>
+Curriculum learning: 
+
+<ul>
+<li>
+What neural networks memorize and why 
+
+<li>
+<a href="https://arxiv.org/abs/2008.03703">https://arxiv.org/abs/2008.03703</a>
+
+<li>
+When bad networks get memorized right away, it's hard to come back. 
+
+<li>
+Research question: how much do early bad examples influence your training?  
+
+</ul>
+<li>
+An experiment: how do you apply classification models to pose estimation? 
+
+<ul>
+<li>
+create a 9x9 grid out of mnist 
+
+<li>
+The task is to locate each digit at every point in time.  
+
+<li>
+how does aum ranking on mnist relate? 
+
+<li>
+What is this experiment for? hard to say right now.
+
+</ul>
+</ul>
+</ul>
+<p>
+Tuesday 6/16
+</p>
+<ul>
+<li>
+Train resnet 
+
+<ul>
+<li>
+Done. Check dataset again for missing labels. 
+
+</ul>
+<li>
+check labeling again 
+
+<ul>
+<li>
+Labeling uri 
+
+<li>
+The important things here are:
+
+<ul>
+<li>
+getting login info to users as easily as possible (text file output?)
+
+<li>
+ensuring people have enough time to not have the label job instance shut down (although, does it matter?). 
+
+<li>
+terminate instance after label job completes. 
+
+<li>
+If you terminate during, you can't see the data any longer it seem.s 
+
+<li>
+Todo: 
+
+<ul>
+<li>
+waiter for job completion, then terminate. 
+
+<li>
+easy access to labeling uri 
+
+<li>
+Broken with strange error. 
+
+</ul>
+</ul>
+</ul>
+<li>
+make debug job for wfield X 
+
+<li>
+check zahra network 
+
+<li>
+CTN-LAMBDA-REPO code- is this the custom resources? No, we're good.   
+
+</ul>
+<p>
+Wednesday 6/17
+</p>
+<ul>
+<li>
+polish off the AUM examples. 
+
+<li>
+Some thoughts to incorporate: 
+
+<ul>
+<li>
+1. Read the paper on influence functions again. Influence function ranking as a function of batch order? 
+
+<li>
+2. training schedules based on AUM or influence scores? 
+
+<li>
+What is the distribution of AUM scores in (clean) real data? 
+
+</ul>
+<li>
+Zahra network 
+
+<ul>
+<li>
+1. Write code to take the output of the network, and evaluate based on patches if we're getting the animals correctly or not. 
+
+<ul>
+<li>
+You will need:  
+
+<ul>
+<li>
+1. Crop locations (config.yaml)
+
+<li>
+2. traces
+
+<li>
+3. videos 
+
+<ul>
+<li>
+Which videos? 
+
+<ul>
+<li>
+TempTrial 22
+
+<ul>
+<li>
+Cage 1 part 7 
+
+<ul>
+<li>
+Appears to always be in nest based on detections. 
+
+</ul>
+<li>
+Cage 3 part 6 
+
+<ul>
+<li>
+Appears to always be in nest based on detections. 
+
+</ul>
+<li>
+Cage 1 part 4 
+
+<ul>
+<li>
+Appears to always be in nest based on detections. 
+
+</ul>
+<li>
+Cage 1 part 3 
+
+<ul>
+<li>
+Appears to always be in nest based on detections. 
+
+</ul>
+<li>
+Check the times here, and make sure that they actually are in nest.  
+
+</ul>
+<li>
+TempTrial 26
+
+<ul>
+<li>
+Cage 1 part 6 
+
+</ul>
+<li>
+TempTrial 29 
+
+<ul>
+<li>
+Cage 1 part 6
+
+<li>
+Cage 1 part 5 
+
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<li>
+read social behavior. 
+
+</ul>
+<p>
+Thursday 6/18:
+</p>
+<ul>
+<li>
+Treat the pursuit dataset as soft classification labels and run AUM on them. 
+
+<li>
+Read social behavior. 
+
+</ul>
+<p>
+Friday 6/19: 
+</p>
+<ul>
+<li>
+Merge to wfield main analysis after checking 
+
+<li>
+skeleton of edits for neuron.   
+
+<li>
+
+
+</ul>
+<p>
+5/25
+Monday: finished the AMI to an appreciable extent. Lambda next. 
+Tuesday: 
+</p>
+<ul>
+<li>
+Lambda for predict chain
+
+<li>
+Nicks GUI stuff
+
+<li>
+stretch: DLC
+
+<li>
+Detailed todo: 
+
+<ul>
+<li class="done4">
+Fix neurocaas_contrib (15 mins) 
+
+<li class="done4">
+Dive back in to the lambda postprocessing. 
+
+</ul>
+</ul>
+<p>
+Wednesday:       
+</p>
+<ul>
+<li class="done4">
+Apply search lambda to the exact folder you just generated: job__ensemble-dgp_1622047965. The logs were copied, it's just that something came up as "not found.: the datasets?"
+
+<ul>
+<li class="done4">
+1. datasets were not correctly located.  
+
+<li class="done4">
+2. correctly located, but now the follow up lambda is failing for "budget" reasons.
+
+<li class="done4">
+2. lambda went on anyway- it should pause if no datasets found. 
+
+</ul>
+<li class="done4">
+Set env vars for documentation, like in answer here:  <a href="https://stackoverflow.com/questions/12966132/sphinx-autodoc-with-django-1-4">https://stackoverflow.com/questions/12966132/sphinx-autodoc-with-django-1-4</a> . 
+
+<li>
+Nicks GUI stuff
+
+<ul>
+<li>
+1. copy over all files we need into the deployed s3 bucket. 
+
+<li>
+2. run a test job in a deployment instance. 
+
+<li>
+What have we learned: 
+
+<ul>
+<li>
+without a python env, it's real hard to maintain same packages that user uses. Figure out what to do about this. 
+
+<li>
+New role created. 
+
+</ul>
+<li>
+Works. You have to check where the outputs write to, and if datastatus is capturing info correctly., but it works.   
+
+</ul>
+<li>
+Thursday: 
+
+<ul>
+<li>
+Final read through + cover letter (now)
+
+<li>
+Documentation. 
+
+<ul>
+<li>
+The neurocaas-contrib docs are now integrated with readthedocs. 
+
+<li>
+Your developer guide (old) from neurocaas is now integrated with sphinx.
+
+<li>
+Update your dev guide with material from neurocaas-contrib, and new cli workflow, then publish your new docs. 
+
+<li>
+BIG QUESTION: how much do you want to integrate with docker before publishing docs? 
+
+<ul>
+<li>
+you shouldn't take your docs now for starting from cli and update the devguide from that. 
+
+</ul>
+</ul>
+<li>
+Figure out next steps for labeling job. 
+
+<li>
+DLC with Docker integration. do from remote instance, create container for another remote instance following your contrib guide. 
+
+</ul>
+<li>
+Get feedback on the paper.
+
+<ol>
+<li>
+Set a deadline for init comments by this Friday. [X]
+
+</ol>
+<li>
+Get the protocol numbers. 
+
+<ol>
+<li>
+requested and recieved from Amy. 
+
+</ol>
+<li>
+Check in with Amy again. 
+
+<ol>
+<li>
+requested and recieved. 
+
+</ol>
+<li>
+Work with lightning and ensembles. Get an MNIST example 
+
+<li>
+Make the dlc v2 analysis work with your new contrib tools + get efficientnets as a consequence
+
+<li>
+get the predict portion of ensembling ready. 
+
+<li>
+Make a movie! It's not that hard. DLC would be a great place to start bc it covers dgp + ensembling too.  
+
+<li>
+Document contrib tools. 
+
+<ul>
+<li>
+We need a workflow for nick.  
+
+<li>
+1. approve neurocaas user account. 
+
+<li>
+2. we need a way to design bucket access. [time:30mins]
+
+<ul>
+<li>
+the best way to do this would be a pr based workflow. Build on PR. 
+
+<li>
+1. Fork the repo. 
+
+<li>
+2. clone to local.
+
+<li>
+3. do all this setup stuff.
+
+<li>
+4. push changes. 
+
+<li>
+5. pull request. 
+
+</ul>
+</ul>
+<li>
+9. Joao's stuff. 
+
+</ul>
+   
+<p>
+How do we make this happen?    
+Monday: 
++ Send reminder email. [x]
++ Ago password reset. [x]
++ request protocol numbers [x]
++ improve cli documentation 
+  + give nick dev credentials on neurocaas. [x]
+  + describe cli process step by step (stub should exist already)
++ set up Nick with dev account (will be good to test) [x]
++ finish up your dgp update. 
+</p>
+
+<p>
+Tuesday: 
++ finish up dgp. 
+  + new scripts are good. 
++ do dlc as well
++ Run the ensemble on the full dataset kelly sent 
+  + Downloading now. 
++ Make some real doc updates for the scripting section. 
+</p>
+<pre><code>+ Work with examples. 
+</code></pre>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

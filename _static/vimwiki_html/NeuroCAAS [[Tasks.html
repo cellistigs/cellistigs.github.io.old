@@ -1,0 +1,969 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>NeuroCAAS [[Tasks</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="NeuroCAAS Project"><h1 id="NeuroCAAS Project" class="header"><a href="#NeuroCAAS Project">NeuroCAAS Project</a></h1></div>
+<p>
+Outstanding todos for the NeuroCAAS project can roughly be divided into three groups: submitting the paper, finishing the codebase, and starting outreach. There are not strict depeendencies between the three, and we should prioritize things in this approximate order. Where relevant, I will provide links to github issues as well.    
+</p>
+
+<div id="NeuroCAAS Project-Publish the Paper || project: NeuroCAASPaper"><h2 id="Publish the Paper || project: NeuroCAASPaper" class="header"><a href="#NeuroCAAS Project-Publish the Paper || project: NeuroCAASPaper">Publish the Paper || project: NeuroCAASPaper</a></h2></div>
+<ul>
+<li>
+<a href="To Neuron Submission.html">To Neuron Submission</a>  #cb4d81d1
+
+</ul>
+<pre><code>
+</pre></code>
+<div id="NeuroCAAS Project-Finish the Codebase || project:NeuroCAASCode"><h2 id="Finish the Codebase || project:NeuroCAASCode" class="header"><a href="#NeuroCAAS Project-Finish the Codebase || project:NeuroCAASCode">Finish the Codebase || project:NeuroCAASCode</a></h2></div>
+<ul>
+<li class="done4">
+Testing for long jobs with Johannes.  #83c8660b
+
+<ul>
+<li class="done4">
+Issues with the test-ec2-killer function.  #4c8d5e17
+
+<ul>
+<li class="done4">
+there was indeed a 12 hour time limit for all instances. Now extended to two days.  #15cd1a8a
+
+</ul>
+</ul>
+<li class="done0">
+Budgeting update  #24a87b9c
+
+<ul>
+<li class="done4">
+write tests for protocols/log.py .  #5e90ad31
+
+<ul>
+<li class="done4">
+Check tests for protocols/submit, protocols/log, protocols/postprocess, permissions/dev, permissions/managementalmbdas, devutils/devlaunch. (this last one is for dev tool parity)  #aa46496e
+
+<li class="done0">
+Run each of these tests after every new feature addition below.  #045a30b3
+
+</ul>
+<li class="done4">
+add tags for the user, job, and analysis to each ec3 instance that is launched.  #ade9ea17
+
+<li class="done0">
+adjust get_costmonitoring: we should check the expected price of current launch load and currently active instances too.  #301b6af2
+
+<ul>
+<li class="done4">
+current launch load- assume each instance will be on at least one hour if timeout not given (should be deleted in 15 minutes but).  #c9a351bc
+
+<ul>
+<li>
+create a submit file that contains 10 datasets, and a config file with duration parameter 10 minutes with t2.micro,  
+
+<li>
+create a submit file that contains 10 datasets, and a config file with duration parameter 10 hours,  
+
+<li>
+create a submit file that contains 10 datasets, and a config file with duration parameter not given.  
+
+<li>
+We might have to mock out the pricing module for testing consistency.  
+
+</ul>
+<li class="done0">
+active instances from other jobs. If tags can't be found for this job, we then compare against the entire current work load.  #e060d019
+
+<ul>
+<li>
+You can check this in two ways. 1. the other active instances logged in the "active" area. 2. the actual number of active instances.   
+
+</ul>
+<li class="done0">
+Review monitoring lambdas and tests (permissions/test_managementlambdas,test_ssm_list_commands) in light of new tags and dev.  #18f3d0f9
+
+<ul>
+<li class="done0">
+The timeouts should all be global parameters of NeuroCAAS. They should reflect things like the assumptions made by the get_costmonitoring function.  #c46352f6
+
+</ul>
+<li class="done0">
+deploy integration tests.  #62c18eb5
+
+</ul>
+</ul>
+<li class="done0">
+figure out git commits in neurocaas_contrib for new tools.  #c672a2da
+
+<li class="done0">
+Joao collab.  #cffea930
+
+<ul>
+<li class="done0">
+TIFFILE  #fb0159f2
+
+<li class="done0">
+Look at Joao's emails to get back to this. look into the results file he writes.  #b2f0d4be
+
+<li class="done0">
+Callback function for Jaoo: waiting for notebook  #3e21c892
+
+<li class="done0">
+groundtruth creation  #bacd4dcc
+
+<ul>
+<li>
+Hemodynamics correction could be a big issue. 
+
+</ul>
+<li class="done0">
+Joao has a dataset he needs to analyze anyway: it would be gr  #2253df4e
+
+<li class="done0">
+Add cors config to webdev buckets  #193fd897
+
+</ul>
+<li>
+Cool thing to do with Docker: have a module that is just the docker containers, and can run them locally. This should work! Separate for cpu/gpu is fine.   
+
+<li class="done0">
+Control the Lambda Retry behavior. Vet existing pipelines with updated timeouts and retry behavior.  #dff594e5
+
+<li class="done4">
+<a href="Test developer credentials on Julien + Amol.html">Test developer credentials on Julien + Amol</a>  #c37e0ee7
+
+<li class="done4">
+Write CLI tools to launch remote AMI <img src="https://github.com/cunningham-lab/neurocaas/issues/31" /> !!  #5a469181
+
+<ul>
+<li>
+<a href="These can make our lives easier in two ways.html">These can make our lives easier in two ways</a>:  
+
+<li class="done4">
+<a href="Adapt devami utils.html">Adapt devami utils. [time:30mins</a>] !!! <img src="" />  #6c543f0c
+
+<li class="done1">
+Some issues:  #bb9e7c1a
+
+<ul>
+<li class="done0">
+These issues could be handled by the tests that are failing right now in the neurocaasami branch. treat them there.  #a751e218
+
+<li class="done0">
+I have a blueprint in my repo, and when I run get-blueprint, it prints this blueprint. However, the actual jobs are deployed from the develop-dict that is being used to initialize the AMI state in .neurocaas_contrib_config.json. This is bad because you can't tell where your job is deploying from!  #0b969ca9
+
+<li class="done0">
+BIG: this issue fundamentally comes down tol I'm working ,and I need  to change the blueprint command. How do I do that?  #33260406
+
+<li class="done0">
+BIG: when I terminate an instance, that should clear the develop_hist field in your state command.  #313a787a
+
+<li class="done4">
+When I update an existing blueprint, the template has only one user. Overwriting the users existing in a template already is catastrophic!  #6bccec29
+
+<li>
+Current workflow:
+
+<ul>
+<li>
+1. I run neurocaas-contrib remote start-session
+
+<ul>
+<li>
+there is never a develop-history, because I don't save it. So, we initialize the develop_dict in the cli config from scratch. This is not a problem because we only run it once we want to flush.   
+
+<li>
+update-history goes basically unused because we don't call it. So, the development history exists only in the .contrib_config file. This seems fine.  
+
+</ul>
+</ul>
+<li class="done0">
+Proposed workflow:  #10bb0beb
+
+<ul>
+<li>
+1. delete the update-history function. history tracking can happen through ami updates 
+
+<ul>
+<li class="done4">
+make the git committing more robust.  #2e134f3f
+
+</ul>
+<li class="done0">
+2. rename develop-remote to start-session. This will look to see if you are developing something else (i.e. if init matches contents), and clean up relevant instances.  #f7fdfb26
+
+<li class="done0">
+3. create method end-session. This method will check your current file contents, and delete all instances contained within.  #a84c4649
+
+</ul>
+</ul>
+<li class="done4">
+Make the new logging tools in neurocaas_remote repo the default, even if not using docker.  #e38589db
+
+<ul>
+<li>
+We should have tools to look for dataset status files and certificates given the submit file. 
+
+<li>
+Certificates contain instance ids; should also be sufficient to get the command id. both could be used to trigger shutdown or simpler monitoring. 
+
+<li>
+Right now: 
+
+<ul>
+<li>
+main function is needed to set up logging in the background: 
+
+<ul>
+<li>
+errorlog_init
+
+<ul>
+<li>
+name and declare paths to status file locally and in s3 bucket. . 
+
+<li>
+get status file from bucket. 
+
+<li>
+write to this file with initializing info. 
+
+<li>
+copy back to the bucket. 
+
+</ul>
+<li>
+errorlog_background &amp;
+
+<ul>
+<li>
+declare names of variables (again)
+
+<li>
+sleep 10 seconds. 
+
+<li>
+system_monitor: fetch data about usage via custom command, then python command log_background
+
+<li>
+update certificate file also. 
+
+</ul>
+<li>
+main scrip 
+
+<li>
+errorlog_final
+
+<ul>
+<li>
+if exit code of the above is 0, we're good, set to 0 . 
+
+<li>
+if exit code is not, then set to 1
+
+<li>
+run the logging functions one more time. 
+
+</ul>
+</ul>
+<li>
+1. move all to python (done with you classes, basically)
+
+<li>
+2. cli command spin up a background process with neurocaas_contrib (should be fine)
+
+<ul>
+<li>
+keep track of the background process: don't need this. 
+
+<li>
+decide if you want to be verbose or not (also print to stdout yes/no). We took care of this.  
+
+<li class="done4">
+link to the datastatus file. [time:60mins]  #191c9f7b
+
+<ul>
+<li>
+1. make abstract class for data status with the initialization and default template functions.  
+
+<ul>
+<li>
+write in specific forms for get_status, get_usage, and get_stdout in a Legacy class. 
+
+</ul>
+</ul>
+</ul>
+<li class="done4">
+<a href="3. Make tools to register dataset and config so we can get the path to the status file right..html">3. Make tools to register dataset and config so we can get the path to the status file right.</a> [time:90mins]  #ca14131c
+
+<li class="done4">
+Addendum: you register the results area, so people can dump files to it.  #c1936ffa
+
+<li class="done4">
+Certificate updates need to happen too!  #5db5f608
+
+<li>
+Addendum to cli tools:  #f57384e6
+
+<ul>
+<li class="done0">
+Write file to push a certain config and dataset to s3 (this might already exist in neurocaas_contrib.local).  #ad23ddf9
+
+<li class="done4">
+<a href="when -b is &quot;__local__&quot;, run these files locally too.html">when -b is "__local__", run these files locally too</a> [time:30mins]  #dccce21d
+
+<li class="done0">
+Some small todos from testing on dgp:  #b1769829
+
+<ul>
+<li>
+For guide:
+
+<ul>
+<li>
+don't move data manually, as this will cause issues.  
+
+<li>
+data must be registered before resultpath
+
+<li>
+register-dataset must ALWAYS be run. groupname pull, and log-process depends on it. 
+
+<li>
+register-config must ALWAYS be run for cleanup. 
+
+<li>
+permissions issues with the script in question. 
+
+<li>
+How to test: path appending works for anaconda works, just have to be careful.  
+
+</ul>
+<li>
+The localpath should be deleted when we re-register <span class="todo">DONE</span>. 
+
+<li>
+the log-command is an issue if we want to call it before we call get-data, because data might not be pulled yet. <span class="todo">DONE</span> : getting dataname from register data instead.  
+
+<li>
+The way of getting contrib now needs overwrite set to true, or sent to a different location 
+
+<li>
+we will have to make the script an executable: otherwise we get permissions issues. 
+
+<li>
+There is not much feedback we get running this way: display download/upload time! <span class="todo">DONE</span>
+
+<li>
+is outputpath for get-data includes basename NOPE
+
+<li>
+issue with conda envs- packages not found when running from exterior script? the anaconda path is bad apparently.
+
+<ul>
+<li>
+what if we try with submit jobs
+
+</ul>
+<li>
+blueprint envs  &lt;&lt;&lt;&lt;&lt;&lt; And below for Tuesday
+
+<li>
+why do results not have the groupname and username? this is currently causing issues: fix first. <span class="todo">DONE</span> 
+
+<li>
+the permissions issues are kind of gnarly. Sudo -i debugging is critical. <span class="todo">DONE</span> (mention in doc)  
+
+<li>
+Change defaults for cli: overwrite = True by default, cleanup = rm all by default. 
+
+<li>
+we need get-output and get-status functions for remote - currently getting through neurocas status file . 
+
+</ul>
+</ul>
+<li class="done0">
+Refactor log module to depend on interface_S3 (someday)  #7a28c1f7
+
+<li class="done0">
+There are some features we miss: getting the paths of the results folder, having the results folder be created, getting the bucket name. Add these to the CLI.  #7897a3c1
+
+<li class="done4">
+issue: boto3 requires config on remote now. Don't load neurocaasami until needed in remote?  #01243cc4
+
+<ul>
+<li>
+It works. had to change monitor too.  
+
+</ul>
+<li class="done4">
+Write the cleanup function  #958022cd
+
+<li>
+Dockerize the templatescript2.sh - this way you can maximally adapt: just send inputs and result storage location to docker container. 
+
+<ul>
+<li>
+Check the guide you wrote before for this info. 
+
+<li>
+local.run_analysis_parametrized is a good place to look for this. 
+
+<li>
+local.track_job is also good. 
+
+<li>
+Necessary changes: 
+
+<ul>
+<li class="done0">
+NeuroCAASLocalEnv sets up an io-dir with the directory structure we like. it's great if this is the volume, because then there will be a location we can point to in the container where inputs should be stored. Can we configure this to work autmatically?  #b2140c77
+
+<li class="done0">
+Since the contrib tool right now expects a directory where it has registration.json, and then all relevant docs, the structure can be:  #6332015e
+
+<ul>
+<li>
+main script:  
+
+<ul>
+<li>
+AS IS NOW: except with line
+
+<ul>
+<li>
+<code>neurocaas-contrib workflow log-command-docker -i {image-name} -v {datalocation}</code>
+
+<ul>
+<li>
+where we can use the docker version of the datastatus file to populate logs. 
+
+</ul>
+<li>
+<code>neurocaas-contrib workflow get-image {image-name}"</code>
+
+<ul>
+<li>
+where docker image has CMD bash run_analysis....sh 
+
+</ul>
+</ul>
+</ul>
+<li>
+analysis script: 
+
+<ul>
+<li>
+get_data doesn't care where the data is from. Remove this from the developer's purview. 
+
+</ul>
+</ul>
+<li>
+The benefits of this are that the run_analysis script really doesnt care where the data it gets is from. This is dictated by preprocessing steps. 
+
+<li>
+This information can be managed automatically if desired. 
+
+</ul>
+</ul>
+<li class="done0">
+Update all pose tracking analyses with cli basis.  #8bef2a1f
+
+<ul>
+<li class="done0">
+With your current dgp, you prediction is hard to parallelize. Prediction should take a video/video folder as input, with the config file pointing to a model folder separately.  #88988085
+
+<li>
+Options for prediction:  
+
+<ul>
+<li>
+1. do what we do for wfield, where we trigger a second workflow off of the first. 
+
+<li>
+2. ask users to reupload with videos and configs pointing to results paths 
+
+<li>
+Concrete infrastructure [time:180mins]  #0e1bcf93
+
+<ul>
+<li>
+Build an ami that takes as input videos, and a config that specifies a path to get a modelfolder from (like your dgp config, but with an additional modelfolders field).  
+
+<li>
+look at your notebook and figure out how to script prediction. Can base off of dgp. 
+
+<li>
+add trigger workflow - replace epi-postprocess with other postprocessing . 
+
+<li>
+Step by step:
+
+<ul>
+<li>
+0. look at dlc implementation and make commensurate. 
+
+<ul>
+<li class="done4">
+it-s unreadable. learn html so you can format this.  #a2c92d7a
+
+</ul>
+<li>
+1. in neurocaas contrib get rid of develop history so the logic is all commensurate, get tests to pass for remote. [time:15mins]
+
+<ul>
+<li>
+make fail if not in neurocaas repo. Done 
+
+</ul>
+<li>
+2. add neurocaas contrib functions for get job outputs/log. looks like these are done, just not tested.. 
+
+<li>
+3. open a new pull request into neurocaas for ensemble-dgp-pred. Done
+
+<ul>
+<li class="done4">
+ALERT: it's actually got to be the same blueprint as ensemble-dgp. Delete pred analysis, and augment the existing ensemble-dgp workflow.  #0b8d7688
+
+<li>
+The neurocaas-contrib template should be updated. 
+
+<ul>
+<li class="done0">
+What is the default ami?  #4fdbb45c
+
+<li class="done0">
+pipeline name should be updated automatically.  #035aae68
+
+</ul>
+</ul>
+<li>
+4. get your test datasets: a single and folder of videos in toshiba ext sto: Done. 
+
+<li>
+<a href="5. get known paths to ensemble locations so you can pass as inputs..html">5. get known paths to ensemble locations so you can pass as inputs.</a> 
+
+<li>
+6. reformat register and get-file to allow for any file in the user's directory. Nope, the inputs is just locally, as is is fine.  
+
+<li>
+7. use the contribdata directory. 
+
+<li>
+<a href="8.html">8</a>. iterate with single and multiple videos, a folder path and individual paths for modelfolder until it looks good. Script prediction based on dgp script, but replace the demo script with one of your own. 
+
+</ul>
+</ul>
+</ul>
+<li>
+Vision: DLC 2.2, DGP, and ensemble DGP. All have a unified interface.    
+
+<ul>
+<li>
+Input: Zipped model folder. If videos should be analyzed, they are the "videos" folder.
+
+<li>
+Config: Train/Test + neurocaas parameters. 
+
+<ul>
+<li>
+for predict, ensemble: 
+
+<ul>
+<li>
+modelfolder.
+
+<li>
+folder path: autodetect is rough. make users specify.
+
+</ul>
+</ul>
+<li>
+Have some test data that you know should work for all of these: stored in /Volumes/TOSHIBA EXT STO/pose_mats
+
+<ul>
+<li>
+DLC 2.2: 
+
+<ul>
+<li>
+Gotchas: 
+
+<ul>
+<li>
+Videos should be given as relative paths to the config file. 
+
+<li>
+Cropping should have x1, y1 formatting structure. 
+
+<li>
+DGP networks have snapshot names that are not compatible with DLC. You can't perform training with dGP and then try to predict with DLC.  
+
+</ul>
+<li>
+You already have the inputs and output materials in pose_mats. 
+
+<li>
+Base the environment off of DGP/Ensemble DGP  pipeline that exists already. 
+
+<li class="done4">
+Look into script for DGP demo and isolate the portion that scripts DLC.  #a332b512
+
+<ul>
+<li>
+deepgraphpose.models.fitdgp.fit_dlc function for fitting.  
+
+<ul>
+<li>
+This part is pure dlc source code scripting. Can't find code directly.  
+
+</ul>
+<li>
+deepgraphpose.snapshot step name = step_0
+
+<li>
+deepgraphpose.models.eval.plot_dgp for fitting. 
+
+</ul>
+<li class="done4">
+Compare to DLC internal scripting tools.  #50d4ddb7
+
+<ul>
+<li>
+These are really well documented. you should go for these, in part to maintain compatibility with future versions. You can assume that data are structured as before and see what happens! <a href="https://github.com/DeepLabCut/DeepLabCut/blob/master/docs/standardDeepLabCut_UserGuide.md">https://github.com/DeepLabCut/DeepLabCut/blob/master/docs/standardDeepLabCut_UserGuide.md</a> 
+
+</ul>
+<li class="done4">
+Isolate a script, and then proceed from there with standard dev process.  #d3e9ba8e
+
+<ul>
+<li>
+Script for training looks good so far. 
+
+<li>
+Add post hoc video analysis. 
+
+<ul>
+<li>
+This requires paths to video: same convention as for dgp. 
+
+</ul>
+<li class="done4">
+Test with registered resultpath, and stop routing model folder to deepgraphpose.  #ecc8e0b3
+
+</ul>
+<li class="done4">
+Test with your pose_mats data  #9e00ead9
+
+<ul>
+<li class="done4">
+Training with ibl  #ad41982e
+
+<li class="done4">
+Predicting with ibl  #147d7164
+
+<ul>
+<li class="done4">
+The training data was wrong for this.  #b5566513
+
+</ul>
+</ul>
+<li class="done0">
+figure out permissions once and for all. What's the right abstraction?  #31ca9e41
+
+<li class="done4">
+<a href="Test with Johannes Hahn's data..html">Test with Johannes Hahn's data.</a>  #d6eda45b
+
+<li class="done0">
+Docker?  #074ea404
+
+</ul>
+<li>
+<a href="Step by step DGP.html">Step by step DGP</a> :
+
+<li>
+testing fish predict and ibl1 train for dgp. 
+
+</ul>
+<li>
+Take the resulting scripts, and use them as examples for interested parties. Put in the paper as examples too. 
+
+<li>
+Make videos of the resulting analyses. 
+
+</ul>
+</ul>
+<li>
+4. One issue is that the instance can be terminated externally: in this case, it's hard to know what to do logging wise. 
+
+<ul>
+<li>
+S and K scripts are an interesting option. look into this more. 
+
+<li>
+Not triggered because: 
+
+<ul>
+<li>
+stopped instead of terminated? 
+
+</ul>
+<li>
+[] Instead, tag with the pipeline and job ids so that lambda can get from there. 
+
+</ul>
+</ul>
+</ul>
+</ul>
+<li class="done0">
+Check that docker container can be launched with GPU runtime on instance i-0cf0454799fa9a214 !!  #1f6ef5dc
+
+<li class="done4">
+Finish up Developer Stats module. In particular, we need a way to monitor active users, analysis version used, and job success or failure. !  <img src="https://github.com/cunningham-lab/neurocaas/issues/32" /> #387cc1aa  #9e5f3906
+
+<ul>
+<li>
+Active users: neurocaas-contrib monitor see-users #d984da4a
+
+<li>
+job success/failure: neurocaas-contrib monitor describe certificate/dataset/datastatus
+
+<li>
+analysis version: we have pull request based deployment now, so don't worry too much about that. 
+
+</ul>
+<li class="done0">
+Reformat blueprint. The blueprint right now contains a lot of data the developer does not need to worry about, and not too much about docker containers or other good stuff they probably care about. <img src="https://github.com/cunningham-lab/neurocaas/issues/33" /> !  #f055a2c7
+
+<ul>
+<li class="done0">
+AMI id, instance type, and command should be parameters. Faster updates.  #b4ab7f4a
+
+<li>
+<a href="Blueprint structure:.html">Blueprint structure:</a> 
+
+</ul>
+<li class="done4">
+Send Joao Python API to Dan Biderman  #781a50f7
+
+<li class="done4">
+Use John Luoyu's PR tools inside the neurocaas-contrib module !!  #6985a41c
+
+<li class="done0">
+Finish up PR based worklow  #8fb0ad08
+
+<ul>
+<li>
+Now, we can deploy new stacks based on comments on pull requests.  
+
+<li>
+We can integrate this with tests to ensure that pull requests are not crazy, and that they do not break neurocaas. 
+
+<li>
+Wow. 
+
+<li class="done0">
+Migrate all existing stacks to PR based workflow, centralized to the master branch and nicely docker integrated..  #ec3b99d7
+
+<li>
+This could maybe be done with PyGitHub [time:30mins]  #94ee6419
+
+<ul>
+<li>
+Debrief: we don't need this, just guide people through the pr process. 
+
+<li>
+Check if you can fork the neurocaas repo, clone it, and start a pr. 
+
+<li>
+This can be done. You will need to generate an access token from github however, so be careful doing this. 
+
+<li>
+The workflow is as follows: 
+
+<ul>
+<li>
+1. create an access token with access to public repositories. 
+
+<li>
+2. fork the neurocaas repository. 
+
+<li>
+3. clone it locally. 
+
+<li>
+4. do your development. 
+
+<li>
+5. start a pull request when A: initializing or B: updating. 
+
+<li>
+6. make and document local versions of the register + get code in cli. . 
+
+</ul>
+</ul>
+</ul>
+<li class="done4">
+Update dev guide with new workflow <a href="https://github.com/cunningham-lab/neurocaas/issues/51">https://github.com/cunningham-lab/neurocaas/issues/51</a>  #4f0ecf8f
+
+<ul>
+<li class="done0">
+API docs are still broken .  #69fa6ef4
+
+<li>
+<a href="Doc structure.html">Doc structure</a>  #be41312d
+
+<li>
+Local tools:
+
+<li>
+Remote tools: 
+
+<li>
+Workflow tools:
+
+<li>
+Monitor tools: usually you can use the describe certificate, fall back to job monitor if failing. Get active users, cancel jobs.  
+
+<li class="done4">
+Clarify what is preserved in an AMI. clarify that you can terminate devinstances.  #07da4224
+
+<li>
+What are the minimal permissions that devs need?  
+
+<ul>
+<li>
+EC2 permissions <span class="todo">DONE</span>
+
+<li>
+deploy binx? Nope, can do with SSM. <span class="todo">DONE</span> in revisedtagpolicy.
+
+<li>
+S3 full access [but later in dev process, only with the requirements you have now in scripting.]
+
+<li>
+Then hand off to be deployed elsewhere
+
+</ul>
+<li class="done0">
+We need a good way to give bucket access contingent on pipeline name. [time:30mins]  #d7036c6e
+
+<ul>
+<li>
+People need to fork the neurocaas repo. 
+
+<li>
+This is the place that the contrib repo will point to anyway, which will be good. 
+
+<li>
+Issues: 
+
+<ul>
+<li>
+Not clear how we can automate branch creation. 
+
+<li>
+Giving Cloudformation access means giving very wide permissions. It would be a lot better to be able to centralize permissions to github, and deploy from there. 
+
+</ul>
+<li>
+Just give full s3 permissions for now and see what happens during dev. 
+
+</ul>
+</ul>
+<li class="done0">
+Clean up users:  #e107912d
+
+<ul>
+<li>
+Test user list:  
+
+<ul>
+<li>
+1@gmail.com
+
+<li>
+a@gmail.com
+
+<li>
+dummyloca2
+
+<li>
+dummyloca3
+
+<li>
+etc.
+
+</ul>
+<li>
+Inactive user list:
+
+<ul>
+<li>
+etc.
+
+</ul>
+</ul>
+<li>
+<a href="Anonymous user accounts.html">Anonymous user accounts</a>.  
+
+</ul>
+<div id="NeuroCAAS Project-Outreach || project:NeuroCAASOutreach"><h2 id="Outreach || project:NeuroCAASOutreach" class="header"><a href="#NeuroCAAS Project-Outreach || project:NeuroCAASOutreach">Outreach || project:NeuroCAASOutreach</a></h2></div>
+<ul>
+<li class="done1">
+Make videos for applications  #2865c677
+
+<ul>
+<li class="done4">
+Look into OBS  #d5edf5ab
+
+<ul>
+<li>
+Downloaded, set up and ready to use.  
+
+</ul>
+<li class="done4">
+Reach out to Kelly to do this sometime for DGP  #b3a47e74
+
+</ul>
+<li class="done0">
+Start development blog <a href="https://github.com/cunningham-lab/neurocaas/issues/38">https://github.com/cunningham-lab/neurocaas/issues/38</a>  #e2111a48
+
+<ul>
+<li class="done0">
+Look into github pages support  #4b68d3d1
+
+<li class="done0">
+Auto push updates to twitter  #ca68803e
+
+</ul>
+<li class="done1">
+Make website easier to use  <a href="https://github.com/cunningham-lab/neurocaas/issues/39">https://github.com/cunningham-lab/neurocaas/issues/39</a>  #6970caa0
+
+<ul>
+<li class="done4">
+Push the changes to config interface.  #6da6b900
+
+<li class="done0">
+Push the cli interface with Joao  #dc3c0166
+
+</ul>
+<li class="done0">
+Survey users: <a href="https://docs.google.com/forms/d/17y_ADgDmA-8asCBJLR8oqp1g4Xp2jgY1uDj_bL7ayro/edit">https://docs.google.com/forms/d/17y_ADgDmA-8asCBJLR8oqp1g4Xp2jgY1uDj_bL7ayro/edit</a>  #42e8ade0
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-16</small></p>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="../style.css" />
+    <title>9</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="../index.html">Index</a> |
+    <a href="../diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+Meta goal: get to 18 pages.  #99f3fc78
+
+<li class="done4">
+Figure goals [time:60mins]  #72e3dadb
+
+<ul>
+<li class="done4">
+Replace figure 4 words with step 1, step 3 a/b, etc.  #5a420e11
+
+<li class="done4">
+Fig 5: black outline or no.  #21adab52
+
+<li class="done4">
+Fig 6: go for adoption lifecycle instead of analysis maturity  #db59f8ac
+
+<li class="done4">
+Include psvae bioarxiv link in Table 1  #bd9718dd
+
+</ul>
+<li class="done4">
+Structure the Materials and methods. [time:60mins]  #765408de
+
+<ul>
+<li class="done4">
+Details of Wfield, ensembling to materials and methods.  #3a0ea6e0
+
+<li class="done4">
+2.3 shorten. Take the user and developer sections, and relegate them to the Materials and Methods. You can mention that detailed connections between these components and the user/developer workflow are discussed there- the point was to say why these exist, and the encoding framework covers that now.  #792f2e8d
+
+<li>
+10.0  
+
+<ul>
+<li>
+10.1: Novel Analyses
+
+<ul>
+<li>
+Exposition
+
+<li>
+How is it enabled by NeuroCAAS
+
+<li>
+Access
+
+<li>
+10.1.1 Widefield Imaging
+
+<li>
+10.1.2 Ensemble Markerless Tracking 
+
+</ul>
+<li>
+10.2: NeuroCAAS architecture specifics 
+
+<ul>
+<li>
+The language is a little strange here in paragraph 1. One to one mapping is not clear. 
+
+<li>
+Outline: 
+
+<ul>
+<li>
+10.2
+
+<ul>
+<li>
+NCAP platform has two parts: the code, and the resources. 
+
+<li>
+The code schematic includes template for all parts of neuorcaas. points to blueprint. Job managers. 
+
+<li>
+The schematic is read and deployed into public cloud implementation.
+
+</ul>
+<li>
+10.3 Building IAEs 
+
+<ul>
+<li>
+def: instance (current resource bank). Add data storage, run on Linux. 
+
+<li>
+bring analyses into NeuroCAAS
+
+<li>
+job manager only can start scripts in IAEs. Toolbox of tools. 
+
+<li>
+machine image. 
+
+</ul>
+<li>
+10.4 Deploying analyses from blueprints
+
+<ul>
+<li>
+blueprints are JSON objects, including the following things: user description, and all the infrastructure stack information.  
+
+<li>
+protocol: specification of job manager. 
+
+<li>
+deployment does not create iaes: instead, creates a job manager that autnomously works with IAEs. 
+
+<li>
+blueprints go in a version controlled repo. 
+
+</ul>
+<li>
+10.5 Benchmarking algorithms on NeuroCAAS
+
+<ul>
+<li>
+specific choices are given in Table 2.  
+
+<li>
+built local infrastructure. 
+
+<li>
+built on AWS, and spans resources that comparable to personal hardware and cluster compute depending on the use case. 
+
+</ul>
+</ul>
+</ul>
+<li>
+Suggested: 
+
+<ul>
+<li>
+
+
+<li>
+10.1 
+
+<ul>
+<li class="done4">
+move in whatever you want from existing main text, and Cut out most of the existing text. Irrelevant for methods, much more pseudo results.  #685758bd
+
+<li class="done4">
+Delete 10.1.1: this is much better done by the main text + a detailed dev guide. Move the definition of "instance" into 10.1.2  #84971b3f
+
+<li class="done4">
+10.1.2 still highly redundant in job manager, resource bank, and iae sections make more technical.  #4e99adbd
+
+<li>
+10.1.1 Widefield Imaging
+
+<ul>
+<li>
+Infrastructure and training details 
+
+<li class="done4">
+Totally replace with More on materials and methods of getting gui set up, the parameters involved, etc.  #6b283cff
+
+<li>
+The gui can be found at \wfield. Has a custom interface, hooks into neurocaas credentials. The gui is able to handle the chaining, as well as interactive registration of the brain atlas.  
+
+</ul>
+<li>
+10.1.2 Ensemble Markerless Tracking 
+
+<ul>
+<li>
+Infrastructure and Training details; the repo for ensembling. 
+
+<li class="done4">
+Include dataset details, specifics of calculating the heatmaps, etc.  #1925ee66
+
+<li>
+Calculation of RMSE  
+
+<li>
+Calculation of consensus output. 
+
+</ul>
+<li>
+Notes: lots of redundancy with the results sections. fix.
+
+<ul>
+<li class="done4">
+Add details about the ensembling, and direct people to the wfield for more details. include the amis.  #aa58fa0b
+
+</ul>
+</ul>
+<li>
+10.2 
+
+<ul>
+<li>
+In the main text, we discussed how \ncap brings IaC structure to individual data analyses, generating individual infrastructure stacks on demand. In practice, all of \ncap is managed via IaC: the platform resources that are shared between individual analyses, and the profiles of individual users who are registered to \ncap. We refer to the unified code repository that encodes and generates all of \ncap's parts as the Code Schematic. While we do not make individual user profiles available for privacy and security reasons, we make all other parts of the Code Schematic available in a repository, to make our project as open as possible. Additionally, we do not stipulate that access methods to \ncap (the website, independently developed GUIs, etc) follow IaC, to streamline the development process.   
+
+<li class="done4">
+Wrote in the above  #a2135b38
+
+<li>
+The code schematic includes template for all parts of neuorcaas. points to blueprint. Job managers. 
+
+</ul>
+<li>
+10.3 Developing infrastructure stacks.
+
+<ul>
+<li class="done4">
+move from instance to resource bank. In general unify language here with what's in your main text now for the "dev" section of the methods , and fold in material from the use and development parts of 2.3  #f729c8cd
+
+<li class="done4">
+Unify language here with your developer guide.  #46dbb173
+
+<li class="done4">
+Rephrase in terms of the material you have in Methods section now.  #2d93bc31
+
+</ul>
+<li>
+10.4 Deploying infrastructure stacks:  
+
+<ul>
+<li>
+user info in blueprints stays.  
+
+<li>
+get rid of protocols: just say job manager code. 
+
+<li>
+deployment creates job managers as stateful resource, not IAEs. 
+
+<li>
+Rewrite the narrative in terms of the "using " text you have in the methods right now. 
+
+</ul>
+<li>
+10.5 Benchmarking algorithms on NeuroCAAS
+
+<ul>
+<li class="done4">
+Say as: resources priced as local hardware, or as they might be priced if these resources were allocated to a user on an on-premises cluster. These do not capture the variety of resources available: therefore we offer a tool to benchmark your own timing and costs.  #0c7c787e
+
+</ul>
+<li class="done4">
+Fix Figure name :figure 5.  #6f662ee4
+
+<li class="done4">
+Review schematic figure. relabel section numbers correctly.  #f6a74d56
+
+</ul>
+<li>
+Figure 10: here the IAE is everything, now IAE is just the machine image. 
+
+<ul>
+<li class="done4">
+IAE -&gt; Infrastructure Stack  #378c33bc
+
+<li class="done4">
+Machine Image -&gt; IAE  #8aa7103b
+
+</ul>
+<li>
+10.4: Deploying analyses from blueprints 
+
+<ul>
+<li class="done4">
+Make both 10.3, 10.4 subsidiaries of 10.2  #78e6fbca
+
+<li class="done4">
+This section's main contribution should be specifying that Job Managers rebuild every time.  #e956a408
+
+</ul>
+<li class="done4">
+Table 2: change to be benchmarked analyses.  #5d1aedd7
+
+<li>
+10.5: Benchmarking analyses on NeuroCAAS
+
+<ul>
+<li class="done4">
+Make the point that you choose some reasonable set of resources available on AWS. These could correspond to some local machine, or some cluster resources. It's good to have that specifically mentioned up front. "We hosted local infrastructures on AWS, but calculated"  #d1e851f9
+
+<li class="done4">
+Mention that CaImAn infrastructure choices were appropriat given CaImAn Paper, figure 8.  #f6740bfb
+
+</ul>
+<li>
+10.6: Survey 
+
+</ul>
+<li>
+Suggested: Make mirror the current organization of methods and discussion. 
+
+<ul>
+<li>
+10.1: NeuroCAAS Architechture specifics
+
+<ul>
+<li>
+Current 10.2
+
+<li>
+Current 10.3
+
+<li>
+Current 10.4
+
+</ul>
+<li>
+10.2: Novel Analyses
+
+<li>
+10.3 Benchmarking analyses on NeuroCAAS
+
+<li>
+10.4 Survey
+
+</ul>
+<li class="done4">
+Put in rough suggested organization.  #5aee7227
+
+</ul>
+<li class="done4">
+Really chisel out the connection of 3.1 and 3.2 to scientfic benefits.  #8cdc6eb3
+
+<li class="done4">
+Discussion:  #adbb90ec
+
+<ul>
+<li>
+Anti-black box: regulating the exploration process.  
+
+<ul>
+<li>
+exploring parameters for widefield imaging
+
+<li>
+checking analysis performance for markerless tracking.
+
+</ul>
+</ul>
+<li class="done4">
+After sentence "However, despite these benefits..." add sentence about data standards, data storage, workflow management, and specifying these tools for neuroscience (see platforms, discussion)  #20944c73
+
+<li class="done4">
+Web platform location: 3.3, 2.x, 2.1. Move the usage model squarely to 2.1, and remove from 3.3. Change reference to 3.3 in the "in response" paragraph to be to 2.1.  #f7ffec15
+
+<li class="done4">
+Trim after wfci and markerless tracking paragraphs. Get it down to 4 pages there, then look at the rest of section too. Get rid of freely manipulable sentence, collapse down.  #f93f521a
+
+<li class="done4">
+change beta users to alpha users in methods.  #0b1607e5
+
+<li class="done4">
+Fig 6: left column to left side.  #1b55ad59
+
+<li class="done4">
+2.2: the exact positioning is subjective, but you need neurocaas.  #a1a62068
+
+<li class="done4">
+2.2 can be shortened and punched up.  #9353b7a0
+
+<li class="done4">
+2.3.1 add scholarly support for the benefits of immutability. Dealias immutability and automation.  #c3bf01da
+
+<li class="done4">
+2.3.1 "which can be readily examined at Table 1" -&gt; (Table 1)  #c141e46e
+
+<li class="done4">
+Sweep over for unmodified "this"  #660970cd
+
+<li class="done4">
+2.3.4 too long.  #507028e7
+
+<li class="done4">
+3.0 standalone first sentence is awk.  #81e5ff6b
+
+<li class="done4">
+3.0 too much warmup. you can cut most of this, just state the major takewaways.  #f911c101
+
+<ul>
+<li class="done4">
+Connect panels of Figure 7 to results sections in caption and section opener  #81feea80
+
+</ul>
+<li class="done4">
+John doesn't like consensus, make X clearer.  #8dcc4544
+
+<li class="done4">
+Shorten 3.1,3.2,3.3  #010ca701
+
+<li class="done4">
+p.21 Conversely is not a sentence.  #749fedfe
+
+<li class="done4">
+Comparisons to flywheel and NSG are antagonistic.  #ad325ea3
+
+<li class="done4">
+Include "scale up", "scale out", amdahl in Discussion in reference to existing projects at scale.  #81dddefe
+
+<li class="done4">
+Fix botvinik netzer ref: too many people!  #ae5370e3
+
+<li class="done4">
+Update biblio with DANDI  #9468afe6
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

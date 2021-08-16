@@ -1,0 +1,92 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>3. Make tools to register dataset and config so we can get the path to the status file right.</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+Important issue: where does downloading and uploading happen? 
+
+<ul>
+<li>
+if it happens in the main script, then we need to somehow pass the knowledge of where everything is stored to the script $5 
+
+<li>
+if it happens in the child script, then we need to pass the full paths [currently doing]. 
+
+<ul>
+<li>
+Goals:  
+
+<ul>
+<li>
+backwards compatibility: I should be able to replace existing scripts with a formula. 
+
+<li>
+ease of running for dev mode: I shouldn't have to rerun from main if data is already in place. 
+
+</ul>
+<li>
+Plan: 
+
+<ul>
+<li>
+make this a single object called scriptmanager. Initialize to io-dir location .
+
+<ul>
+<li>
+register-dataset, register-results 
+
+</ul>
+<li>
+register in the main script. Registration makes several different things possible: 
+
+<li>
+1. call get-xxxname, get-xxxpath to get environment variables pointing to those items and their paths.  
+
+<ul>
+<li>
+coordinate so that the location these are saved to matches to volumes docker expects: should be called io-dir, and have configs, inputs, logs, results folders setup... The logs folder here should be given to the scripting/log_process file. 
+
+</ul>
+<li>
+2. call get-xxx to actually retrieve the relevant files from s3. have flag for skip if already exists.  
+
+<li>
+cleanup-script should deregister. 
+
+</ul>
+</ul>
+</ul>
+<li>
+This also paves the way to auto-download of datasets. 
+
+<li>
+The vision now is that we have a bash script that's all neurocaas_contrib scripting functions. 
+
+<ul>
+<li>
+register_dataset and register_config files will download files, and give paths to the datasets and locations. 
+
+<li>
+run_analysis will then log in the background and run a script. 
+
+<li>
+finally, clean up will delete datasets, finish logging, send end.txt etc. . 
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

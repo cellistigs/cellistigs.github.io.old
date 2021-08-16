@@ -1,0 +1,169 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="../style.css" />
+    <title>3:</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="../index.html">Index</a> |
+    <a href="../diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li class="done4">
+2.2.2: cite slurm.  #7ca04c62
+
+<li class="done4">
+Cite clusterjob in intro: dispelling myths.  #2caa620b
+
+<li class="done4">
+3.1: see your notes [time:60mins].  #b6595856
+
+<ul>
+<li>
+Outline 2 
+
+<ul>
+<li>
+Preprocessing steps are big. 
+
+<li>
+each preprocessing each with specfici infra needs, need for stacks compatible with multiple. 
+
+<li>
+These can lead to an explosion of compatibility-based \iags issues that must be handled with care. 
+
+<li>
+WFCI intro. 
+
+<li>
+Protocol paper:
+
+<li>
+
+
+</ul>
+<li>
+Each depends on its own specialized infrastructure, and in combining them, users are vulnerable to compatibility iags.  
+
+<li>
+Compatibility iags can hurt \ncap too- we don't describe how we get around these issues. 
+
+<li>
+we don't talk about how it hurts \ncap in couto. 
+
+<li>
+Try: "To combat these issues, ncap enables a new way to efficiently run multi-component analyses. On ncap, existing infrastructure components hstoed on totally separate infrastructure stacks can be coupled together solely through their inputs and outputs \ref{fig:workflow}B." 
+
+<li>
+"These multi-component \iags issues are not fully addressed by \ncap as it has been described thus far." 
+
+<li>
+Protocol paper describes a full analysis (authority for why it's a good idea).  
+
+<li>
+We offer \ncap services as part of this. 
+
+<li>
+<span id="-However, the neuroCAAS framework as we've discussed it so far is not sufficient to avoid \iags issues in this context."></span><strong id="However, the neuroCAAS framework as we've discussed it so far is not sufficient to avoid \iags issues in this context.">However, the neuroCAAS framework as we've discussed it so far is not sufficient to avoid \iags issues in this context.</strong>
+
+<li>
+Premise: multicomponent analyses invite their own \iags issues.  
+
+<ul>
+<li>
+These issues come from interaction between components. 
+
+<li>
+Critically, these issues are as real on \ncap as they are for individual users. 
+
+<li>
+We describe the way in which we overcome these compatibility issues for multi-component pipelines. 
+
+</ul>
+<li>
+Outline
+
+<ul>
+<li>
+Requires a unique 
+
+<li>
+Big data is hard. 
+
+<li>
+Often analyzing big data is multi-step 
+
+<li>
+e.g.: WFCI. 
+
+<li>
+WFCI is big data.  
+
+<li>
+Protocol paper discusses complete analyses, and offers on \ncap. 
+
+<li>
+We use \ncap 
+
+<li>
+This complete analysi first involves data compression ..
+
+<li>
+Critically however, while both these cutting edge components are open source projects, they require infrastructure stacks with different components, inviting a variety of new \iags issues for researchers who wish to use them simultaneously.
+
+<li>
+While we discuss the generic benefits of \ncap, we don't describe the implementation that allows us to avoid these compatibility related \iags issues: 
+
+<li>
+In general, multi component analyses present new \iags issues due to the interaction between different infrastructure stacks- potential conflicts, slower updates, need for developer collaboration at the software implementation level. These issues are just as prominent when building a NeuroCAAS IAE as they are for any individuual user.   
+
+<li>
+Critically however, multi-component analyses require more 
+
+<li>
+* While both these analyses are available as open source projects, each depends on its own specialized infrastructure, and as such are vulnerable to all of the iags issues mentioned above.  
+
+<li>
+Users setting up multiple infrastructure stacks on a single machine. 
+
+<ul>
+<li>
+"The task of setting up multiple overlapping infrastructure stacks involves many complications"
+
+</ul>
+<li>
+However, to avoid these issues, ncap enables a totally new way to efficiently run multi-component analyses. On ncap, existing infrastructure components hstoed on totally separate infrastructure stacks can be coupled together solely through their inputs and outputs \ref{fig:workflow}B. 
+
+<li>
+Although we describe in terms of a protocol paper where we implemented this method, the general idea is independent of the actual IAE components. 
+
+</ul>
+</ul>
+<li class="done4">
+3.2: easy edits.  #321855d3
+
+<li class="done4">
+try changing methods to platform.  #ef8794d7
+
+<li class="done4">
+What is the results for us?  #2b405b2b
+
+<li class="done4">
+discussion: write out acronyms/ avoid.  #e5368960
+
+<li class="done4">
+break up the what neurocaas does not do paragraph into 3, with indenting to hold flow together.  #224f46fd
+
+<li class="done4">
+integrate discussion "ncap's open source" with the related work section.  #697f766e
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

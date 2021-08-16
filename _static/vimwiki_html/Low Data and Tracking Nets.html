@@ -1,0 +1,273 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Low Data and Tracking Nets</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+One weird thing we've observed in the low data regime with tracking networks is that there are cases where less data performs better. 
+
+<li>
+This is borne out in the case where we have ensembles. Ensembles allow us to have a better sense of what errors are idiosyncratic noise, and which ones are systematic (at least up to the resnet initialization.)
+
+<li>
+It looks like ensembles with a carefully chosen set of examples (5) can sometimes outperform an ensemble with more datapoints (17), and develop filters for the wrong kinds of things. 
+
+</ul>
+<p>
+Linked to the neurocaas_ensembles repo <a href="/Users/taigaabe/neurocaas_ensembles/">here</a>
+</p>
+
+<p>
+Potential Goals: (John Meeting 7/30)
+</p>
+<ul>
+<li>
+0. dgp + ensembling (vanilla)
+
+<li>
+1. dgp + ensembling + self supervision (extending what we see with outlier frames to a prescription for error detection)
+
+<li>
+2. a paper on the value of ensembling + self supervision: here's a general purpose tool to detect this effect, even if expensive. 
+
+<li>
+3. 2+ Reduce the computational load with some clever approximations   
+
+<li>
+4. Extend to data augmentation and general prescriptions for this regime in the VRM/Mixup sense. 
+
+</ul>
+<p>
+Research Todos 
+</p>
+<ul>
+<li class="done4">
+Look into Trevor Darrell papers: 
+
+<ul>
+<li class="done4">
+<a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Reed_SelfAugment_Automatic_Augmen[…]_Policies_for_Self-Supervised_Learning_CVPR_2021_paper.pdf">https://openaccess.thecvf.com/content/CVPR2021/papers/Reed_SelfAugment_Automatic_Augmen[…]_Policies_for_Self-Supervised_Learning_CVPR_2021_paper.pdf</a> 
+
+<li class="done4">
+<a href="https://arxiv.org/pdf/2103.12718.pdf">https://arxiv.org/pdf/2103.12718.pdf</a>
+
+</ul>
+<li class="done4">
+Quantify effect for Large ensembles 
+
+<ul>
+<li class="done4">
+Determine optimal ensemble size/split
+
+<li class="done4">
+compute cost
+
+<li class="done4">
+Send job to neurocaas
+
+</ul>
+<li class="done0">
+Try with other datasets.
+
+<ul>
+<li>
+Two mouse dataset: we know this dataset takes longer to run. IBL takes 3.5 hours, two mouse takes 5.5 hours.   
+
+<li>
+what if we run 2 per ensemble, with five seeds, at 20,40,60,80,100? = 50 networks * 5.5 hours * \(3 = \)825 
+
+<ul>
+<li class="done4">
+check seeds beforehands and make sure you get decent selection on each frame as a function of the ensemble. 
+
+<ul>
+<li>
+seeds 5,6,9,102,37, and splits 5,17,29,40,52 give a good split.  
+
+</ul>
+</ul>
+<li>
+Some info on twomouse: 
+
+<ul>
+<li>
+It looks like we have 1803 labels from Kelly (Thanks Kelly). We have 1000 of these separately as mat format, unclear if the rest are unreliable. I believe they might be, so just try with the first 1000.  
+
+<ul>
+<li>
+we could take just the first 1000, formatted as CollectedData 
+
+<li>
+Pull out 58 in a smart way, also formatted as CollectedData. 
+
+<li>
+Put this in a modelfolder. Then you should be able to send this modelfolder zipped to the ensembling code. 
+
+<li>
+Is the video we're sending too long? We just want to eval on the first 1000 frames. Maybe we can cut the video down and see if that improves training time. 
+
+<li>
+The video is 1,300 frames or so. This seems fine. It could be frame rate, but this is the point at which I want to stop messing with stuff. 
+
+<li class="done4">
+Crop video to 1000 frames. 
+
+<li class="done4">
+start up a DLC project folder with the 1000 frame video. Use this to choose 58 frames from the first 1000 that we'd choose to label anyway. 
+
+<li class="done4">
+Generate training data from the already labeled collecteddata file with dlc cli. 
+
+<ul>
+<li>
+It would be good to check this, but can't right now with dlc code.  
+
+<li>
+Figure out a way to check before submitting. 
+
+<li class="done4">
+Issue- the labels are wrong. Check the original labelset in twomouse_trained, with the videos from there too. you can use pythonw (bare) and it's okay. If that looks okay, then write tested code to extract the right labels and create artificial ground truth- you'll be using this more. 
+
+</ul>
+<li class="done4">
+Submit this for training with configs as you ahve done before.  
+
+</ul>
+</ul>
+</ul>
+<li class="done0">
+Map the history of training: how do weights/ functions change (can we get this atm?)
+
+<ul>
+<li>
+Training schedule is as follows: 200000 iterations of DLC, followed by 10,000 iterations of DGP, split between labeled frames only and labeled+unlabeled frames (split depends on number of training frames given). We have the last 3000 iterations of DLC, plus at most the last three incremenets by 100 of the DGP frames.  
+
+</ul>
+<li class="done0">
+Do image augmentation to remove distractors: 
+
+<ul>
+<li>
+Some references for how to add to DLC:  
+
+<ul>
+<li>
+Random erasing as an alternative to cutout (pytorch implementation): <a href="https://github.com/zhunzhong07/Random-Erasing">https://github.com/zhunzhong07/Random-Erasing</a>
+
+<li>
+Main DLC pr for augmentation: <a href="https://github.com/DeepLabCut/DeepLabCut/pull/1334">https://github.com/DeepLabCut/DeepLabCut/pull/1334</a>
+
+<ul>
+<li>
+some code for new class to add: <a href="https://github.com/DeepLabCut/DeepLabCut/pull/1334/commits/9e6c376266e16c3a90265d370dee7ff486010173">https://github.com/DeepLabCut/DeepLabCut/pull/1334/commits/9e6c376266e16c3a90265d370dee7ff486010173</a>
+
+<li>
+integration into UI for multianimal:  <a href="https://github.com/DeepLabCut/DeepLabCut/pull/1334/commits/379c77051deee79defa4a6d83b52624a20d93d4c">https://github.com/DeepLabCut/DeepLabCut/pull/1334/commits/379c77051deee79defa4a6d83b52624a20d93d4c</a>
+
+<li>
+imgaug docs: 
+
+<ul>
+<li>
+Cutout: <a href="https://imgaug.readthedocs.io/en/latest/source/api_augmenters_arithmetic.html?highlight=cutout#imgaug.augmenters.arithmetic.Cutout">https://imgaug.readthedocs.io/en/latest/source/api_augmenters_arithmetic.html?highlight=cutout#imgaug.augmenters.arithmetic.Cutout</a>
+
+<ul>
+<li>
+Position Parameter: <a href="https://imgaug.readthedocs.io/en/latest/source/overview/size.html?highlight=CropToFixedSize#croptofixedsize">https://imgaug.readthedocs.io/en/latest/source/overview/size.html?highlight=CropToFixedSize#croptofixedsize</a>
+
+</ul>
+<li>
+Heatmap augmentation: <a href="https://imgaug.readthedocs.io/en/latest/source/api_augmenters_meta.html?highlight=augment_heatmaps#imgaug.augmenters.meta.Augmenter.augment_heatmaps">https://imgaug.readthedocs.io/en/latest/source/api_augmenters_meta.html?highlight=augment_heatmaps#imgaug.augmenters.meta.Augmenter.augment_heatmaps</a> 
+
+<li>
+Remains to be seen how DLC applies this aug, and if we can do datapoint- specific augmentation. 
+
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<p>
+Engineering Todos
+</p>
+<ul>
+<li class="done4">
+check the heatmap issues. 
+
+<li class="done0">
+standardize environment variables: video_name vs. task, basefolder in scripts
+
+<li class="done0">
+identify a standard set of inputs (config file) to run ensembles more efficiently. 
+
+<li class="done0">
+move code for parsing modelnames into source code. 
+
+<li class="done4">
+move get_training_frames into source code
+
+<li class="done0">
+Move all dependencies on get_training_frames and parse_modelnames into source code equivalents
+
+</ul>
+<p>
+Suggestions
+</p>
+<ul>
+<li class="done0">
+Map the training frames in video space. 
+
+<li class="done0">
+When calculating bias, use the ensemble consensus instead of the weighted average. 
+
+<li class="done0">
+Read the PC bias and Deep Variational GPs paper. 
+
+<li class="done0">
+Compare to model fit on all frames
+
+<li class="done0">
+Quantify where in frame training points lie
+
+</ul>
+<p>
+Open questions: 
+</p>
+<ul>
+<li>
+There's only one retracted paw frame. How do we understand this as a generalization issue?
+
+<li>
+Is this an issue with dlc too? 
+
+<li>
+if dlc, is this something we could think about in the context of mislabeled training data? 
+
+<li>
+When we track points, what prevents the network from developing filters for the parts nearby?
+
+<li>
+Can you make recommendations for what datapoints to include or exclude based on ensembles? 
+
+<li>
+see geoff's paper, and one on classifiers from the 90s (both in papers)
+
+<li>
+How is this different from ensembling? 
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-16</small></p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Self Supervised Learning</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Self Supervised Learning"><h1 id="Self Supervised Learning" class="header"><a href="#Self Supervised Learning">Self Supervised Learning</a></h1></div>
+
+<p>
+The defining feature of self supervised learning is that you're going to learn a good representation of the data by looking at some aspect of your own training. 
+</p>
+
+<div id="Self Supervised Learning-InfoNCE"><h2 id="InfoNCE" class="header"><a href="#Self Supervised Learning-InfoNCE">InfoNCE</a></h2></div>
+<p>
+In the case of Oord et al. 2019 (Contrastive Predictive Coding) you do this by means of <span id="Self Supervised Learning-InfoNCE-negative samples"></span><strong id="negative samples">negative samples</strong> in the context of sequential data: given some sequence data,  
+we try to learn a good representation of the data by: 
+</p>
+
+<ul>
+<li>
+1. Forming a per-timepoint (or more coarse) representation of the data using an encoder model (\(z_t\))
+
+<li>
+2. Transforming the per-timepoint representation with an autoregressive model (\(c_t\)) 
+
+<li>
+3. Estimating the unnormalized likelihood of future sequence data based on a bilinear form (\(c_t^TW_{t+k}z_{t+k}\))   
+
+<li>
+4. Optimizing this estimate. This is essentially a classification task that asks networks to correctly identify the data at a certain point in the future given a latent representation of the present and latent representations of the future.
+
+<li>
+5. By doing so, one can learn latent representations of the data and a long term context that capture some information about the future of this data. 
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

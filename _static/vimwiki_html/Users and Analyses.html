@@ -1,0 +1,91 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Users and Analyses</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<p>
+Documentation for NeuroCAAS regarding users and analyses. 
+</p>
+
+<div id="Developer Permissions"><h1 id="Developer Permissions" class="header"><a href="#Developer Permissions">Developer Permissions</a></h1></div>
+<p>
+Developer Permissions are a work in progress. The <code>revisedtagpolicy</code> on AWS provides a good model for this: access only to tagged AWS instances + parameters necessary to get started. We should also include global s3 permissions :(. 
+</p>
+
+<div id="Users and Permissions in AWS"><h1 id="Users and Permissions in AWS" class="header"><a href="#Users and Permissions in AWS">Users and Permissions in AWS</a></h1></div>
+<p>
+NeuroCAAS users are specified as IAM users inside the NeuroCAAS AWS account. In order to use analyses, they must be given access to read and write to certain buckets and bucket subfolders in AWS. This is done via IAM policies. Policies can be attached directly to a user, or they can be associated with user groups: when users are added to a particular group, they automatically inherit the policies for that group. Unfortunately, there are size limits on user policies (N kb) and the number of policies that can be attachd to a user (I believe 10), which make managing this at scale more of a chore than it might first appear.    
+</p>
+
+<p>
+In practice, we create user groups and always attach policies to groups, not directly to users. The specifics of this varies based on the particular analysis.
+</p>
+
+<p>
+In the future, we might want to consider an implementation based on Federation: Users take on specific temporary roles within our account, instead of being given permanent accounts. This could help with scale. 
+</p>
+
+<div id="Specifying users in analysis blueprints"><h1 id="Specifying users in analysis blueprints" class="header"><a href="#Specifying users in analysis blueprints">Specifying users in analysis blueprints</a></h1></div>
+<p>
+Right now, there are three different stages of an analysis. These stages are DEVELOP, WEBDEV, and WEBSUBSTACK, as specified in the ncap blueprint. In each of these stages, the analyses do something different re: the handling of users.  
+</p>
+
+<div id="Specifying users in analysis blueprints-Develop"><h2 id="Develop" class="header"><a href="#Specifying users in analysis blueprints-Develop">Develop</a></h2></div>
+<p>
+In develop mode, the analysis stack will create new users and analyses groups upon deployment. This covers the earliest stages of development, when maybe you and a few eager test users want to create all new IAM accounts just to try things out, and should be entirely skipped if you're working with existing IAM users.  
+</p>
+
+<div id="Specifying users in analysis blueprints-WebDev"><h2 id="WebDev" class="header"><a href="#Specifying users in analysis blueprints-WebDev">WebDev</a></h2></div>
+<p>
+In webdev mode, the analysis stack will create new IAM user groups with analysis specific permissions, but search within the AWS account to add existing IAM users to those groups instead of creating new ones. This procedure avoids IAM name collisions when users want to make use of more than one analysis at a time. Users can be added to an existing group simply by adding their username within the <code>UserNames</code> field of an "Affiliate" dictionary in an analysis blueprint, and redeploying the stack.  
+</p>
+
+<div id="Specifying users in analysis blueprints-WebSubstack"><h2 id="WebSubstack" class="header"><a href="#Specifying users in analysis blueprints-WebSubstack">WebSubstack</a></h2></div>
+<p>
+WebDev mode is useful, but becomes incredibly tedious when we have to redeploy the entire analysis stack simply to add more IAM users. Furthermore, there is a limit to the number of resources we can have within a cloudformation stack, drastically limiting the scale of the WebDev approach. WebSubstack introduces two changes to overcome these limitations for analyses that are ready to be used by the general public. 
+</p>
+
+<ol>
+<li>
+All IAM users named in the stack are handled in substacks (i.e. have user groups attached, custom resources created, etc.): this subverts the per stack resource limit, at least for a respectable (100s) number of users. Special note: WebSubstack mode assumes that we will work with users created from the website, and so will suffix all names entered in the <code>UserNames</code> field with the region in which they were created. This is to avoid naming collisions. If you change an analysis stack from webdev to websubstack, this will not affect users whose permissions you explicitly declared in the analysis blueprint.  
+
+<li>
+With WebSubstack mode, the permissions necessary to submit jobs are slightly loosened, but make it possible to create users elsewhere that opt in to use this analysis, instead of explicitly being granted permission upon deployment. By decoupling usage permissions with analysis deployment, we can move significantly faster. 
+
+</ol>
+<p>
+After upgrading from webdev to websubstack, all users created manually will have to be migrated to web-created accounts. This is to help handle the differences in naming conventions and cost monitoring tools we have in place. Users created manually may experience interruptions to analysis after an upgrade.  
+</p>
+
+<p>
+Note: when adding new users manually, you must add new users below existing ones in the profile. Identity is tied to the ordering of listed users. 
+</p>
+
+<div id="Creating New Users"><h1 id="Creating New Users" class="header"><a href="#Creating New Users">Creating New Users</a></h1></div>
+<p>
+In analogy to NeuroCAAS Blueprints, 
+</p>
+
+<div id="Website Permissions"><h1 id="Website Permissions" class="header"><a href="#Website Permissions">Website Permissions</a></h1></div>
+<p>
+Besides AWS permissions, users must be authorized to use analyses through the website if they will be using the website's drag and drop interface. This can be done through the website's admin panel. Website analyses are grouped into custom analyses (those still in development) or main analyses (those ready for general use). Stacks should be kept in the "webdev" stage when they are custom analyses, and upgraded to websubstack when they are ready to be promoted to the main page.    
+</p>
+
+<div id="Best practices"><h1 id="Best practices" class="header"><a href="#Best practices">Best practices</a></h1></div>
+<p>
+Best practices for dealing with users are to ask them to sign up for NeuroCAAS through the website as soon as possible during development. If you are working as a custom analysis keep your stack in webdev mode, and add the users with website generated group names and explicitly prefixed usernames. When you upgrade to substack mode, you will have to remove the prefixes.  
+</p>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Possible pablo issues:</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+auto generated permissions don't have list access to the full bucket? see if you might need to change this.  #464366c0
+
+<ul>
+<li>
+if s3_ls is only used once, be prepared to replace bucket.objects.all with bucket.objects.filter(username) 
+
+</ul>
+<li>
+doesn't work for userfolders not in churchland group?  
+
+<li>
+Record:
+
+<ul>
+<li>
+1. you went into the development instance, and changed the profile.html's final field from iam.data_bucket to iam.group.name
+
+<li>
+2. you then ran <code>python manage.py runserver</code>, <code>python manage.py migrate</code> <code>python manage.py staticcollection</code>, and saw how html changes to profile.html were propagated with each of these changes. 
+
+<ul>
+<li>
+It appears that making html edits actually propagates through regardless of any of these things. 
+
+</ul>
+<li>
+3. you then went into the production instance, and just changed the profile.html file. 
+
+<li>
+4. updated the buckets to filter with group and subfolder prefix. 
+
+</ul>
+<li>
+Reminding ourselves how this bucket works. 
+
+<ul>
+<li>
+1. submissions go to subdirectories of the inputs bucket. we expect the inputs to be contained in a folder inputs/datafolder/, where the inputs are yet to be submitted. 
+
+<li>
+2. this should work fine, as we made sure to keep it as is. 
+
+<li>
+3. The issue with joao could then be budget, but where is the budget being written to? 
+
+<ul>
+<li>
+There doesn't appear to be an issue witih ChurchlandGroup. 
+
+</ul>
+<li>
+The issue is that there is no upload capacity from other folders atm because the blueprint does not expect those other folders. 
+
+<li>
+How can we solve this? 
+
+<ul>
+<li>
+What can't we change?  
+
+<li>
+Right now, users already exist in this bucket, and they have upload permissions to inputs and download permissions from results. so that's fine. 
+
+<li>
+The bucket itself has permissions to submit only from churchland group. We need to relax this trigger. 
+
+<li>
+It should be sufficient to just update the pipeline to "WebSubstack" mode and redeploy.  
+
+<ul>
+<li>
+What is different? 
+
+<ul>
+<li>
+The existing blueprint is currently in "webdev" mode (not creating users, just adding) This means that the submission triggers that it has are tied to individual user groups. 
+
+<li>
+bucket layout. This is dictated by the lambda function and the AMI. 
+
+<li>
+permissions. This is dictated by the blueprint itself. 
+
+<li>
+
+
+</ul>
+</ul>
+</ul>
+</ul>
+<li class="done4">
+Make sure that updating an existing stack will not trigger issues with the existing user substacks.  #2372c48d
+
+<ul>
+<li>
+We have version control on! 
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

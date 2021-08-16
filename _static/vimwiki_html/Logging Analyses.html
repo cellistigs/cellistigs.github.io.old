@@ -1,0 +1,41 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Logging Analyses</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Logging Analyses"><h1 id="Logging Analyses" class="header"><a href="#Logging Analyses">Logging Analyses</a></h1></div>
+<p>
+Individual jobs launched by NeuroCAAS must be tracked in terms of the constituent instances the length of time that these instances are active. We achieve this with cloudwatch monitoring in conjunction with AWS Lambda. Source code can be found in neurocaas/ncap_iac/protocols/log.py 
+</p>
+
+<div id="Logging Analyses-CloudWatch"><h2 id="CloudWatch" class="header"><a href="#Logging Analyses-CloudWatch">CloudWatch</a></h2></div>
+<p>
+When NeuroCAAS launches a new job, it also creates a corresponding CloudWatch Log Rule that tracks the state of all of the instances associated with a particular job. This state records if the instance is starting up, ready, stopping, shutting down, etc. The name of the Rule is the same as the name of the folder where job results are stored (except for some formatting details). 
+</p>
+
+<div id="Logging Analyses-AWS Lambda"><h2 id="AWS Lambda" class="header"><a href="#Logging Analyses-AWS Lambda">AWS Lambda</a></h2></div>
+<p>
+We filter for times when the instance either becomes active, or shuts down, and trigger AWS Lambda based on each of these events. These events bookend the active interval of time over which the instance is billed to us. While instances are active interval, we use AWS Lambda to put the instance's logs in the s3 storage bucket folder called "s3://{analysis_name}/logs/active", so that we can easily see which analyses are active. Once individual instances are shut down, we move these logs to the corresponding user's logging environment. 
+</p>
+
+<p>
+Finally, once all individual instances are shutdown, we delete the logging rule, and write a file called "end.txt" to the results folder. This "end.txt" file signals that all processing is complete. This file can also be used to trigger postprocessing- see <code>Chaining Analyses</code> and source code at neurocaas/ncap_iac/utils/dev_builder.py::NeuroCaaSTemplate::add_search_lambda for more. Triggering analyses off of this "end.txt" file is a good idea because it ensures that all instances are shut down, and job logging is complete before starting something new. 
+</p>
+
+<p>
+<span class="todo">TODO</span>: assign a tag to the instances that gives their job. Figure out where we're aggregating instance info, you can generate tags there. 
+</p>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

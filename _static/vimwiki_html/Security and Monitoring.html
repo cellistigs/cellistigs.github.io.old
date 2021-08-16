@@ -1,0 +1,93 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Security and Monitoring</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Activity Monitoring"><h1 id="Activity Monitoring" class="header"><a href="#Activity Monitoring">Activity Monitoring</a></h1></div>
+
+<p>
+Now, developer usage (and some deployment usage) is switched to a tag based workflow, where ec2 instances are launched with specific tags that identify the amount of time they are allowed to be active. Here is the current layout:
+</p>
+
+<ul>
+<li>
+"Soft cap" protections on general usage:
+
+<ul>
+<li>
+test-ec2-killer (SNS: NeuroCAAS EC2 General Monitor)
+
+</ul>
+</ul>
+<pre><code>
+Kills all ec2 instances that are not on an explicit exempt list after 720 minutes (12 hours) of activity. Generates email and text message alerts in case of aberrant behavior. 
+</code></pre>
+
+<ul>
+<li>
+ec2-rogue-killer (SNS: NeuroCAAS EC2 Rogue Monitor)
+
+</ul>
+<pre><code>Kills all ec2 instances that are not on ssm, or explicitly provided with a timeout after 15 minutes of activity. Generates email and text message alerts. 
+</code></pre>
+
+<ul>
+<li>
+“Hard cap functions” on NeuroCAAS triggered usage. 
+
+<ul>
+<li>
+neurocaas-guardduty-develop (SNS: NeuroCAAS EC2 Development Group Monitor)
+    Stops all ec2 instances that have the developer security group after 2880 minutes of activity (2 days). Generates email alerts 
+
+<li>
+neurocaas-guardduty-deploy (SNS: NeuroCAAS EC2 Deployment Group Monitor)
+    Stops all ec2 instances that have the deploy security group after 120 minutes of activity. Generates email and text message alerts. 
+
+</ul>
+<li>
+Billing alert: Alert in case costs exceed a specifed threshold monthly budget. Generates email and text message alerts. 
+
+</ul>
+<p>
+These functions provide a nice layer of security against unexpected usage in all cases except a ssm job that continues unnecessarily.
+</p>
+
+<p>
+Here are the next steps:
+</p>
+
+<ul>
+<li class="done0">
+Use the timeout tag in ssm timeouts as well, for redundancy
+
+<li class="done0">
+Reference ownership tags in the lambda startup script to find currently active instances when calculating budget.
+
+<li class="done0">
+Include the current request load of instances with given timeout when calculating budget.
+
+<li class="done0">
+Build the corresponding monitoring lambda function guard and add as an additional soft cap to those above.
+
+<li class="done0">
+Generate messages back to the user if we have to kill a deployment instance with a clear description of what went wrong.
+
+<li class="done0">
+Use pr workflow to vet analyses and bring them into tag based workflow.
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

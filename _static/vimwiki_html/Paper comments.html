@@ -1,0 +1,282 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Paper comments</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+General: 
+
+<ul>
+<li>
+website url should be same throughout, website/web interface should be referenced consistently .
+
+</ul>
+<li>
+Intro comments:
+
+<ul>
+<li class="done4">
+Long jobs: jargon  #06d8e134
+
+<li class="done4">
+Mention time cost to developers? Nogordowski ref is enough.  #752abef6
+
+</ul>
+<li>
+Methods comments: 
+
+<ul>
+<li class="done4">
+Include periods in table 1.  #39f1a98d
+
+<li class="done4">
+2.2: para 2:"No furhter user input is needed" is vague. Detects -&gt; processes.  #5822c88c
+
+<li>
+2.2: para 2:"Dissolved" doens't ref something clearly. fades away?  #8005e3ef
+
+<li class="done4">
+Flip 2.2 and 2.1 again.  #95a7a784
+
+<ul>
+<li class="done4">
+Don't do that. Just take figure 2, para 2, and after you edit it put it in the Methods intro.  #ff57788a
+
+</ul>
+<li>
+2.2: Mention making an IAE? ?? suggestion for 2.2 ending from John (maybe for supplement).  #5f8ff47c
+
+<ul>
+<li>
+Move to supp.
+
+</ul>
+</ul>
+<li>
+Results comments: 
+
+<ul>
+<li class="done4">
+3.1: while we offer an NeuroCAAS  #680c2a8f
+
+<li class="done4">
+3.1: importantly, ncap balances  #8eebfc85
+
+<li>
+3.2: "These limitations" -&gt; While the limitations of these other platforms "These limitations prohibit the development of future directions for ensemble markerless tracking like online tracking and anomaly detection, and makes these platforms infeasible for use cases like quantifying ensemble behavior across different parameter settings,  (c.f. Figure 8B, where we trained 45 networks simultaneously)." NeuroCAAS easily lets us deploy 45 networks simultaneously as shown in Fig 8B.  #2644c90f
+
+<ul>
+<li>
+deleted by liam, so deleting this suggestion.
+
+</ul>
+</ul>
+<li>
+Discussion comments: 
+
+<ul>
+<li class="done4">
+Add funding source: Gatsby Charitable Foundation GAT3708  #c991be1b
+
+<li class="done4">
+"By virtue of its open source code" should be more aspirational.  #ea0f143d
+
+</ul>
+<li>
+Mats + Methods comments: 
+
+<ul>
+<li class="done4">
+Wrong refs in 8.2.1, row of table:ncap.tex  #2cabbf75
+
+<li class="done4">
+"further infrastructure labels are  the PMD -&gt; loca?"  #23f4dc60
+
+<li class="done4">
+mention the cli somewhere?  #67c006ac
+
+<li class="done4">
+results are auto retried by GUI.  #7998d306
+
+<li>
+Ensemble: One of the core challenges in deploying modern deep learning systems in practice is the degradation of generalization performance and uncertainty estimates under data distribution shifts \cite{hendrycks2019benchmarking,guo2017calibration,ovadia2019can}, where the distribution of the training data differs from the distribution of the test data.  In the context of animal behavioral videos, distribution shifts can manifest as inadvertent changes in the position or view angle of the camera across experiments, or lighting conditions that change over time.  One approach to further improve the robustness of a neural network to shifting conditions in the data without additional labels is deep ensembling \cite{dietterich2000ensemble, lakshminarayanan2016simple}, in which the predictions of several models, or several instances of the same model, are combined to obtain an empirical estimate of the uncertainty of the prediction across all models.  However, employing very large models, or a deep ensemble of models, can be prohibitively expensive for inference during test time or for online tracking.  #89045cd0
+
+<li class="done4">
+Ensemble: don't use I for matrix.  #f4014a42
+
+<li class="done4">
+Mention IAMs  #8f89be8a
+
+<li>
+Include JL's mats and methods text.  #e96c4690
+
+<ul>
+<li>
+There might be a place to mention more about the IAE here, but it would be in reformatting 2.2 :(
+
+</ul>
+<li class="done4">
+Give either more or less info about AMI ID- otherwise you're back to "provided as necessary. " Publish amis?  #72d63c9e
+
+</ul>
+<li>
+Supp comments: 
+
+<li>
+Ian comments:  #3c8a9892
+
+<ul>
+<li>
+ Wfield looks okay, some refs are wrong in table 8.2.1: row of table:ncap.tex.  #b60beff6
+
+<li>
+ Be clear about Figure 9 vs. wfield?  #03cc4acf
+
+</ul>
+<li>
+Shreya comments:
+
+<ul>
+<li>
+Table refs for 8.2.1; "further infrastructure labels are the PMD"
+
+</ul>
+<li>
+Joao comments: 
+
+<ul>
+<li>
+Page 2: during long jobs 
+
+<li>
+Page 12: while we offer an NeuroCAAS -&gt; while we offer a NeuroCAAS
+
+<li class="done4">
+Page 13:  #41a4f862
+
+<ul>
+<li class="done4">
+Figure 7: Figure 7 really helps understanding the differences between the workflows. I have just a couple of suggestions, on "A" I think the dashed lines should be independent from the full ones? The dashed results could be independent and not connect back to the other line but point to "results".  #457d2c75
+
+<li class="done4">
+I think it would help if the gray stack is not offset in the x-axis, suggesting that these are parallel analyses and make it more different from B. On B I would put the arrows pointing at the same place, like this it may seem that only logs come out of the PMD stack  #c6b4dbad
+
+</ul>
+</ul>
+</ul>
+<p>
+Page 13.
+</p>
+<ul>
+<li class="done4">
+In the caption workflow as protocol, I found that confusing. I would just say default workflow in neurocaas.  #a6292ddf
+
+</ul>
+<li>
+Page 13: However, \ncap balances -&gt; Importantly, \ncap balances
+
+<li>
+Page 23: mention the cli/python interface? 
+
+<li>
+Page 31: results are auto retrieved
+
+<li>
+Sian comments: 
+
+<ul>
+<li>
+Table 1; include full stops. 
+
+</ul>
+<li>
+Kelly comments: 
+
+<ul>
+<li>
+Add funding source: Gatsby Charitable Foundation GAT3708
+
+<li>
+3.2: "These limitations" -&gt; While the limitations of these other platforms "These limitations prohibit the development of future directions for ensemble markerless tracking like online tracking and anomaly detection, and makes these platforms infeasible for use cases like quantifying ensemble behavior across different parameter settings,  (c.f. Figure 8B, where we trained 45 networks simultaneously)." NeuroCAAS easily lets us deploy 45 networks simultaneously as shown in Fig 8B.
+
+<li>
+Paragraph on distribution shift to section 8: One of the core challenges in deploying modern deep learning systems in practice is the degradation of generalization performance and uncertainty estimates under data distribution shifts \cite{hendrycks2019benchmarking,guo2017calibration,ovadia2019can}, where the distribution of the training data differs from the distribution of the test data.  In the context of animal behavioral videos, distribution shifts can manifest as inadvertent changes in the position or view angle of the camera across experiments, or lighting conditions that change over time.  One approach to further improve the robustness of a neural network to shifting conditions in the data without additional labels is deep ensembling \cite{dietterich2000ensemble, lakshminarayanan2016simple}, in which the predictions of several models, or several instances of the same model, are combined to obtain an empirical estimate of the uncertainty of the prediction across all models.  However, employing very large models, or a deep ensemble of models, can be prohibitively expensive for inference during test time or for online tracking.
+
+<li>
+Don't use I in section 8.2.2
+
+</ul>
+<li>
+Jack comments: 
+
+<ul>
+<li>
+<span id="-These are good clarity comments. Go through these in depth"></span><strong id="These are good clarity comments. Go through these in depth">These are good clarity comments. Go through these in depth</strong>. 
+
+<li>
+General comments:
+
+<ul>
+<li>
+the website url should be the same throughout. 
+
+<li>
+The neurocaas website/web interface should be referenced consistently (see below). Reference website specific features as so. 
+
+<li>
+Section 2.2, Paragraph 2: "No further user input is needed" is vague, and the language about detecting parameters is not in line with our current understanding of uploading, etc. Detects -&gt; processes the relevant datasets and parameters? Injests? 
+
+<li>
+Section 2.2, Paragraph 2: "Dissolved" doesn't make sense with bottom right. Fading away?
+
+<li>
+Section 2.2, Paragraph 2: 
+
+</ul>
+</ul>
+<li>
+John Comments: 
+
+<ul>
+<li>
+Intro: time cost going back and forth with developers could be highlighted more. 
+
+<li>
+2.2: making an IAE could use a mention? Also AMI/hardware step is the first step in most cases. 
+
+<li>
+Suggestion for 2.2 ending: First, developers customize an analysis environment with the necessary hardware and software infrastructure for a given analysis, before ‘freezing’ the setup into an immutable analysis environment by way of a machine image (i.e. a stored snapshot of the exact state of the environment in time).
+
+</ul>
+<p>
+Working within the IAE, developers then create wrapper scripts around an existing analysis codebase (e.g. a GitHub repository) that fully automate the process of running said code on data and parameter input.
+Finally, developers may simulate user accounts, and test the end-to-end process of submitting data and awaiting the results using the job manager
+</p>
+<ul>
+<li>
+Liam Comments: 
+
+<ul>
+<li>
+The paragraph for figure 2 got pushed back, and this is no good bc figure 2 is important. I.e. flip em back. 
+
+<li>
+"By virtue of its open source code" should be more aspirational: hopes and plans. 
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

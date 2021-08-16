@@ -1,0 +1,439 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Doc structure</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+Current docs:  
+
+<ul>
+<li>
+Welcome to NeuroCAAS's documentation! (empty)
+
+<li>
+Installing NeuroCAAS (empty)
+
+<li>
+Getting Started with NeuroCAAs (empty)
+
+<li>
+Developer Guide
+
+<ul>
+<li>
+Introduction
+
+<ul>
+<li>
+Incremental automation, introduce blueprint. 
+
+<li>
+End Goal: 
+
+</ul>
+<li>
+Prerequisites:
+
+<ul>
+<li>
+AWS account
+
+<li>
+IAM user
+
+<li>
+Local clone of repo
+
+<li>
+ssh key management
+
+<li>
+jq
+
+<li>
+AWS CLI
+
+<li>
+AWS Sam CLI 
+
+<li>
+Docker 
+
+<li>
+Anaconda 
+
+<li>
+Installing aws cli: 
+
+<ul>
+<li>
+make sure to set as JSON 
+
+</ul>
+<li>
+Installing NeuroCAAS Repo
+
+</ul>
+<li>
+Initializing NeuroCAAS
+
+<li>
+Initializing a blueprint
+
+<ul>
+<li>
+Right now this is with iac_utils/configure.sh: notably more reliable than neurocaas-contrib init.  
+
+<li>
+STAGE, INSTANCE_TYPE, AMI, COMMAND parameters asked for specify.  
+
+</ul>
+<li>
+Building a machine image
+
+<ul>
+<li>
+Start up IPython 
+
+<li>
+devami = NeuroCaaSAMI(path)
+
+<li>
+Developing a machine image into an immutable analysis environment 
+
+<ul>
+<li>
+Main script 
+
+<ul>
+<li>
+main script name, parameters.   
+
+<li>
+content of run_main.sh 
+
+<li>
+in depth description. 
+
+<li>
+typing the variables to the figure shown above. 
+
+<li>
+error reporting. 
+
+<li>
+Analysis script (not upper case)
+
+<ul>
+<li>
+Analaysis script shoudl take no parameters- instead you will have access to certain env vars. 
+
+<li>
+run as root, not as users. 
+
+<li>
+designated "datastoreastheinput" all in italixs
+
+<li>
+Test after you deploy. 
+
+</ul>
+<li>
+Saving your machine image
+
+<ul>
+<li>
+create devami
+
+<li>
+update_blueprint
+
+</ul>
+<li>
+Cleaning up
+
+<ul>
+<li>
+terminate_devinstance 
+
+</ul>
+</ul>
+</ul>
+</ul>
+<li>
+Deploying your blueprint 
+
+<ul>
+<li>
+Testing a machine image
+
+<li>
+Adding users 
+
+</ul>
+<li>
+Deploying your blueprint
+
+</ul>
+<li>
+API reference
+
+<ul>
+<li>
+Protocols 
+
+<li>
+Developer Tools
+
+<li>
+Blueprint Deployment API reference
+
+<li>
+User Profile Deployment API Reference
+
+</ul>
+</ul>
+<li>
+Proposed changes: 
+
+<ul>
+<li>
+Structural changes: 
+
+<ul>
+<li>
+Installation + Getting Credentials
+
+<ul>
+<li>
+Installation: 
+
+<ul>
+<li>
+Prereqs
+
+<ul>
+<li>
+Anaconda/miniconda 
+
+<li>
+jq 
+
+</ul>
+<li>
+install neurocaas_contrib with dependencies. 
+
+<li>
+fork this repo and pull remote. 
+
+<ul>
+<li>
+follow guide at <a href="https://jarv.is/notes/how-to-pull-request-fork-github/">https://jarv.is/notes/how-to-pull-request-fork-github/</a>
+
+</ul>
+<li>
+initialize neurocaas_contrib location to this repo. 
+
+</ul>
+<li class="done4">
+initializing neurocaas. can go away.  #11587ded
+
+<li class="done4">
+move in from prereqx  #bf74a616
+
+<li>
+Structure:  
+
+<ul>
+<li>
+You can get started without configuring aws (checked this), but you will need to have access to an aws account somehow to start developing. 
+
+<li>
+In practice, ]you need access to AWS 
+
+<li>
+
+
+</ul>
+</ul>
+<li class="done4">
+Quickstart  #e5c7e690
+
+<ul>
+<li class="done4">
+Create an example script, example data, and example config.  #475168aa
+
+<li class="done4">
+Document well how you would go about implementing this.  #59585501
+
+<li>
+Analysis script
+
+<li>
+Making a quickstart analysis script for pca. showing how to use the contrib repo. 
+
+<ul>
+<li>
+install the contrib repo. 
+
+<li>
+neurocaas-contrib init 
+
+<li>
+register-data
+
+<li>
+register-config
+
+<li>
+register-resultpath
+
+</ul>
+</ul>
+<li>
+Introduction 
+
+<ul>
+<li class="done4">
+The quickstart guide is good bc it shows how we can get from some source code to an input/output structure. You can take it on faith now that this is capable of pulling in remote data, and returning the results, but this is from your local machine. Clearly we don't want you to be sitting here and waiting for your users to submit their data, so they can do this.  #ae7032c3
+
+</ul>
+<li>
+[Docker Development Goes here]
+
+<li class="done4">
+Linking to NeuroCAAS:  #c5404139
+
+<ul>
+<li>
+neurocaas-contrib init 
+
+<li>
+open pull request 
+
+<li>
+initalize cli
+
+<li>
+The developer should submit a pull request. 
+
+<li>
+The pull request must include some changes. 
+
+<li>
+Include getting credentials 
+
+</ul>
+<li>
+(same as above) Getting started with blueprints
+
+<li>
+For everything below, move existing into legacy, and write new with contrib. 
+
+<li>
+Developing on remote hardware
+
+<ul>
+<li>
+Redo this with neurocaas-contrib. you can keep the legacy stuff, but it's really for your old devs. . 
+
+<li>
+Main Script, Analysis script again
+
+</ul>
+<li>
+Deploying your blueprint 
+
+<ul>
+<li>
+Saving your machine image
+
+<li>
+Cleaning up 
+
+</ul>
+<li>
+Testing 
+
+<li>
+Adding users 
+
+<li>
+Monitoring 
+
+<li>
+API Reference
+
+<li>
+Legacy Dev Guide 
+
+</ul>
+<li>
+Installation
+
+<ul>
+<li>
+move in a lot fro mprerequisites. 
+
+</ul>
+<li>
+Quickstart 
+
+<ul>
+<li>
+Making a script for your analysis from local sources. 
+
+<li>
+Read only public bucket for NeuroCAAS with PCA? 
+
+</ul>
+<li>
+Introduction 
+
+<ul>
+<li>
+Change lingo to match up: IAEs, Instances. 
+
+</ul>
+<li>
+Prerequisites
+
+<ul>
+<li>
+Separate into neurocaas vs. independent. 
+
+<li>
+Walk through installation process: fork the repo, install contrib repo. 
+
+<li>
+remove binx.io as a requirement. 
+
+</ul>
+<li>
+Building a machine image:
+
+<ul>
+<li>
+change to be from the neurocaas-contrib repo. 
+
+<li>
+"Datastoreastheinputlication" all in italics. lots of italics throughout the analysis section. 
+
+</ul>
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

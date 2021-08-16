@@ -1,0 +1,107 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Test with Johannes Hahn's data.</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+
+<ul>
+<li>
+download to pose_mats/models.  
+
+<li>
+Actually can't do this, we need the full model folder. 
+
+<li>
+When we tried to recreate, we were told that the project path and the video sets arguments were missing from configuration file. 
+
+<li>
+kick this back to johannes. 
+
+<li>
+Permissions issues: should have seen this coming. 
+
+<ul>
+<li class="done4">
+Check with reviewer account (make sure it's okay with other analyses too!!)  #35313e59
+
+<li class="done4">
+download jh data locally  #2b775aef
+
+<li class="done4">
+check jh data and make training folders.  #f394bfa1
+
+<li class="done4">
+use admin permissions to make a test run.  #d86abfe1
+
+<ul>
+<li>
+dataset: pose_mats/models/FearConditioningMSv4-JH-2021-07-08.zip
+
+<li>
+config: pose_mats/configs/train_dlc.yaml
+
+<li>
+submissions: pose_mats/submissions/jh_testsubmit.json
+
+<li>
+check on job w timestamp jh_test_training1:  
+
+<li>
+Conclusion: we are trying to create a training set, and require a conversion to another format with a user prompt. How can we get around the user prompt OR require the training data to be created already? The dlc2 script is not updated.  
+
+</ul>
+<li>
+Editing: 
+
+<ul>
+<li class="done4">
+remove the create a training set step.  #340e0c7d
+
+<ul>
+<li class="done4">
+We set the windows2linux instead. .  #740f16ae
+
+<li>
+Now we know this works if you have the frames already (effectively overwriting the training.) 
+
+<li class="done4">
+What happens if we don't have them? (Johannes original data)  #f266b06b
+
+<li>
+A test dataset can have <code>create-training-dataset</code> have been run already, or it doesn't have to. both will work.  
+
+</ul>
+<li class="done4">
+update neurocaas_contrib with dlc2 script  #94f58dad
+
+<li class="done4">
+run remotely.  #ab336373
+
+<ul>
+<li>
+works in testing mode.  
+
+</ul>
+<li class="done4">
+save instance  #e020e281
+
+<li class="done4">
+test again  #f6789e35
+
+</ul>
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

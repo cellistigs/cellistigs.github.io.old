@@ -1,0 +1,49 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Software Organization</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="Software Organization for the NeuroCAAS project"><h1 id="Software Organization for the NeuroCAAS project" class="header"><a href="#Software Organization for the NeuroCAAS project">Software Organization for the NeuroCAAS project</a></h1></div>
+<p>
+There are four repos associated with NeuroCAAS. 
+</p>
+
+<ul>
+<li>
+neurocaas: The main, IaC repo that corresponds to the platform that we built. 
+
+<li>
+neurocaas-contrib: The developer package for those who want to contribute analyses to NeuroCAAS
+
+<li>
+neurocaas-frontend: Django based code for the website frontend to NeuroCAAS
+
+<li>
+neurocaas-interface: (prototype) Code for general purpose GUI/source code based development. 
+
+</ul>
+<p>
+Assume you are a user of the website. Then, you don't need to worry about any of these. 
+Assume you are a python based user. Then, you should get neurocaas-interface. 
+Assume you are a developer who wants to contribute a new analysis. You should pip install neurocaas-contrib and fork neurocaas.
+Assume you are a developer who wants to contribute a new analysis, and build a GUI. You should pip install neurocaas-contrib, reference neurocaas-interface and fork neurocaas.
+Assume you are a developer who wants to contribute a new analysis, and or integrate NeuroCAAS into their workflow. You should pip install neurocaas-contrib, reference neurocaas-interface and fork neurocaas.
+</p>
+
+<p>
+NeuroCAAS contrib as a repo will also have nice documentation and guides, but should not have a whole separate blueprint repository. Link your neurocaas-contrib to the neurocaas repo upon install. 
+</p>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

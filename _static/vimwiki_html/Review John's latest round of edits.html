@@ -1,0 +1,352 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Review John's latest round of edits</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li class="done4">
+Make an outline of the structural changes to make re: methods and results. [time:90mins]  #0b62731a
+
+<li>
+Structural Changes:  
+
+<li>
+IaGS -&gt; Infrastructure Debt  #abc4d062
+
+<li class="done4">
+Make Intro generally more problem oriented (see JPC edits in NCAP_PAPER_jpc_3_10.pdf.) [time:20mins]  #ebe5ecbf
+
+<li>
+Took a first pass at this. Review.  
+
+<li class="done4">
+Move web service (2.2.5) section to top of methods to contextualize. Mention gui. [time:30mins]  #f14b4c63
+
+<ul>
+<li>
+You want to make sure this section makes sense at the top.  
+
+</ul>
+<li class="done4">
+Reprozip, sacred in the existing section.  #1e451fba
+
+<li class="done4">
+Reference figure 3 in methods sections 2.2.1-4 [time:10mins]  #d12c32f6
+
+<li class="done4">
+Move methods for wfield and ensembles to results/detailed methods. [time:30mins]  #7102e839
+
+<ul>
+<li>
+These can both go in detailed methods. Ensemble section can have more.  
+
+</ul>
+<li>
+Define tech debt in methods as general purpose issue for further reading.  #431da0bb
+
+<ul>
+<li>
+Technical debt is the cost of maintaining a system as a consequence of moving too fast, or not engaging in best practices.  
+
+<li>
+Some mentions of reproducibility debt, given stochastic systems. This is another nice angle on our ensembling figure. 
+
+<li>
+How similar is this to IaGS? 
+
+<ul>
+<li>
+Technical debt is most often thought of as just the developer's responsibility. The ignorance of technical debt makes it harder for them to use in the future.  
+
+<li>
+Technical debt causes include lack of alignment to standards, lack of knowledge, lack of ownership. 
+
+</ul>
+</ul>
+<li class="done4">
+Results should be revelations. The scale/accessibility tradeoff is good- think about a way to say something real about reproducibility using NeuroCAAS. This can be plugged in with the wfield section, or reference current figure 6 (IaGS issues) !!!  #818222fc
+
+<ul>
+<li>
+This could be: "Reproducibility always seems to involve more work. Doing something bigger means correspondingly more of that work." Reproducibility debt? Important to clarify a debt for who?  
+
+<li>
+Then, our two IaGS issues are: Scale and Accessibility are a tradeoff, and reproducibility debt that increases harder as projects and infrastructure scale. 
+
+<li class="done4">
+Write reproducibility debt paragraph for intro [time:15mins]  #72a594b8
+
+<ul>
+<li>
+One consequence of IaGS is <em>reproducibility debt</em>. Reproducibility debt refers to the fact that it becomes more and more difficult to maintain the reproducibility of a scientific result as the infrastructure around scientific projects grows more complex (Sculley). Reproducibility debt is a consequence of countless undocumentented decisions that were made in the process of setting up and modifying scientific infrastructure, the high level of technical knowledge required to set up modern infrastructure, and the sheer number of components involved (all of the infrastructure described here, input data, and interactive workflow decisions that may only exist in our heads) (Hinsen). This can lead to analysis infrastructure that is neither fully described nor readily receated (citealp crook, stodden, krafczyk, raff) . Reproducibility debt incurred by the original analysis developer is compounded by individual analysis users when they install and manage their own software.   
+
+<li>
+work Sculley, Hinsen, Merali into intro text. Introduce idea of <em>reproducibility debt</em> in the intro as a counterpart for reproducibility debt.  #d07393ab
+
+</ul>
+<li>
+Write reproducibility debt for big data and machine learning systems, off of the text below: Reproducibility debt affects big data systems, as well as machine learning systems (makes sense for why we highlight them).  #f98e945b
+
+<li class="done4">
+Just integrate these into a more salient discussion about reproducibility. [time:15mins]  #25e4b11b
+
+<ul>
+<li class="done4">
+Big Data: Chang pentaretraction (Miller, Penders) as a consequence of failure to treat these preprocessing steps seriously. [time:15mins]  #24d8577b
+
+<li>
+Deep Learning: Stochasticity in the model, dependencies on parts of the system (memory, data). (Sculley) [time:15mins]  #120a74df
+
+<ul>
+<li>
+Doesn't fit. This is a great argument, and maybe you can use it somewhere else.  
+
+</ul>
+<li>
+Some nice references: Hinsen, Merali, Joppa 
+
+<ul>
+<li>
+Hinsen: Tecnhical debt is real, and it affects reproducibility. Computers are chaotic systems, small changes have gigantic effects.
+
+<li>
+Merali: Errors in computational computing. Only 47% of scientists have background in testing, only 34% believe that formal training is important. This leads to overconfidence, need to retract findings. Code lead demonstrated the issues inherent.  
+
+<li>
+Joppa: People choose to use software for nonscientific reasons (software is not peer reviewed!).
+
+<li>
+Sculley mentions reproducibility debt, difficulties for ML systems. 
+
+</ul>
+</ul>
+<li class="done4">
+Make the wfield argument stronger. [time:30mins] !!! (2021-03-12 22:00)  #99e51721
+
+<ul>
+<li class="done4">
+Read the Sculley paper for stronger understanding of technical debt [time:30mins]  #cb67c79d
+
+</ul>
+<li class="done4">
+The Widefield argument is the same as the Big Data Argument. [time:30mins]  #c2cfe467
+
+<ul>
+<li class="done4">
+Beef up the intro widefield argument with the two points below. [time:90mins]  #66fdacd0
+
+<ul>
+<li>
+Right now, the big data argument says that it's hard to even understand your data when its so big. However, we can instead say that each analysis step is a research project in its own right (spike sorting, fluorescent calcium imaging of single cells.)  
+
+<li>
+<em>Each analysis step is itself a research project of its own scope.</em> But individually, they are not sufficient to meet the task of analyzing this big data. After initial methods have been developed, they have to be combined (CaImAn,SpikeInterface) to faciliate ease of use and comparison. It is time intensive, laborious process to make all of these methods available on user infrastructure, and there is no guarantee of keeping up as dataset sizes continue to increase (refs from CaImAn and SpikeInterface), and it's unclear how this approach can scale as datasets continue to increase in size. These papers reveal that neuroscientists need an understanding of infrastructure in order to approach these analyses and evaluate their appropriateness. The gap between published material and scientific rigor.     
+
+<li>
+Big Data takeaway: Raw big data is unmanageable. There are now a great number of infrastructure aware steps that one has to perform in order to take big data and reduce it into a form where one can test experimental hypotheses on it. The process of doing so isitself an open research question, and the many component parts of this process each are thorny scientific questions that rely on their own infrastructure.    
+
+</ul>
+<li class="done4">
+Revamp the widefield results argument in the results in correspondence with this intro argument. [time:45mins]  #85f81ae9
+
+<ul>
+<li>
+Compare implicitly to something like caiman or spikeinterface, that do memory mapping and sophisticated infrastructure stuff to make things compatible with standard laptops.  
+
+<li>
+Note that we are not putting these things down- just that their effort can be maximized on neurocaas, and you don't want to be waiting forever for these advances to come around before you can ever use them. 
+
+<li>
+No concerns about version numbers and your current dependencies. 
+
+<li>
+what do people think of as a tool? brain clearing protocol
+
+<li>
+How do we even do this now? What if you want to put two analyses together? 
+
+</ul>
+<li>
+Make an argument about comparing benchmarks? Comparing PMD to SVD, for example. This is another example of reproducibility debt. This is not relevant because we don't offer svd.  #7067493c
+
+<ul>
+<li class="done4">
+Read the wfield paper and see if this is feasible. [time:15mins]  #4f46a023
+
+<ul>
+<li>
+Doesn't seem so. Looks like just PMD is implemented. 
+
+<li>
+<span id="-Maybe worth asking Joao/Ian if they have quantified performance of these analyses to naive alternatives."></span><strong id="Maybe worth asking Joao/Ian if they have quantified performance of these analyses to naive alternatives.">Maybe worth asking Joao/Ian if they have quantified performance of these analyses to naive alternatives.</strong> 
+
+</ul>
+<li>
+Reproducibility Debt takes its toll at every step of a big project. 
+
+<li>
+Highlight how wfield pipeline is <em>different</em> for your average, open source beta code.( <a href="https://blog.iiasa.ac.at/2020/09/18/open-science-has-to-go-beyond-open-source/">https://blog.iiasa.ac.at/2020/09/18/open-science-has-to-go-beyond-open-source/</a> )
+
+</ul>
+<li>
+Have a figure that shows what the output of wfield pipeline at each step produces, and how this is not a feasible target of analysis. (2021-03-15) !!  #f88e9de8
+
+<li>
+(Adapt Joao's wfield figure 6 to show the data size at each step. and corresponding infrastructure pyramid) I think the design pattern figure you have here is enough for this.  #48acef1e
+
+<li>
+Tie this in to reproducibility debt.  #ec8671ce
+
+</ul>
+<li class="done4">
+Strengthen point about design principles alleviating work for developer. [time:15mins]  #1803e4a0
+
+<ul>
+<li>
+Doesn't really fit here. I've moved it to methods, and strengthened repro point separately. 
+
+</ul>
+</ul>
+<li>
+Other Points:  
+
+<li class="done4">
+Fix website citations !!! [time:30mins] (2021-03-12 22:00)  #14122ff8
+
+<li class="done4">
+Review for flow. Strongly prioritize overall flow. [time:45mins] (2021-03-16)  #a885b028
+
+<ul>
+<li>
+What impression do you want your readers to come away with? 
+
+<ul>
+<li>
+Simplify language around stuff like analysis, usage model. 
+
+<li>
+Introduction: Here is a different way of doing things that I didn't know I needed. 
+
+<ul>
+<li>
+What makes it different? Hammer home blueprints, per instance create and destroy. 
+
+<li>
+It still zooms in and out too much. Infrastructure is inherently zoomed in. We need more focus to the text.   
+
+<li>
+Infrastructure is treated as a nuisance.   
+
+<li>
+<em>What if we didn't treat it like a nuisance?</em> What would happen? 
+
+<ul>
+<li>
+Industry is what would happen. Scalability, on demand, seamless platforms. These benefits are not purely economical.   
+
+<li>
+Not only are these systems compatible with science, but they are required to solve several urgent issues. 
+
+<li>
+Our field has become industrialized, but in doing so infrastructure lags far behind. 
+
+<li>
+
+
+</ul>
+<li>
+Instead of treating Infrastructure as a Nuisance, NeuroCAAS treats it as a critial, unoptimized component of analysis infrastructure. 
+
+<li>
+By optimizing it, we can do better science. 
+
+<li>
+This is, paradoxically, <em>less work for you</em>. 
+
+</ul>
+<li>
+Methods: The existing approaches section sounds like existing approaches set up the problem we are talking about. Instead, make it clear that they just don't solve it. 
+
+<ul>
+<li>
+reproducibility burden? Load? effort needed to reproduce scales with the size and power of results.  
+
+</ul>
+</ul>
+<li>
+Done through the beginning of the results.  
+
+<li class="done4">
+Revise Intro and methods with new ideas. [time:60mins]  #4f495a93
+
+<li class="done4">
+Review Results and intro results, then review. [time:60mins]  #6d43afd5
+
+<li class="done4">
+Revise Results Discussion and intro results. [time:120mins]  #a2c88126
+
+<ul>
+<li>
+Points about wfield are good (revision3_17), but can't be backed up. Save for now. 
+
+<li>
+What we need is a definite scientific problem posed by something like the widefield analysis. 
+
+<ul>
+<li>
+Show sensitivity to preprocessing parameters?  
+
+<li>
+Show sensitivity to OS?
+
+</ul>
+</ul>
+<li class="done4">
+Change figure 1A caption to "Structure of a data analysis", Infrastructure to Infrastructure Stack. [time:15mins]  #7b934fa8
+
+<li class="done4">
+Change figure 7C caption to hours per day. [time:15mins]  #d01104ec
+
+<ul>
+<li>
+Too hard to find original :( 
+
+</ul>
+</ul>
+<li class="done4">
+Make any Figure Edits (2021-03-12 22:00)  #4916f247
+
+<ul>
+<li>
+Change Figure 6 label from Local to IaGS  #e9d5afe7
+
+<li class="done4">
+Move Figure 3, 4, 6 up to methods sections (2.1) [time:10mins]  #7b320940
+
+<ul>
+<li>
+The web service section still needs to be moved, but now the figure is paired with that.  
+
+<li>
+Where should the old figure 3 (IaGS introduced) come in? 
+
+<li>
+We can reference it throughout the methods sections for IAE, Job Manager, Resource Bank.  
+
+</ul>
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

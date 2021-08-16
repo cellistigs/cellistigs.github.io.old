@@ -1,0 +1,434 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="../style.css" />
+    <title>2</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="../index.html">Index</a> |
+    <a href="../diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li class="done4">
+Simplify Figure 4  #ab5d7a47
+
+<ul>
+<li class="done4">
+Simplify this middle panel: Make the left side host the resource bank, so that it's clear youre working locally on AWS resources. then you can expand the blueprint that much more; and the last row of testing becomes more its own thing. [time:30mins]  #071d96cc
+
+<li class="done4">
+Thenk you can make the development arrows go more stright too!  #6756a809
+
+</ul>
+<li class="done4">
+Expand Figure 7, add some labels so each panel is clearer. Big point: move focus to arrows, away from all else. [time:30mins]  #49623a03
+
+<ul>
+<li class="done4">
+Figure 7 was gone. First reproduce the figure you have in the paper. Label each section with the kind of workflow it represents.  #834a673a
+
+<li class="done4">
+Get rid of the in between IAEs- they crowd. Label the different areas ("Blueprint", "Resource Bank")  #8405ee15
+
+<li class="done4">
+In panel C, get rid of the mice.  #93475b99
+
+<li class="done4">
+Make the arrows bigger. Move the focus more to the arrows than to the stacks.  #1a130ddc
+
+<li class="done4">
+Make the brain areas green.  #775c2ea2
+
+</ul>
+<li class="done4">
+Intro is 2x too long.  #06763ca6
+
+<ul>
+<li>
+Remember to work from the compiled text- things read differently from the latex structure. 
+
+<li class="done4">
+Remove the tradeoff text, and introduce that in the methods sections. Rephrase the results intro to attribute the tradeoff to existing platforms.  #29c3895f
+
+<li class="done4">
+Remove the corresponding sections of both big data and deep learning methods sections. There's too much back and forth with problems and solutions here. Try out an organization that puts all the problems together, and then shows how NeuroCAAS solves them in one fell swoop.  #f172f53b
+
+<ul>
+<li>
+Intro outline:  
+
+<ul>
+<li>
+Analyses are becoming better and more complicated. 
+
+<li>
+Better + more complicated are both results of infrastructure. 
+
+<li>
+Infrastructure management is an open problem, but a commonly experienced one. 
+
+<li>
+This is an issue though: no reproducibility, low spread, and trainee burden: IaGS
+
+<li>
+IaC exists as an alternative
+
+<li>
+NeuroCAAS uses IaC to fix these issues
+
+<li>
+IaGS causes two neuro specific issues 
+
+<ul>
+<li>
+Big Data (WFCI)
+
+<li>
+Deep Learning (Markerless Tracking)
+
+</ul>
+</ul>
+<li>
+Proposed:
+
+<ul>
+<li>
+Analyses are becoming better and more complicated. 
+
+<li>
+Better + more complicated are both results of infrastructure. 
+
+<li>
+Infrastructure management is an open problem, but a commonly experienced one. 
+
+<li>
+This is an issue though: no reproducibility, low spread, and trainee burden: IaGS
+
+<ul>
+<li>
+Big Data (WFCI)
+
+<li>
+Deep Learning (Markerless Tracking)
+
+</ul>
+<li>
+IaC exists as an alternative
+
+<li>
+NeuroCAAS uses IaC to fix these issues
+
+<li>
+IaGS causes two neuro specific issues 
+
+<ul>
+<li>
+Big Data (WFCI)
+
+<li>
+Deep Learning (Markerless Tracking)
+
+</ul>
+</ul>
+</ul>
+</ul>
+<li class="done4">
+Methods: Explain the Connection between analysis maturity and accessibility more clearly: earlier dev things are harder to use for a variety of reasons.  #4cb22183
+
+<li class="done4">
+Justify your design choices in the methods by reference: "because most analyses are designed with this in mind, we asked how to standardize this. we created blah blah blah".[time:120mins]  #224a757c
+
+<ul>
+<li>
+Reviewing wfield paper and 3.1: make the exposition distinct.  
+
+<ul>
+<li>
+Couto: 
+
+<ul>
+<li>
+WFCI exposition
+
+<li>
+Four step pipeline, of which data analysis is the last step.
+
+<ul>
+<li>
+Data analysis on NeuroCAAS. 
+
+</ul>
+<li>
+Individual analysis steps: 
+
+<ul>
+<li>
+Motion correction
+
+<li>
+baseline subtraction
+
+<li>
+denoising (300x compression with PMD, 150x compression with SVD)
+
+<li>
+hemodynamic correction
+
+<li>
+LocaNMF
+
+</ul>
+<li>
+GUI in Python and MATLAB : compatible with acquisition. 
+
+<li>
+Because potentially expensive, also present analysis on NeuroCAAS for reproducible + streamlined analysis. 
+
+<li>
+Created a GUI for the NeuroCAAS interface. 
+
+<li>
+NeuroCAAS removes installation and maintenance burden, better than cloud. 
+
+</ul>
+<li>
+3.1: 
+
+<ul>
+<li>
+WFCI exposition. (big data)
+
+<li>
+PMD and LocaNMF 
+
+<li>
+Protocol paper gives brief overview. 
+
+<li>
+links together all of steps (make more explicit)
+
+<li>
+comressing dataset by factor of 300, time dependent traces
+
+<li>
+Developed custom GUI: 
+
+<li>
+Put motion correction, denoising, hemodynamic correction on 64 core instance, LocaNMf on GPU. 
+
+<li>
+Immediately reproducible, bridges tradeoff between scale and accessibility. 
+
+<li>
+wfield methods are in a protocol. 
+
+<li>
+Zooming out: 
+
+<ul>
+<li>
+Not like CaImAn, SpikeInterface: standardization trails innovation signficantly. NeuroCAAS can shorten this timeline.   
+
+</ul>
+</ul>
+<li class="done4">
+New 3.1: [time:40mins]  #776d0475
+
+<ul>
+<li>
+WFCI exposition. (big data)
+
+<li>
+PMD and LocaNMF 
+
+<li>
+Protocol paper gives brief overview. 
+
+<ul>
+<li class="done4">
+What distinguishes these two? Couto et al. told you what each step does briefly, that it's on NeuroCAAS, that it makes the user's life easier, and that there is a GUI. "Here we focus on the infrastructure innovations that enabled the pipeline described in Couto et al. 2020."  #71aa3ef1
+
+</ul>
+<li>
+links together all of steps (make more explicit)
+
+<li>
+comressing dataset by factor of 300, time dependent traces
+
+<li>
+Developed custom GUI: 
+
+<li>
+Put motion correction, denoising, hemodynamic correction on 64 core instance, LocaNMf on GPU. 
+
+<li>
+Immediately reproducible, bridges tradeoff between scale and accessibility. 
+
+<li>
+wfield methods are in a protocol. 
+
+<li>
+Zooming out: 
+
+<ul>
+<li class="done4">
+Focus on how this looks like a local platform (interactive steps), but is different:  #e54a4b23
+
+<ul>
+<li>
+Reproducibility across whatever machine you're using  
+
+<li>
+scalability
+
+<li>
+this is the difference compared to local platforms. 
+
+</ul>
+<li>
+Not like CaImAn, SpikeInterface: standardization trails innovation signficantly. NeuroCAAS can shorten this timeline.   
+
+</ul>
+<li class="done4">
+devs who want to include some preprocessing step can do so easily.  #f3c2e1a7
+
+</ul>
+</ul>
+</ul>
+<li class="done4">
+What can people take away from each section? [time:40mins]  #40446d42
+
+<ul>
+<li>
+Intro: A stricter sense of the point of this work, evolving from the problem to the solution (NeuroCAAS)
+
+<ul>
+<li>
+These challenges are emphasized in areas of neuroscience with a strong dependence on quickly evolving, cutting edge technology. As a prime example, data analyses that function on big datasets have normalized multistep, compute heavy preprocessing pipelines. In these big data contexts, ... Similar challenges are echoed in data analyses that incorporate deep learning models. Such analyses have performance that is sensitive to available custom infrastructure, that crucially is not generally available. with users often opting...      
+
+</ul>
+<li>
+Methods:
+
+<ul>
+<li>
+How do you use/develop NeuroCAAS? 
+
+<li>
+Existing approaches + shortcomings: how these fit into the IaGS framework.  
+
+<li>
+NeuroCAAS design: how do we make each of these components concisely summarizable in code? 
+
+</ul>
+<li>
+Results:
+
+<ul>
+<li>
+Widefield: accessibility of a local platform, with scale. 
+
+<li>
+Ensembling: scale of a remote platform, with accessibility. [work on this] 
+
+<li>
+This works for any analysis. 
+
+</ul>
+</ul>
+<li class="done4">
+Sec 2.3 is vague- drop. Put this into the connection between ensembling and epi, or between psvae and wfield.  #63af75df
+
+<ul>
+<li class="done4">
+check in on psvae work.  #9554872a
+
+<li class="done4">
+2.3 deleted. add psvae to wfield, epi to ensembling.  #7ed03784
+
+</ul>
+<li class="done4">
+Do some more wordsmithing about the protocol paper: "in the protocol paper couto et al. we provide a brief overview of this new tool; here we discuss this pipeline in more detail with broader context."  #1e99ff13
+
+<li class="done4">
+Scale back on horn tooting ("unparalleled scale, unprecedented flexibility, etc. ")  #ceb02c9d
+
+<li class="done4">
+de-alias discussion with section 2.1  #17590797
+
+<ul>
+<li>
+2.1 
+
+<ul>
+<li>
+Infrastructure has many codependent parts. Existing components package together analyses in some subfield with shared infrastructure.  
+
+<li>
+Local: cellprofiler, ilastik, icy, imagej, BIDS apps, bioconductor. accessible, but no scale. 
+
+<li>
+Remote: NSG, flywheel, compute clusters. Scale, but no accessiblity. 
+
+<li>
+Reproducibility: sacred, reprozip, neurodebian. Non-trivial increase of effort. 
+
+</ul>
+<li>
+Discussion:
+
+<ul>
+<li>
+NeuroCAAS = neural data analysis + IaC. New analyses, as well as time and cost.  
+
+<li>
+NeuroCAAS is a service. 
+
+<ul>
+<li>
+Frees users and developers from dealing with infrastructure. 
+
+<li>
+Does not do workflow management 
+
+<li>
+Does not do input detection. 
+
+<li>
+Is not unstructured access. 
+
+</ul>
+<li>
+Comparison with alternatives: now you know what neurocaas is. It might be okay to consolidate these into comparison as  three points:   
+
+<ul>
+<li>
+Local platforms 
+
+<li>
+Large scale computing
+
+<li>
+Remote platforms 
+
+</ul>
+<li class="done4">
+The individual comparisons are informative, but they should come in the intro. you can move them there if you like.  #7c865d82
+
+<ul>
+<li>
+A key contribution made by \ncap is to unify the benefits of existing local and remote platforms- that is to say, offering analyses accessibly, at scale. In contrast to local platforms that are installed on a researcher's hardwware... Conversely, in comparing \ncap to remote platforms, it is distinguied by its open, fully IaC approach. To compare directly with a few exemplars, NSG ...  
+
+</ul>
+</ul>
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

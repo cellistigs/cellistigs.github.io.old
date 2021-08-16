@@ -1,0 +1,135 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Captions could use another pass, check the materials + supplements for this</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+Source repo, contrib repo, interface repo
+
+<li>
+Both Mats + Methods and Supplementary Materials are very redundant. Go paragraph by paragraph here: 
+
+<li>
+5. Materials and methods. 
+
+<ul>
+<li>
+5.1 NeuroCAAS architecture specifics.
+
+<ul>
+<li>
+1. All of neurocaas is actually managed via iac. This is called a code schematic; code schematics contain protocols and are lambda.. 
+
+<li>
+2. Another part of the code schematic is a user profile (we don't introduce the term user profile); security info. website automates fill in. other code schematic parts are available at repo. 
+
+<li>
+3. Deployment: NeuroCAAS contains tools to deploy itself. There is total coverage of the NeuroCAAS platform from code schematic (redundant with para 1.) <span id="-replace paragraph 1 with this"></span><strong id="replace paragraph 1 with this">replace paragraph 1 with this</strong>
+
+<li>
+4. What's not managed via iac? website. If people want to deploy their own interface, they can do so. All they have to worry about is data storage. 
+
+<li>
+5. The website will give them creds if they want; groups for users works too; wfield does this, iac deployment of <span id="-user profiles"></span><strong id="user profiles">user profiles</strong> (definition here) , created with IaM.  
+
+<li>
+5.1.1: Deploying analyses from blueprints.
+
+<ul>
+<li>
+1. blueprints are custom built JSON objects; we describe neurocaas component functions; blueprints list users; example in supplement. 
+
+<li>
+2. Deployment of a blueprints only creates a persistent job manager, not anything else. Then iaes and infrastructrues are user triggered. Job managers could pre-schedule in the future. Job managers can do multiple, <span id="-weak coupling to word protocol"></span><strong id="weak coupling to word protocol">weak coupling to word protocol</strong>
+
+<li>
+3. IAE and resource bank: IAE is a vm; etc; . 
+
+<ul>
+<li>
+4. Resource bank is an instance; instance type details. 
+
+</ul>
+<li>
+5. Blueprint is a line of code: changes are auto logged to version control, job id- we don't mention contrib package. 
+
+<li>
+6. Collected blueprints in a version controlled repo (source repo)
+
+</ul>
+</ul>
+</ul>
+<li>
+6. Supplementary Methods
+
+<li>
+Reorganized 5: 
+
+<ul>
+<li>
+5.1 NeuroCAAS architecture specifics:
+
+<ul>
+<li>
+1. Most of neurocaas is actually managed via iac, in a single source repo. In the Platform section, we gave an overview of the constituent parts of a single analysis. We go a little more in depth here, and discuss two aspects that can be described in further depth: 1. Protocols, and 2. User profiles (current point 5.). 
+
+<li>
+The parts that arent are the website (and other interfaces) and the contribution package. These interact with the source repository, and help users fill in user profiles/analysis blueprints respectively.  
+
+<li>
+<span id="-All the stuff about deployment should go in the next section."></span><strong id="All the stuff about deployment should go in the next section.">All the stuff about deployment should go in the next section.</strong>
+
+<li>
+From 5.1.1; blueprint version control and change logging should go in the first section (5.1.1, section 5 + 6 )
+
+<li>
+5.1.1: 
+
+<ul>
+<li>
+5.1, point 3; point 5 (user profile deployment). 
+
+<li>
+5.1.1: user profile deployment creates storage; that's all that other interfaces have to worry about (5.1 point 4)
+
+<li>
+Contrib tools also help deploy stuff independently of job manager protocols. 
+
+</ul>
+</ul>
+</ul>
+<li>
+Reorganized 5.1 looks nice to me. I don't think it merits a separate 5.1.1 for deployment: fold whatever you want to say about deployment into 5.1  
+
+<ul>
+<li class="done4">
+What do you want to say about deployment anyway? Evaluate points below and determine what you want to incorporate  #15b0b8b2
+
+<ul>
+<li class="done4">
+Versioning with the neurocaas-contrib tool ("Finally, since each blueprint is ...")  #8a097109
+
+<li>
+The fact that stacks are transient but job managers are forever.  #1d11d2ba
+
+<li class="done4">
+IaC deployment of user profiles gives IAM resources.  #c866f855
+
+</ul>
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

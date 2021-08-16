@@ -1,0 +1,132 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>AUM</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li class="done4">
+misclassification Geoff  #7186318d
+
+<ul>
+<li>
+Very cool paper with code package available. Identifying potentially mislabeled data will be a big step.  
+
+<li>
+Some applications to your work directly: 
+
+<ul>
+<li>
+Take a patch around each animal's id center, and do three class classification as dam, virgin, or other 
+
+<li>
+Take a patch around each part of each animal, and do 2*p+1 class classification as parts or other. 
+
+<li class="done4">
+Look at AUM package  #38652978
+
+<ul>
+<li>
+looks very easy to use 
+
+</ul>
+<li class="done4">
+Train a simple classifier and try this in pytorch!  #42a9414b
+
+<li class="done0">
+Nominally works. Try with a larger network + pretraining.  #5aba1462
+
+</ul>
+</ul>
+</ul>
+ 
+<ul>
+<li>
+Meeting Notes: Geoff and Matt 
+
+<ul>
+<li>
+Accentuate stochasticity: small batch, high learning rate is better. 
+
+<li>
+Image classification is best forum. 
+
+<li>
+Failure case: textual data classification: subjective labels, multi-label, where it's not necessarily clear how to apply.  
+
+<li>
+Threshold samples are not what Geoff is happiest with 
+
+<ul>
+<li>
+XValidation instead? It's more expensive, but nice. 
+
+</ul>
+<li>
+Robust to choice of base metric (i.e. margin)  
+
+<ul>
+<li>
+RMSE loss might be fine to use instead! 
+
+<li>
+the key is Averaging 
+
+<li>
+20 is okay, 50 is better (for averaging )
+
+</ul>
+<li>
+Curriculum learning: 
+
+<ul>
+<li>
+What neural networks memorize and why 
+
+<li>
+<a href="https://arxiv.org/abs/2008.03703">https://arxiv.org/abs/2008.03703</a>
+
+<ul>
+<li>
+Is there a relationship between influence functions and AUM ranking? 
+
+</ul>
+<li>
+When bad networks get memorized right away, it's hard to come back. 
+
+<li>
+Research question: how much do early bad examples influence your training?  
+
+</ul>
+<li>
+An experiment: how do you apply classification models to pose estimation? 
+
+<ul>
+<li>
+create a 9x9 grid out of mnist 
+
+<li>
+The task is to locate each digit at every point in time.  
+
+<li>
+how does aum ranking on mnist relate? 
+
+<li>
+What is this experiment for? hard to say right now.
+
+</ul>
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

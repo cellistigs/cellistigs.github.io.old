@@ -1,0 +1,976 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>CTN Lab Meeting</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="CTN Lab Meeting"><h1 id="CTN Lab Meeting" class="header"><a href="#CTN Lab Meeting">CTN Lab Meeting</a></h1></div>
+<p>
+You will give a 40 minute talk on Monday, 3/29. 
+It will be about the most recent work that you have done on NeuroCAAS. 
+</p>
+
+<div id="CTN Lab Meeting-Slide Prep || project:CTNLabMeeting"><h2 id="Slide Prep || project:CTNLabMeeting" class="header"><a href="#CTN Lab Meeting-Slide Prep || project:CTNLabMeeting">Slide Prep || project:CTNLabMeeting</a></h2></div>
+<ul>
+<li class="done4">
+Look at your old slides from last CTN lab meeting. Figure out how much to copy paste over. [time:45mins] (2021-03-14)  #7ed76009
+
+<ul>
+<li>
+Neurotheory Lab Meeting keynote presentation in Icloud.   
+
+<ul>
+<li>
+Introduced Infrastructure As Bottleneck, grad student. 
+
+<li>
+Here is the solution. What problem does \ncap solve? 
+
+<li>
+Demo
+
+<li>
+Performance (figure 4)
+
+<li>
+Pros and Cons (high level philosophical discussion)
+
+<li>
+Developers (pretty simple). 
+
+</ul>
+<li>
+Conclusion: it's pretty bare bones. You can really hammer home the science points this time, I don't think there's too much overlap.
+
+<li>
+Focus this time on showing how your tool is not the same as other tools that are available in this field. 
+
+</ul>
+<li class="done4">
+Concretize Reproducibility arguments in paper. (crossref)  #ea41b4e6
+
+<li class="done4">
+Take a good look through the wfield, loca and pmd papers to make sure you have a baseline idea of what's going on.  #4d8779ae
+
+<ul>
+<li class="done4">
+wfield  #4fbe695a
+
+<li class="done4">
+loca  #7e4409a3
+
+<ul>
+<li>
+Local semiNon-negative matrix factorization.  
+
+</ul>
+<li class="done4">
+pmd  #b3a4f372
+
+<ul>
+<li>
+Trend filtering, denoising, superpixels, localnmf, demixing. Improves upon initialization sensitivity.  
+
+</ul>
+</ul>
+<li class="done4">
+Draft slides (2021-03-17) [time:30mins] (2021-03-17)  #00901011
+
+<ul>
+<li>
+Basic plan: 
+
+<ul>
+<li>
+Discuss how IaGS causes issues for scientists. 
+
+<ul>
+<li>
+Discuss two pits in your stomach:  
+
+<ul>
+<li>
+Pit 1: wanting to create a new algorithm for xxx, and realizing that there is so much to compare to. 
+
+<li>
+Pit 2: seeing a new google paper about autoML, feeling like you could never compete. 
+
+</ul>
+<li>
+This corresponds to a <em>big data</em> pit, and a <em>deep learning</em> pit. Both of these are infrastructure restrictions. 
+
+</ul>
+<li>
+Show how NeuroCAAS and taking infrastructure seriously can help science.  
+
+<li>
+If you have time at end, show how we are increasing usability. 
+
+</ul>
+<li class="done4">
+Make sure to include your usage data.  #fff50b1a
+
+</ul>
+<li class="done4">
+Identify missing images, resources text in your slides at this point. Add to Content Work as necessary.  #99c28968
+
+<ul>
+<li class="done4">
+Number slides  #f4809868
+
+<li class="done4">
+Slide 2: Illustrator: Show user filling in different parts (take from your previous Slide 3).  #04533817
+
+<li class="done4">
+Slide 3: Big Data + Deep Learning issues: get headliners from articles that reflect your point. [time:20mins]  #86b06926
+
+<li class="done4">
+Slide 4: Illustrator: break out into sub assets with just local, just remote, and analysis algos separately. [time:15mins]  #ca78f5bc
+
+<li class="done4">
+Slide 5: Illustrator: separate parts of the analysis that get revealed sequentially.  #1ba95d66
+
+<li class="done4">
+Slide 8: CaImAn + SpikeInterface graphics  #166229a5
+
+<li class="done4">
+Slide 9: Illustrator:  WFCI specific resources: Show the real images that get put into the blueprints that you see.  #1696f609
+
+<li class="done4">
+Slide 11: Miscalibration figure from other papers.  #9375ebaf
+
+<li class="done4">
+Slide 12: Ensembling figure from other papers.  #10d6461f
+
+<li>
+Slide 13: Make an illustration of how this would be done via IaGS  #3a769112
+
+<li class="done4">
+Slide 22: marker aggregation schematic [time:40mins]  #e946621d
+
+<li>
+Expand FigureWorkflow to compare to analogous IaGS approaches for the slides. [time:60mins]  #97ebb46b
+
+<ul>
+<li>
+Sketch out the IaGS workflow here.  
+
+<ul>
+<li>
+Draw on the Developer figure you made.  
+
+<li>
+Asset 1: infrastructure stack with items slowly filling in. 
+
+<li>
+Asset 2: Blue background where this happens for local, with some remote blocks missing. 
+
+<li>
+Asset 3: Orange background where this happens for remote platform with some local blocks missing.
+
+<li>
+Issue <span class="todo">FIXED</span>: it's not clear how NSG and Flywheel work with the picture you've put up. Do they have the software part of the pyramid? yes or no? Your assets don't reflect this well. The missing bit is the core analysis itself: those steps necessary to actually get the damn thing to work! 
+
+<li>
+
+
+</ul>
+</ul>
+<li>
+get some wfield data in here. Run Joao's pipeline! or look at his figure 6.   #68c72a41
+
+<ul>
+<li>
+I downloaded the example wfield dataset. We can try running on this tomorrow.   
+
+<li>
+If it does run, you can start digging into things like, what happens if you run the three local steps first. 
+
+<li>
+At the very least you can get some nice images. 
+
+</ul>
+</ul>
+<li class="done4">
+Solidify background for wfield and markerless. [time:30mins]  #37a01c4b
+
+<ul>
+<li>
+the background for wfield is kind of unrelated. 
+
+<li>
+the background for ensembling doesn't connect as well. Check for other arguments why ensembling is good in terms of loss. Go to dependence on initialization instead of miscalibration.  
+
+</ul>
+<li class="done4">
+Review slides for text + flow [time:40mins]  #6491c95d
+
+<ul>
+<li>
+Getting pretty good in the intro. Content sections still need review.  
+
+</ul>
+<li>
+<em>TO HERE FOR PRACTICE TALK 1</em> 
+
+<li class="done4">
+Clear the slides with Kelly, Ian, Joao, Shreya (2021-03-19)  #be856cf4
+
+<ul>
+<li class="done4">
+Schedule meeting with Ian and Amol. Talk about SVD, Slides, in addition to what they want to discuss etc.  #191fc222
+
+<li class="done4">
+Send paper to Liam on Wed so we can clear authorship for Joao, Kelly.  #e9a0c74f
+
+<li class="done4">
+Schedule meeting with Joao to disucss authorship. (waiting for his reply.)  #f18ea886
+
+</ul>
+<li class="done4">
+Send Elom Abstract + Title (2021-03-25 14:00)  #c4180727
+
+</ul>
+<div id="CTN Lab Meeting-Content Work || project:CTNLabMeeting"><h2 id="Content Work || project:CTNLabMeeting" class="header"><a href="#CTN Lab Meeting-Content Work || project:CTNLabMeeting">Content Work || project:CTNLabMeeting</a></h2></div>
+<ul>
+<li class="done4">
+Draft a figure slide for widefield, and clear with Joao.  #2302bcde
+
+<li>
+Try to minimize this to work you're already going to do anyway. 
+
+<li>
+Try to make a CaImAn type figure for machine vs. performance? 
+
+<li class="done4">
+Ensemble with Erica's data.  #d759aafa
+
+<ul>
+<li class="done4">
+Launch a 10 percent ensemble and see if this trains. [time:30mins]  #4a7be245
+
+<ul>
+<li>
+Need a better way to check on jobs. this should be possible with the command line tool. (check lambda logs, check active instances..., check job logs once running...) 
+
+<li>
+Changed the job to account for 20 frames, by setting 10 percent split to 2. This should be a prereq for all of your job submissions (or even automate this with a script.)
+
+<li>
+This is now running, looks to be going well. should be done in 4 hours (8 pm). Key things to check for: 
+
+<ul>
+<li>
+Is the runtime significantly different with a longer video?  
+
+<li>
+You didn't change the testing flag. 
+
+<li>
+Make sure to check the contents thoroughly. 
+
+<li>
+Issue: DGP fails with an unknown error. Open DATASET_NAME_raw_data.zip_STATUS(4).json for details. 
+
+<li>
+Lesson: we need better ways of monitoring. Even having a big "success" somewhere would be good, likewise being reminded of what input to expect. 
+
+</ul>
+</ul>
+<li class="done4">
+Debug the ensemble. see if the error exists in your test ensemble. [time:45mins]  #bcebb9da
+
+<ul>
+<li>
+With the test version, at 20 frames, there are no issues. See if this is an issue with having only 2 frames. Could it be the DGP batch size?  
+
+<li>
+Indicated DGP batch size is 10. This is more than the smallest split we tested before, but it's possible 2 is too small. 
+
+<li>
+Try with 4. If good, go to splits of 20,40,60,80,100% instead.  
+
+<li class="done4">
+4 frames works. let's change, then report to Kelly.  #e98566bd
+
+<li class="done4">
+Reported to Kelly.  #653c1d70
+
+</ul>
+<li class="done4">
+Launch a new 20 percent ensemble. [time:10mins]  #a5ff90a4
+
+<li class="done4">
+Extend to other splits. MAKE SURE TO CHANGE DATA SPLITS AND SEEDS BEFORE SUBMITTING. (2021-03-13 22:00)  #1b960387
+
+<ul>
+<li>
+Pre-creating data files for these other splits. X   
+
+</ul>
+<li class="done4">
+Get ground truth in same format. [time:30mins]  #b35db0e2
+
+<ul>
+<li>
+Getting ground truth. Putting it in a folder. Need Kelly's confirmation about the right labels to ignore. X   
+
+<ul>
+<li>
+order is: rightear, nose, leftear, tail 1-7 
+
+</ul>
+<li>
+Done and checked against video,. 
+
+</ul>
+<li class="done4">
+Write code to apply ground truth from pretrained networks.  #3e4382de
+
+<ul>
+<li>
+This part should be trivial- you already have this code. 
+
+<li>
+Consult Kelly code first. 
+
+</ul>
+<li class="done4">
+Hope that the seeds you chose are conducive to good comparisons.  #ed607345
+
+<li>
+<em>TO HERE FOR PRACTICE TALK 1</em> 
+
+<li class="done0">
+Calculate Entropy/ECE  #9ffe032a
+
+</ul>
+<li class="done4">
+Make ensembling available generally.  #ad5ffc6f
+
+<ul>
+<li>
+What is the current workflow?  
+
+<ul>
+<li>
+Users deposit a zipped directory. Config indicates ensemble params.  
+
+</ul>
+<li>
+What is the envisioned workflow here?  
+
+<ul>
+<li>
+Users deposit 1) a zipped folder of videos, 2) a training folder in the inputs area. Users deposit 3) a config file in the config directory that specifies the relevant materials.  
+
+<li>
+It's important that data be zipped because the parallelization could be weird- Submission_ensemble assumes a single dataset. 
+
+</ul>
+<li>
+Users input a video and a folder. 
+
+</ul>
+<li class="done4">
+Prep CLI with Joao  #98585e60
+
+<ul>
+<li class="done4">
+Source code API  #a74ad7b5
+
+<ul>
+<li class="done4">
+Send joao the config file used in this stack.  #38d08d99
+
+<li class="done4">
+Take your log function classes and add them to jobtools.py in the neurocaas_interface module. Make these capable of parsing the certificate and dataset_status files. [time:30mins] (2021-03-20)  #4cb782bf
+
+<li>
+You have basic parsing now, but this assumes you want to write. 
+
+<li>
+In particular, get out the instance ids and assign them to the file!! 
+
+<li>
+The bulk of this Joao has taken care of :thank you: 
+
+<li>
+Monitor how many jobs you have running
+
+<li>
+Monitor jobs you have running  #c765920b
+
+</ul>
+<li class="done4">
+AWS Profile  #3270aacd
+
+<ul>
+<li>
+Apparently this is done? Check 
+
+<li>
+Did a static check. Writes to a diffferent file now.  
+
+</ul>
+<li class="done4">
+Joao Specific fixes  #8d5483a7
+
+</ul>
+</ul>
+<div id="CTN Lab Meeting-Practice Talks"><h2 id="Practice Talks" class="header"><a href="#CTN Lab Meeting-Practice Talks">Practice Talks</a></h2></div>
+<ul>
+<li class="done4">
+Practice Talk 1: Just get through it (2021-03-22)  #da75b9cd
+
+<li class="done4">
+Post-practice talk material overview. [time:60mins]  #b2f33f1a
+
+<ul>
+<li>
+Title and abstract  
+
+<ul>
+<li>
+Title: Enabling New Scientific Methods with NeuroCAAS 
+
+<li>
+Abstract: A major goal of computational neuroscience is to develop powerful, general purpose data analyses that scale to large datasets. Unfortunately, a major obstacle impedes current progress: novel data analyses have a hidden dependence upon complex computing infrastructure, acting as an unaddressed deterrent to potential analysis users and damaging analysis reproducibility. Recently, we developed Neuroscience Cloud Analysis As a Service (NeuroCAAS): a fully-automated infrastructure platform based on modern large-scale computing advances. NeuroCAAS makes state-of-the-art data analysis tools automatically reproducible and immediately accessible to the neuroscience community. In this talk, I will present the state of the NeuroCAAS project with a focus on two novel data analyses that we have developed specifically for the platform. First, I will discuss a fully automated analysis pipeline for widefield imaging data, linking together cutting edge analysis components on separately optimized computing architecture. Second, I will present an ensemble markerless tracking approach, aggregating the outputs of independently trained models to improve the reliability of tracking results. Together, these analyses demonstrate how analysis infrastructure can be optimized to do reproducible science at scale.   
+
+</ul>
+<li>
+Important points:  
+
+<ul>
+<li>
+Overall flow
+
+<li>
+Clarity of message
+
+<li>
+Are you doing too much/too little. Despite all your subective feeling, you will try to do too much. 
+
+</ul>
+</ul>
+<li class="done4">
+Practice Talk 2: Strengthening weak points (2021-03-26)  #7de52156
+
+<ul>
+<li class="done4">
+Standardized title font : 80  #184b4153
+
+<li class="done4">
+Standardized text font : 40  #eb8abd14
+
+<li class="done4">
+Make new assets [time:30mins]  #cdbf73c0
+
+<li class="done4">
+Read pmd and loca papers to see if parameter search is a good idea + to discuss more intelligently.  #a3a01065
+
+<ul>
+<li>
+It seems like changing these parameters could be interesting, and even if its not that would be a good thing to know, scientifically.  
+
+<li>
+This would also support our point about doing analyses reproducibly while still allowing flexibility. 
+
+</ul>
+<li class="done4">
+Put assets in [time:60mins]  #7e8eb8eb
+
+<li class="done4">
+Change headers, remove text to the presenter notes, and make things simple as possible. [time:100mins]  #2c11aeff
+
+<ul>
+<li>
+Get article headers X
+
+<li>
+Get gui video + wfield X 
+
+<ul>
+<li>
+1. put into its own folder
+
+<li>
+2. 
+
+</ul>
+<li>
+Put outlines or not in neurocaas use chart. 
+
+<li>
+Talk about parameter search! X  
+
+</ul>
+<li>
+Michelle's comments: 
+
+<ul>
+<li>
+Add in the Botvinik-Netzer paper X 
+
+<li>
+Take out scale/access tradeoff in the opening, X
+
+<li>
+and make it more quantitative. 
+
+<li>
+More on: the stuff implemented, the preprints using, collaborators, hours used 
+
+<li>
+Uniformity in the text and title size- if too small X
+
+<ul>
+<li>
+choose a default text size and title size.  
+
+<li>
+Think about time taken to process things 
+
+<ul>
+<li>
+include usage figure about paralleization at end of neurocaas section.  
+
+<li>
+Lines or no lines- standardize layout 
+
+<li>
+Make things more concrete 
+
+</ul>
+</ul>
+<li>
+Biggest thing: info is too dense. 
+
+<ul>
+<li>
+Make different slides for different points, and reduce text  
+
+<li>
+e.g. 3 points on slide 10, blow up the picture. 
+
+<li>
+Make the whole thing more incremental.
+
+<li>
+Give informative titles and try not to repeat- it fades away.  
+
+<li>
+Some pyramids are small 
+
+<li>
+Give journals for your contributions X
+
+<li>
+By making the novel analysis slides independent, highlight people's contributions 
+
+</ul>
+<li>
+Slide by slide: 
+
+<ul>
+<li>
+Overall: things are explained well, but introduction starts with this is what I did to solve this problem, then present the problem. X 
+
+<li>
+Save the outline for later, or make outline reflect the structure. X
+
+<li>
+Slide 3: the stack is very busy. Go one by one for each part of the stack. Remove bullets even. 
+
+<ul>
+<li>
+Infrastructure stack is a key term- point out the key terms.  
+
+<li>
+Step 0 is confusing. 
+
+<li>
+Ditch shading, go for full removal and come in. 
+
+<li>
+Talk about core analysis more for context: for calcium, ephys, behavior, be explicit. 
+
+</ul>
+<li>
+Slide 4: talk about the fact that everyone just talks about it.  
+
+<ul>
+<li>
+Where did these come from? Are they papers.  
+
+</ul>
+<li>
+Slide 5: blow up, focus on one point or another, and show a protein with miller 2006
+
+<ul>
+<li>
+Find an appropriate indicator for the state of the field, complexity wise.  
+
+<li>
+Get rid of as much text as possible.  
+
+</ul>
+<li>
+Slide 6: get rid access vs. scale?  X
+
+<li>
+Slide 7: Figure 1 is busy, doesn't add as much- maybe point back to your infrastructure. Radiuk should go to its own slide.    
+
+<li>
+Slide 8: different gpus getting allocated. 
+
+<li>
+Slide 10: can be broken down into different slides (one per platform?).  
+
+<ul>
+<li>
+This graph needs to be explained in terms of the axes.  
+
+<li>
+Make two slides- one per platform type  
+
+<li>
+Scale and accessibility come in here
+
+<li>
+The platform schematics are too small, and just remove blocks. 
+
+</ul>
+<li>
+Slide 11: Descriptive title 
+
+<ul>
+<li>
+Blueprint is a good word  
+
+<li>
+Be straightforward about neurocaas: "we created a platform that will let us run analysis consistently at scale "
+
+<li>
+Separate the user and the developer 
+
+<li>
+Link to website 
+
+<li>
+Link to paper 
+
+</ul>
+<li>
+Slide 12: Yes but title, make it visual: the stack is constraining the analysis, but it could be optimizing it (arrows)  
+
+<ul>
+<li>
+Preprint   
+
+</ul>
+<li>
+Slide 14: Figure out how to talk about "express a calcium indicator in neurons" 
+
+<ul>
+<li>
+Title: widefield calcium imaging requires multi step... something informative  
+
+<li>
+Didn't talk about Joao's slide  
+
+<li>
+Video of widefield data would be nice. 
+
+</ul>
+<li>
+Slide 15: Busy, maybe unnecessary. it can probably go somewhere else, or get rid of. Hidden slideat some point as ref project.  
+
+<li>
+Slide 16: cool 
+
+<ul>
+<li>
+title: combination of two widefield analyses  
+
+<li>
+improve explanation: widefield data has to go there.    
+
+<li>
+Make a slide for each.  
+
+<li>
+Save blueprints and get rid of  
+
+<li>
+Make the regions green 
+
+</ul>
+<li>
+Slide 17:  
+
+<ul>
+<li>
+you get your results as one big pipeline, remove text.  
+
+<li>
+End-to-end is maybe a weird term. 
+
+<li>
+SHOW GUI 
+
+</ul>
+<li>
+Slide 18: this is alot, break down. 
+
+<li>
+Slide 20: Markerless tracking is this: start with an analogous big picture as you do with widefield. Break down the video and background: make visual instead of word based. Insert new slide for the problem.   
+
+<li>
+Slide 21: busy, make into two different slides. Explain aggregation in more detail. If you show a figure, zoom in with the text description. 
+
+<li>
+Slide 22: get rid of script, novel analysis. Dive into the each figure. 
+
+<li>
+Slide 23: could be slide 22- split into two, with B a separate figure. This lets you emphasize how you can do quantifications like this with neurocaas only. Slow down the description of each . 
+
+<li>
+Slide 24: lots going on. All the new applications are super specific, not relevant to neuroscience. TAKEAWAY SLIDES SHOULD BE:  Now we can solve existing neuroscience problems with neurocaas tools.   
+
+<li>
+Have a conclusion 
+
+</ul>
+</ul>
+<li>
+Important points: 
+
+<ul>
+<li>
+Do you have confidence, are all the pieces in place more or less?
+
+<li>
+Slides are sendable to collaborators just to be sure. 
+
+</ul>
+</ul>
+<li class="done4">
+Practice Talk 3: Just making sure (2021-03-28)  #c101a9c8
+
+<ul>
+<li>
+Post hoc  
+
+<ul>
+<li>
+Review text and shorten.  
+
+<li>
+Go through and think about what you want to do.
+
+<li>
+Text at 33 should be one at a time. 
+
+<li>
+periods/no periods: go for no period.  
+
+</ul>
+<li>
+Overall:
+
+<ul>
+<li>
+Make the point in intro: right now, infra detracts from performance. What if it could improve it? Less boring.  
+
+<li>
+More on the fact that you can't really do this anywhere else. 
+
+<li>
+more on usage for someone who is interested. What does it look like, what could it look like?  
+
+<li>
+less on WFCI. Just point them to the paper. 
+
+<li>
+More on Ensembling. Go deeper here on what it offers, and how to use it. 
+
+<li>
+Todo (making assets):
+
+<ul>
+<li>
+Make markerless tracking production ready.  
+
+<li>
+Make video of the python tool: lead in with: you might notice that this is just a function.  
+
+<li>
+Include other videos on markerless tracking
+
+<ul>
+<li>
+Video of the ensemble tracked pose. X  
+
+<ul>
+<li>
+Draft. X  
+
+</ul>
+<li>
+Video of the consensus being generated. 
+
+<li>
+Closer look into rmse?
+
+<ul>
+<li>
+We can make a case for there being points where each of them fail . 
+
+<li>
+This is a good case. Just figure out the best way to depict this.  
+
+<ul>
+<li>
+We have graphs for all of them now- they look quite good. 
+
+</ul>
+<li>
+Try doing pca on the error patterns. What is the dominant failure mode here?  
+
+<ul>
+<li>
+You have a data matrix of size 9 * 8000 or 45 * 8000 
+
+<li>
+you would want PCs to capture the dimensions of greatest variance in the model space  
+
+<ul>
+<li>
+This seems to indeed capture something interesting about the error pattern. 
+
+</ul>
+<li>
+you would want to also examine the reconstructions. 
+
+</ul>
+<li>
+Get out the PCA, PC1 reconstruction, and Variance ratios. X 
+
+<ul>
+<li>
+Later, try this with diff seeds too. 
+
+</ul>
+<li>
+Make the partwise errors into a movie. X 
+
+</ul>
+</ul>
+<li>
+Include Joao Paper ref. X   
+
+</ul>
+</ul>
+<li>
+Peter:
+
+<ul>
+<li>
+Go shorter? WFCI and Markerless is a lot. Maybe go to just markerless.     
+
+<ul>
+<li>
+For a user, it's interesting to know how flexible the outputs are. "This is how easy it is."
+
+<li>
+Some bits of low level would be useful to know. What is the low level stuff you're proposing as a replacement.  
+
+<ul>
+<li>
+Some programmatic usages would be super cool to know.  
+
+</ul>
+<li>
+The beginning could be shorter, but not that much shorter. 
+
+</ul>
+<li>
+Reproducibility hasn't stopped people- emphasize that you can't do this stuff by yourself <em>in intro</em>. This is stuff that you are developing that you can't do currently and the future.  
+
+<li>
+More videos would be useful. 
+
+<li>
+There's a paper for the protocol; spend less time on the wfci tracking. 
+
+</ul>
+<li>
+Dan:
+
+<ul>
+<li>
+Minor comments: The intro can be cut shorter- get into neurocaas earlier.  
+
+<li>
+The outline slides (15) can be visual, not just words. Show a picture of calcium imaging or tracking to help with engagements. 
+
+<li>
+The deep nets point (9) was effect to hardware, not hardware to effect.   
+
+<li>
+Drop the big data text. It's too unquantitative 
+
+<li>
+The table is not great on (10)
+
+<li>
+The slides 12-14 are still not clear on the x and y axis. The axes themselves can be slower. 
+
+<li>
+Zoom in on two methods and and emphasize in particular, likewise the platforms. 
+
+<li>
+Give more handholding on the scatterplot
+
+<ul>
+<li>
+Drop the scatter plot?  
+
+<li>
+The relevant value of the scatter plot is small
+
+</ul>
+<li>
+Start with the blueprint as the main part of your talk- how does it differ from docker, how does it differ from existing solutions.   
+
+<ul>
+<li>
+This is peter's point about the applications: about how to use things.   
+
+</ul>
+<li>
+The intros to both wfield and markerless tracking can be shorter. 
+
+<li>
+Maybe focus more on ensembling
+
+</ul>
+<li>
+Just for confidence.  
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

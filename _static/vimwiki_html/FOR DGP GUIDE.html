@@ -1,0 +1,92 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>FOR DGP GUIDE</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+IMPORTANT: if model is trained, will not be retrained. just runs prediction. 
+
+<li>
+IMPORTANT: takes the first TrainingFraction argument. 
+
+<li>
+MPORTANT: video_sets should be given as relative paths to the config.yaml file path. i.e. videos/ 
+
+<ul>
+<li>
+Addendum: assume that videos are given in the videos file, we will take the basename and rewrite the whole path. . 
+
+<ul>
+<li>
+Checking in situ 
+
+</ul>
+</ul>
+<li>
+IMPORTANT: dgp will predict on videos in videos_dgp unless none exist. in that case, it will predict on videos in cfg["video_sets"].
+
+<li>
+IMPORTANT: Allowed types are avi, mp4, mov, mkv
+
+</ul>
+<li>
+1. make test data. two different model folders, of which each have trained and untrained versions. <span class="todo">DONE</span>
+
+<ul>
+<li>
+The only difference between trained and untrained looks to be the contents of dlc-models/iteration-0/taskname/train/ 
+
+<li>
+Issue: the name prefixing the model folder is important. restore these. Changed source code instead. 
+
+<li>
+right now: demo writes into the current folder, not the videos_pred folder. Fixed
+
+<li>
+pretty sure the zip is not replacing. it is, but maybe not deleting. 
+
+<li>
+IMPORTANT: if model is trained, will not be retrained. just runs prediction. 
+
+<li>
+dgp code does not replace model files generally either. fixed with update_configs_general function.
+
+<li>
+IMPORTANT: takes the first TrainingFraction argument. 
+
+<li>
+MPORTANT: video_sets should be given as relative paths to the config.yaml file path. i.e. videos/ 
+
+<ul>
+<li>
+Addendum: assume that videos are given in the videos file, we will take the basename and rewrite the whole path. . 
+
+</ul>
+<li>
+DLCPATH was treated as a global variable from argparse??! recheeck run too. 
+
+<li>
+IMPORTANT: dgp will predict on videos in videos_dgp unless none exist. in that case, it will predict on videos in cfg["video_sets"].
+
+<li>
+IMPORTANT: Allowed types are avi, mp4, mov, mkv
+
+<li>
+ISSUE: permissions issue now when running sudo -i! very weird error. 
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

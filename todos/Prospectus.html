@@ -1,0 +1,144 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Prospectus</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+Prospectus for second half of year 
+
+</ul>
+<p>
+We have some breathing room now that the NeuroCAAS paper is submitted. How do we want to spend the second half of the year? (July-December?)
+</p>
+
+<p>
+Ongoing: 
+</p>
+<ul>
+<li>
+Monadical 
+
+<li>
+Keeping up with Carcea Lab
+
+<li>
+Labeling UI 
+
+<li>
+AUM and data related phenomenon 
+
+</ul>
+<p>
+Idea 1: 
+</p>
+<ul>
+<li>
+A closer look at network training for keypoint detection + data for this. From experiments with ensembling, it looks like the training order of data really does matter, and that certain examples actually hurt detection (more activity to distractor). This motivates a more careful look at training dynamics of keypoint detection networks with frameworks like AUM.   
+
+<ul>
+<li>
+AUM related stuff for object detection. I've talked to Geoff about this. 
+
+<ul>
+<li>
+does all data actually help with generalization? 
+
+<li>
+does memorization hurt when we consider occluders? 
+
+<li>
+does training order matter (ensembles would suggest it does)
+
+</ul>
+<li>
+Curriculum learning + mislabel detection with AUM type approaches  
+
+<li>
+Active Learning (with new UI)
+
+<li>
+Knowledge Distillation? 
+
+</ul>
+<li>
+Benefits: 
+
+<ul>
+<li>
+Core machine learning application 
+
+<li>
+taps into potential of our cloud applications 
+
+<li>
+a cool reliability story. 
+
+<li>
+Handles the unrelability of labels in general 
+
+</ul>
+</ul>
+<p>
+Idea 2: 
+</p>
+<ul>
+<li>
+Neural Encoding/Decoding in the Carcea data. What is PVN encoding/decoding? Despite advances in pose tracking etc., the characterizations of behavior are still quite shallow in my opinion (contact characterization, sniffing, etc.), and cool links to neural activity are still unclear (see Anpilov for an example). One idea is to spotlight activity: what parts of a video of free behavior explain neural data the best? A social "stimulus filter" 
+
+<ul>
+<li>
+Inspiration from caption generation for images and videos: behavioral videos are a natural scene, and we can apply similar techniques of scenee understanding (conditional scene understanding on a low dimensional signal?). Is this just psvae?  
+
+<ul>
+<li>
+PSVAE says build a behavioral representation in low dimensional, disentagled image space, and then build a decoder that recovers this representation from neural data. 
+
+<li>
+In contrast, we say build a representation of the image data that best supports neural decoding tasks: population structure and. 
+
+</ul>
+<li>
+Variable selection models 
+
+<li>
+Flow based image modeling 
+
+<li>
+Many of our work is already going in this direction (albeit with goal of interpretability in mind, working from traces etc.)
+
+<li>
+
+</ul>
+</ul>
+<pre><code>
+</pre></code>
+<ul>
+<li>
+Neural control in the Carcea data. In the sea of free behavior, what effect do individual neural signals have? Can we learn "impulse responses" of the behavioral system to certain kinds of neural data? More generally, what is the effect of neural firing on behavior?  
+
+</ul>
+<pre><code>
+</code></pre>
+<p>
+Idea 3: 
+</p>
+<ul>
+<li>
+PCS with the widefield data. 
+
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-01</small></p>
+</body>
+</html>

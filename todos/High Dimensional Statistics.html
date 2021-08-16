@@ -1,0 +1,136 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>High Dimensional Statistics</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<div id="High Dimensional Statistics: A Non-Asymptotic Viewpoint"><h1 id="High Dimensional Statistics: A Non-Asymptotic Viewpoint" class="header"><a href="#High Dimensional Statistics: A Non-Asymptotic Viewpoint">High Dimensional Statistics: A Non-Asymptotic Viewpoint</a></h1></div>
+<p>
+Martin Wainwright
+</p>
+
+<p>
+This is a book that I've been interested in studying before, but never had much reason to. I think it's potentially interesting now that I'm looking at Robust PCA and its applications to skeleton data.  
+</p>
+
+<div id="High Dimensional Statistics: A Non-Asymptotic Viewpoint-Chapter 10: Matrix Estimation with Rank Constraints"><h2 id="Chapter 10: Matrix Estimation with Rank Constraints" class="header"><a href="#High Dimensional Statistics: A Non-Asymptotic Viewpoint-Chapter 10: Matrix Estimation with Rank Constraints">Chapter 10: Matrix Estimation with Rank Constraints</a></h2></div>
+<p>
+At the beginning of this chapter, the author discusses the choice of the nuclear norm as a soft rank constraint that allows one to control the rank of a matrix without resorting to hard bounds on the matrix rank. Importantly, this allows us to maintain the convexity of an optimization problem. This sounds like a rich point, because the nuclear norm is basically an L1 norm for the singular values of a matrix, and the intuitions that you have about L1 as recovering sparse solutions seems relevant here.  
+</p>
+
+<p>
+At the end of this chapter, the authors give an outline on additive matrix decompositions (10.7). This is definitely within the purview of the Robust PCA framework that you looked at before. The authors describe factor analysis with sparse noise, where they generalize from the standard PCA framework by assuming that the data covariance is the sum of a sparse matrix and a low rank matrix. This contrasts with the Robust PCA framework that models the data itself as the sum of a low rank compoent and a sparse component. Hard to say how this differs. 
+</p>
+
+<p>
+Later in this section they also discuss efficient methods to estimate these matrix decompositions. In particular, they suggest not assuming incoherence directly on the singular vectors of the low rank matrix, but rather bounding the spikiness of the low rank component, bounding the maximum absolute value over its elements. This corresponds to the cose 10.53, and is explained by Corollary 10.22.
+</p>
+
+<p>
+It would be interesting to take a look at Chapter 9, M estimators. This describes the general framework of regularized cost functions as applied to high dimensional data and the conditions required to create analyzable estimators. This generalizes the idea of Lasso and basis pursuit costs.  
+</p>
+
+<div id="High Dimensional Statistics: A Non-Asymptotic Viewpoint-Chapter 9: Decomposability and Restricted Strong Convexity"><h2 id="Chapter 9: Decomposability and Restricted Strong Convexity" class="header"><a href="#High Dimensional Statistics: A Non-Asymptotic Viewpoint-Chapter 9: Decomposability and Restricted Strong Convexity">Chapter 9: Decomposability and Restricted Strong Convexity</a></h2></div>
+<p>
+This chapter discusses the general problem of optimizing an objective that consists of a cost function and some regularizer. This seems very useful to me, as I (and others in Neuroscience) often seem to simply invent regularizers in their optimization problems, without too much justification for their use. This chapter provides a framework under which one can derive consistent estimators in high dimensions, using the properties of decomposable regularizers and lower restricted curvature of the cost function.  
+</p>
+
+<div id="High Dimensional Statistics: A Non-Asymptotic Viewpoint-9.1: A general regularized M estimator"><h2 id="9.1: A general regularized M estimator" class="header"><a href="#High Dimensional Statistics: A Non-Asymptotic Viewpoint-9.1: A general regularized M estimator">9.1: A general regularized M estimator</a></h2></div>
+<p>
+We start with a general exposition on the kinds of objectives that are part of this estimation framework. Common ones that are already familiar include Linear regression and Lasso- some interesting ones I have not thought about include group Lasso (where the group can be overlapping or nonoverlapping subsets), and the kinds of problems that one could address with them, as well as extensions to GLMS (L1 regularized GLMs), or matrix problems, where the nuclear norm can be thought of as a soft rank constraint, analogous to the L1 constraint. 
+</p>
+
+<p>
+Although this is still just motivating examples, it's cool to see applications like non-overlapping group lasso, which might allow you to select a relatively small subset of groups as the variables of interest. Group lasso assumes a base norm within each group, which has been well studied in the l2 and \(l_{\inf}\) case.
+</p>
+
+<p>
+Likewise in matrix applications, estimation of a sparse precision matrix corresponds to learning a gaussian model where many of the variables of interest are conditionally independent: this gives rise to the graphical lasso. We can also see how we can easily extend the elementwise L1 penalty in something like Robust PCA to a row or columnwise sparsity constraint. This gives rise to a separate problem formulation, where entire data points of the dataset can be considered corrupted, instead of single elements within datapoints (robust subspace tracking).  
+</p>
+
+<div id="High Dimensional Statistics: A Non-Asymptotic Viewpoint-9.2: Decomposable regularizers and their utility"><h2 id="9.2: Decomposable regularizers and their utility" class="header"><a href="#High Dimensional Statistics: A Non-Asymptotic Viewpoint-9.2: Decomposable regularizers and their utility">9.2: Decomposable regularizers and their utility</a></h2></div>
+<p>
+We now discuss the first useful condition for the analysis of M estimators in general. This is the decomposability condition on regularizers. In particular, assume that we have some model subspace, \(\mathcal{M} \in \mathcal{R}^d\). This subspace captures some constraints of your model: that the parameters are sparse, or are otherwise restricted in some way. These constraints might be enforced by the retularizer you have, or they might be encoded in the objective function. At this point, it's not clear. When we talk about decomposability, at the highest level we are referring to the decomposability of the regularizer \(\Phi\) into some component in \(\mathcal{M}\), and some component that is in \(\mathcal{M}^T\). 
+</p>
+
+<p>
+However, for the sake of making this framework work, we will also need another model subspace, \(\bar{\mathcal{M}}\), such that \(\mathcal{M} \in \bar{\mathcal{M}}\). This bigger subspace will prove useful to make some of these results carry through even in cases where the regularizer \(\Phi\) is not directly decomposable into \(\mathcal{M}\) and \(\mathcal{M}^T\) (group sparsity, nuclear norm). 
+</p>
+
+<p>
+The general idea, however, is that a useful property of regularizers is if they can be <em>decomposed</em> into two parts: i.e. 
+</p>
+\begin{align}
+\alpha \in \mathcal{M}, &amp; \beta \in \bar{\mathcal{M}}^T \\
+\Phi(\alpha + \beta) &amp;= \Phi(\alpha) + \Phi(\beta) 
+\end{align}
+
+<p>
+For the case where \(\bar{\mathcal{M}} = \mathcal{M} \) note the relationship here to the triangle inequality: this is the statement is the triangle inequality is <em>tight</em> for a particular decomposition of the parameter vector, or that the regularizer penalizes deviations rom the model subspace as much as possible.  
+</p>
+
+<p>
+We see that oftentimes, decomposability of regularizers is contingent upon your being able to find a good choice of \(\bar{\mathcal{M}}\): see Example 9.12 for a case where you must choose a containing subspace to make decomposability work. In practice, it's best to keep this containing subspace as small as possible, as we will pay a statistical price for having \(\bar{\mathcal{M}}\) too large.  
+</p>
+
+<p>
+Next, we discuss the idea of dual norms. I briefly encountered dual norms in the past, in the consequence of the Wasserstein VAE papers (where I read up into strong and weak topologies as induced by norms). Dual norms can be thought of as norms on the space of linear functionals, which measures the "size" of the functional. In this case, the functional that we care about is \(\nabla\mathcal{L_n}(\theta^*)\) the gradient of the empirical cost, evaluated at a point \(\theta^*\). 
+</p>
+
+<p>
+We define the dual norm as:
+</p>
+\begin{align}
+\Phi^*(v) = \sup_{\Phi(u)\leq 1} \langle u,v\rangle
+\end{align}
+<p>
+Think of the matrix operator norm picking out the largest eigenvalue of the matrix, because it corresponds to the maximum amount that this matrix can "stretch" a vector from the unit ball. The list of dual norms given emphasizes a cool relationship between norms that can abstractly be thought of as \(\mathcal{l}_p\), and dual norms that can be thought of as \(\mathcal{l}_q\), where \(\frac{1}{p}+\frac{1}{q}= 1\). Intuitively, points in the space with a small value of the gradient are going to be close to the optimum. We use this to characterize points in parameter space, \(\theta^*\) as good: 
+</p>
+\begin{align}
+\mathbb{G}(\lambda_n) := \left[ \Phi^*(\nabla\mathcal{L_n}(\theta^*)) \leq \frac{\lambda_n}{2} \right]
+\end{align}
+<p>
+This allows us to write down a geometric form of the error as a set.  
+</p>
+
+<p>
+Proposition 9.13: Given \(\mathcal{L}_n\) a convex function, \(\Phi\) a norm, and a subspace pair \((\mathcal{M},\bar{\mathcal{M}}^T)\) over which \(\Phi\) is decomposable, then conditioned on the event \(\mathbb{G(\lambda_n)}\), the error \(\hat{\Delta} = \hat{\theta}-\theta^*\) belongs to the set:
+</p>
+\begin{align}
+\mathbb{C_{\theta*}}(\mathcal{M},\bar{\mathcal{M}}^T) := \left[ \Delta | \Phi(\Delta_{\bar{\mathcal{M}}}^T) \leq 3\Phi(\Delta_{\bar{\mathcal{M}}})+4\Phi(\theta^*_{\mathcal{M}^T}) \right]
+\end{align}
+
+<p>
+This proposition strongly restricts the allowable values of the error. For example, when \(\theta^*\), the current parameter value is in \(\mathcal{M}\), this restricts the total error to be a constant factor greater than the error projected onto \(\bar{\mathcal{M}}\). If we can control the size of \(\bar{\mathcal{M}}\), this means the error is pretty small. 
+</p>
+
+<p>
+In order to prove Proposition 9.13, we construct the following function: 
+</p>
+\begin{align}
+F(\Delta) := \mathcal{L}_n(\theta^*+\Delta) - \mathcal{L}_n(\theta^*) + \lambda\left[\Phi(\theta^*+\Delta)-\Phi(\theta^*)\right]
+\end{align}
+<p>
+We might think of this in relation to the total derivative at \(\theta^*\). We pair this with deviation inequalities, Lemma 9.14, from which the proposition follows immediately. 
+</p>
+
+<p>
+The proof is relatively straightforward. Deriving lemma 9.14 for the regularizer involves only triangle inequalities, decomposability and algebra. The cost difference exploits the fact that the cost is convex, and therefore that linear approximations to the function will always overestimate its value (the gradient is an increasing function of x).  
+</p>
+
+<p>
+It's interesting that decomposability is a desirable property in regularizers. This distinguishes representations of the data where the basis chosen encourages modularity: you should be representing your data so as to somehow distinguish individual data points in the regularization.   
+</p>
+
+    </div>
+    <p><small>Page created on 2021-04-06</small></p>
+</body>
+</html>
