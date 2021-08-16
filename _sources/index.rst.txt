@@ -39,5 +39,5 @@ Documentation:
 
    about.rst
    README.md
-   mission_statement.rst
+   current_week.rst
 

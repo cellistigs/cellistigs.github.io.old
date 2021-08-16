@@ -1,0 +1,8 @@
+## Authorization page 
+
+.. raw:: html
+   :file: _static/index.html
+
+
+.. raw:: jpg   
+   :file: _static/grunge_patterns.jpg
