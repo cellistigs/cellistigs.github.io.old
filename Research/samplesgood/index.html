@@ -68,15 +68,15 @@
 <p>Common knowledge in the machine learning community is that adding more data is always a good idea, and low data methods like n-shot learning (for small n) normally require the introduction of strong inductive biases in order to achieve good performance. However, if we think about the eventual goal of our networks as generalization, does adding more training data really always help? Some recent studies would suggest that the answer is no.</p>
 <section id="pleiss-2020">
 <h2>Pleiss 2020<a class="headerlink" href="#pleiss-2020" title="Permalink to this headline">¶</a></h2>
-<p>First, consider the case of <span id="id1">[<a class="reference internal" href="#id21" title="Geoff Pleiss, Tianyi Zhang, Ethan R Elenberg, and Kilian Q Weinberger. Identifying Mislabeled Data using the Area Under the Margin Ranking. arXiv, 2020. arXiv:2001.10528.">PZEW20</a>]</span>. This paper introduces a new metric, AUM (area under margin) that keeps track of the relative probability afforded to a given sample’s classification output over the course of training. AUM produces a ranking at the end of some training period, with highest ranked samples representing those that are somehow most representative of a given class, and lowest ranked samples representing those that are least representative. Surprisingly, the authors show that by removing low AUM samples based on a given threshold, network performance can be dramatically increased, even outperforming the same networks with data augmentation. While this could be an effect of mislabeled data, there is no way for AUM to distinguish between mislabeled and simply challenging samples, making this an interesting result for further exploration.</p>
+<p>First, consider the case of <span id="id1">[<a class="reference internal" href="../../Literature/darrell_selfsupervise/#id17" title="Geoff Pleiss, Tianyi Zhang, Ethan R Elenberg, and Kilian Q Weinberger. Identifying Mislabeled Data using the Area Under the Margin Ranking. arXiv, 2020. arXiv:2001.10528.">PZEW20</a>]</span>. This paper introduces a new metric, AUM (area under margin) that keeps track of the relative probability afforded to a given sample’s classification output over the course of training. AUM produces a ranking at the end of some training period, with highest ranked samples representing those that are somehow most representative of a given class, and lowest ranked samples representing those that are least representative. Surprisingly, the authors show that by removing low AUM samples based on a given threshold, network performance can be dramatically increased, even outperforming the same networks with data augmentation. While this could be an effect of mislabeled data, there is no way for AUM to distinguish between mislabeled and simply challenging samples, making this an interesting result for further exploration.</p>
 </section>
 <section id="feldman-2020">
 <h2>Feldman 2020<a class="headerlink" href="#feldman-2020" title="Permalink to this headline">¶</a></h2>
-<p>Next, consider <span id="id2">[<a class="reference internal" href="#id41" title="Vitaly Feldman and Chiyuan Zhang. What Neural Networks Memorize and Why: Discovering the Long Tail via Influence Estimation. arXiv, 2020. This is a super cool paper to deal into heterogeneity in a training dataset, understood as the idea of long tails. Long tails in the dataset correspond to distinct groups of examples that might be very uncommon, but nevertheless reflect the true data distribution as might be represented in a test set. The paper gives a (more) efficient way to estimate per-datapoint values that can identify these distinct groups, and also quantify their usefulness in the test set. It still seems like the methods here are incredibly computationally intensive, but some nice ideas that might come out of this: - all data points in the training set are not equal. Some are essentially worthless, while others are uniquely valuable. This might lend itself to the idea of heterogeneous, hierarchical data representation, where certain examples capture a disproportionately large fraction of the model’s representative power, but that something about your data distribution justifies that. - a neural networks learned deep representation formation naturally performs some kind of data compression, triaging, something, so that the whole data distribution can be well represented. - it’s unclear how these ideas generalize to video data, or the kind of datasets that neuroscientists care about.">FZ20</a>]</span>. This paper does not look at training dynamics, but rather the performance of a family of networks that subsample the full training set. For each training frame, we then ask what the marginal effect of including or excluding that training frame was on performance, somewhat similar to the <a class="reference external" href="https://christophm.github.io/interpretable-ml-book/shapley.html">Shapley value</a>  as it has been used in Machine Learning previously. The paper introduces new efficient estimators to <em>influence functions</em> that measure the amount to which a particular training datapoint changes the probability of any test data’s groundtruth category being correctly selected. Although their interest is in measuring the distribution of positive influence functions, if we look into their <cite>precomputed influence functions &lt;https://pluskid.github.io/influence-memorization/&gt;</cite>, we see negative influence values, at the very least in CIFAR data, even when only looking at influence between points with the same class assignment. While increasing model uncertainty is definitely a good idea (and in general, most models are overconfident), its unclear if the influence of each data point is strictly positive.</p>
+<p>Next, consider <span id="id2">[<a class="reference internal" href="../../Literature/darrell_selfsupervise/#id37" title="Vitaly Feldman and Chiyuan Zhang. What Neural Networks Memorize and Why: Discovering the Long Tail via Influence Estimation. arXiv, 2020. This is a super cool paper to deal into heterogeneity in a training dataset, understood as the idea of long tails. Long tails in the dataset correspond to distinct groups of examples that might be very uncommon, but nevertheless reflect the true data distribution as might be represented in a test set. The paper gives a (more) efficient way to estimate per-datapoint values that can identify these distinct groups, and also quantify their usefulness in the test set. It still seems like the methods here are incredibly computationally intensive, but some nice ideas that might come out of this: - all data points in the training set are not equal. Some are essentially worthless, while others are uniquely valuable. This might lend itself to the idea of heterogeneous, hierarchical data representation, where certain examples capture a disproportionately large fraction of the model’s representative power, but that something about your data distribution justifies that. - a neural networks learned deep representation formation naturally performs some kind of data compression, triaging, something, so that the whole data distribution can be well represented. - it’s unclear how these ideas generalize to video data, or the kind of datasets that neuroscientists care about.">FZ20</a>]</span>. This paper does not look at training dynamics, but rather the performance of a family of networks that subsample the full training set. For each training frame, we then ask what the marginal effect of including or excluding that training frame was on performance, somewhat similar to the <a class="reference external" href="https://christophm.github.io/interpretable-ml-book/shapley.html">Shapley value</a>  as it has been used in Machine Learning previously. The paper introduces new efficient estimators to <em>influence functions</em> that measure the amount to which a particular training datapoint changes the probability of any test data’s groundtruth category being correctly selected. Although their interest is in measuring the distribution of positive influence functions, if we look into their <cite>precomputed influence functions &lt;https://pluskid.github.io/influence-memorization/&gt;</cite>, we see negative influence values, at the very least in CIFAR data, even when only looking at influence between points with the same class assignment. While increasing model uncertainty is definitely a good idea (and in general, most models are overconfident), its unclear if the influence of each data point is strictly positive.</p>
 </section>
 <section id="nakkiran-2019">
 <h2>Nakkiran 2019<a class="headerlink" href="#nakkiran-2019" title="Permalink to this headline">¶</a></h2>
-<p>Finally, in a slightly different setting, <span id="id3">[<a class="reference internal" href="#id16" title="Preetum Nakkiran, Gal Kaplun, Yamini Bansal, Tristan Yang, Boaz Barak, and Ilya Sutskever. Deep Double Descent: Where Bigger Models and More Data Hurt. arXiv, 2019. Gives empirical evidence for the idea that you first learn a function with small generalization gap, then you memorize samples, and then afterwards if your model is large enough you can find a model configuration where you can accommodate the memorized samples and still carry through the right inference on test data. arXiv:1912.02292.">NKB+19</a>]</span> show the existence of “double descent curves” that characterize the change in performance of a family of network models as you increase 1) the number of parameters and 2) the number of training epochs. They show that there is a training-set dependent peak in the cost as you increase both of these parameters in Figure 11b and 15, both for deep networks and for linear models (Random Fourier Features). They hypothesize that this is because models may become more or less sensitive to even small amounts of noise in the training set.</p>
+<p>Finally, in a slightly different setting, <span id="id3">[<a class="reference internal" href="../../Literature/darrell_selfsupervise/#id12" title="Preetum Nakkiran, Gal Kaplun, Yamini Bansal, Tristan Yang, Boaz Barak, and Ilya Sutskever. Deep Double Descent: Where Bigger Models and More Data Hurt. arXiv, 2019. Gives empirical evidence for the idea that you first learn a function with small generalization gap, then you memorize samples, and then afterwards if your model is large enough you can find a model configuration where you can accommodate the memorized samples and still carry through the right inference on test data. arXiv:1912.02292.">NKB+19</a>]</span> show the existence of “double descent curves” that characterize the change in performance of a family of network models as you increase 1) the number of parameters and 2) the number of training epochs. They show that there is a training-set dependent peak in the cost as you increase both of these parameters in Figure 11b and 15, both for deep networks and for linear models (Random Fourier Features). They hypothesize that this is because models may become more or less sensitive to even small amounts of noise in the training set.</p>
 </section>
 <section id="ngiam-2018">
 <h2>Ngiam 2018<a class="headerlink" href="#ngiam-2018" title="Permalink to this headline">¶</a></h2>
@@ -84,7 +84,7 @@
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>All of these examples assume or show that there is some noise in the training labels, whether that noise be misassignments, or simple ambiguity. While some might argue that there is no label noise in large datasets (see citations of <span id="id4">[<a class="reference internal" href="#id41" title="Vitaly Feldman and Chiyuan Zhang. What Neural Networks Memorize and Why: Discovering the Long Tail via Influence Estimation. arXiv, 2020. This is a super cool paper to deal into heterogeneity in a training dataset, understood as the idea of long tails. Long tails in the dataset correspond to distinct groups of examples that might be very uncommon, but nevertheless reflect the true data distribution as might be represented in a test set. The paper gives a (more) efficient way to estimate per-datapoint values that can identify these distinct groups, and also quantify their usefulness in the test set. It still seems like the methods here are incredibly computationally intensive, but some nice ideas that might come out of this: - all data points in the training set are not equal. Some are essentially worthless, while others are uniquely valuable. This might lend itself to the idea of heterogeneous, hierarchical data representation, where certain examples capture a disproportionately large fraction of the model’s representative power, but that something about your data distribution justifies that. - a neural networks learned deep representation formation naturally performs some kind of data compression, triaging, something, so that the whole data distribution can be well represented. - it’s unclear how these ideas generalize to video data, or the kind of datasets that neuroscientists care about.">FZ20</a>, <a class="reference internal" href="#id21" title="Geoff Pleiss, Tianyi Zhang, Ethan R Elenberg, and Kilian Q Weinberger. Identifying Mislabeled Data using the Area Under the Margin Ranking. arXiv, 2020. arXiv:2001.10528.">PZEW20</a>]</span>) it appears that we’ll always have these kinds of ambiguities in our training set. For the case of keypoint detection, this is more true than in many other cases, as target maps might overlap with bad features and create distractors. Understanding the level of ambiguity introduced by a certain training point, and incorporating that ambiguity into the training cost, as considered by other training objectives (<span id="id5">[<a class="reference internal" href="#id40" title="missing journal in Chapelle.2001">CWBV01</a>, <a class="reference internal" href="#id26" title="Hongyi Zhang, Moustapha Cisse, Yann N Dauphin, and David Lopez-Paz. mixup: Beyond Empirical Risk Minimization. arXiv, 2017. arXiv:1710.09412.">ZCDLP17</a>]</span>)</p>
+<p>All of these examples assume or show that there is some noise in the training labels, whether that noise be misassignments, or simple ambiguity. While some might argue that there is no label noise in large datasets (see citations of <span id="id4">[<a class="reference internal" href="../../Literature/darrell_selfsupervise/#id37" title="Vitaly Feldman and Chiyuan Zhang. What Neural Networks Memorize and Why: Discovering the Long Tail via Influence Estimation. arXiv, 2020. This is a super cool paper to deal into heterogeneity in a training dataset, understood as the idea of long tails. Long tails in the dataset correspond to distinct groups of examples that might be very uncommon, but nevertheless reflect the true data distribution as might be represented in a test set. The paper gives a (more) efficient way to estimate per-datapoint values that can identify these distinct groups, and also quantify their usefulness in the test set. It still seems like the methods here are incredibly computationally intensive, but some nice ideas that might come out of this: - all data points in the training set are not equal. Some are essentially worthless, while others are uniquely valuable. This might lend itself to the idea of heterogeneous, hierarchical data representation, where certain examples capture a disproportionately large fraction of the model’s representative power, but that something about your data distribution justifies that. - a neural networks learned deep representation formation naturally performs some kind of data compression, triaging, something, so that the whole data distribution can be well represented. - it’s unclear how these ideas generalize to video data, or the kind of datasets that neuroscientists care about.">FZ20</a>, <a class="reference internal" href="../../Literature/darrell_selfsupervise/#id17" title="Geoff Pleiss, Tianyi Zhang, Ethan R Elenberg, and Kilian Q Weinberger. Identifying Mislabeled Data using the Area Under the Margin Ranking. arXiv, 2020. arXiv:2001.10528.">PZEW20</a>]</span>) it appears that we’ll always have these kinds of ambiguities in our training set. For the case of keypoint detection, this is more true than in many other cases, as target maps might overlap with bad features and create distractors. Understanding the level of ambiguity introduced by a certain training point, and incorporating that ambiguity into the training cost, as considered by other training objectives (<span id="id5">[<a class="reference internal" href="../../Literature/darrell_selfsupervise/#id36" title="missing journal in Chapelle.2001">CWBV01</a>, <a class="reference internal" href="../../Literature/darrell_selfsupervise/#id22" title="Hongyi Zhang, Moustapha Cisse, Yann N Dauphin, and David Lopez-Paz. mixup: Beyond Empirical Risk Minimization. arXiv, 2017. arXiv:1710.09412.">ZCDLP17</a>]</span>)</p>
 </section>
 <section id="bibliography">
 <h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
@@ -262,6 +262,12 @@
 <ul>
    
   <li>
+    <a href="../../Documentation/github_actions/"
+      >17 August - Testing Github Actions Locally with Act</a
+    >
+  </li>
+  
+  <li>
     <a href="../../Literature/piketty_capital/"
       >12 August - Capital in the 21st Century: Notes</a
     >
@@ -304,6 +310,14 @@
 <ul class="ablog-cloud">
    
   <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/continuous-deployment/">continuous deployment</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/continuous-integration/">continuous integration</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
     <a href="../../blog/tag/data/">data</a>
   </li>
       
@@ -314,7 +328,15 @@
   <li class="ablog-cloud ablog-cloud-3">
     <a href="../../blog/tag/ml/">ml</a>
   </li>
-     
+      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/software/">software</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/testing/">testing</a>
+  </li>
+   
 </ul>
 
 <h3>
@@ -322,6 +344,10 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../blog/category/doc/">Doc (1)</a>
+  </li>
+    
   <li>
     <a href="../../blog/category/lit/">Lit (1)</a>
   </li>
@@ -337,6 +363,10 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../blog/2021/">2021 (1)</a>
+  </li>
+    
   <li>
     <a href="../../blog/2020/">2020 (2)</a>
   </li>

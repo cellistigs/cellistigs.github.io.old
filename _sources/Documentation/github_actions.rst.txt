@@ -1,0 +1,70 @@
+.. post:: August 17, 2021
+   :tags: software, testing, continuous integration, continuous deployment 
+   :category: Doc
+
+Testing Github Actions Locally with Act
+=======================================
+
+One great thing I discovered in the course of working on the NeuroCAAS project is Continuous Integration/Continuous Deployment. Although these topics deserve their own posts, in brief I think about them as ways to automate all the stuff that has to happen in between you writing your source code, and someone else having a functional tool in their hands. This could mean *testing* your source code, to make sure that it doesn't break everything that's already there. It could also mean *building* your project, if you need to compile something, or *installing* necessary dependencies. If you have a web service, it might also mean *deploying* your tool so that others can access it through some pre-existing front end. Continuous * recognizes that all of these things have to happen, that they take time, and that failing to do them regularly can lead to long-lasting mistakes in your source code that you might not find until you've build a gigantic edifice around them already. This is especially true when we start thinking about the dependencies that our project might have on our native operating system, installed software, file system, etc.
+
+The idea of Continuous * is that we can script out all of these different steps for our project, whatever they might be (Integration -> testing and merging new code, Deployment -> the other stuff, I think). Not only can we script them, we can do them on a computer that is different from our own. This is doubly good because it means we can use the ever decreasing cost of cloud compute, and that it ensures that the steps we script out are indepedent of anything on our remote machine. The script that we write contains the necessary and sufficient steps that have to happen to get our software working in a generic ecosystem, which is a pretty good standard for software portability.      
+
+How do we implement Continuous * things? There are now many services devoted to this task- Travis CI, Circle CI, Jenkins, and Github Actions all have similar approaches to the same task- you are responsible for writing out a script of things that you want to happen to your code (usually a version controlled repo somewhere), and the service will make sure those things happen on a remote host. A standard workflow might be to install dependencies, set up credentials, pull the latest version of a project's git repo, install the repo, and run your tests. These services also make it easy to scale across different platforms, or to test across different parameter combinations easily. I'm using Github Actions right now because it's free for public repositories.   
+
+In practice, Github Actions (and Travis, from previous experience) is great once you have a workflow set up and running. There is nice integration with Github, so you can see when tasks fail, and there are built in security checks to make sure you don't run malicious code by accident. It's also possible to set up complex workflows like deploying a cloudformation stack based on comments in a Github Pull Request (which we do in NeuroCAAS), which is ideally suited to the microservices design of our platform and admits easy testing. The hard part is getting these actions set up in the first place. You must learn the syntax of the different services, understand how they organize workflows, and understand individual community contributions. This is hard when you only get feedback on a particular workflow script once it gets set up with a particular remote host, installation, etc. This difficulty is why I was very happy to find `act <https://github.com/nektos/act>`_, a software project to run github actions locally. With a simple cli interface, all you have to do is point act to the right action, ``cd /your/repo/; act {push,issue_comment,pull_request, or any other event to trigger actions}`` and it will spin up a docker container that mimics the environment in which github actions are run. If you're careful about the parts of your repo that you expose to version control (i.e. so you're not copying movies into a docker container every time), this is much much faster than waiting for github to provide you with a remote host every time you want to test a small tweak to your workflow.   
+
+The good part is above. The bad part is that this is still a relatively young project, and that there are ways in which you might have to help act figure out how exactly to emulate the github environment. This can be kind of gnarly, and there are still some holes to figure out. I'm documenting these for myself here so I know what to expect coming back in the future.  
+
+Runner version 
+~~~~~~~~~~~~~~
+
+First gotcha- you have to specify the github runner manually for many cases. I got an issue telling me a particular version of python wasn't available, which just meant that it wasn't pre-packaged in the environment as it is with the runner that github actually gives you. This can be solved by passing a particular runner. For me, this was what I needed: 
+
+.. code:: bash 
+
+act {event} -P ubuntu-latest=nektos/act-environments-ubuntu:18.04
+
+These bigger images can take a long time (30 mins) to download. 
+
+Setup time 
+~~~~~~~~~~
+
+Next one- by default act will copy over your whole repo into the docker container when running tests. If you happen to have a lot of videos or media that you haven't committed to your repo but also haven't git ignored, this will really slow down your process and make act less and less worthwhile. Explicitly specifying things you don't want copied over in your ``.gitignore`` file will prevent act from copying them.  
+
+Event payloads
+~~~~~~~~~~~~~~
+
+For some events, you will need to specify event payloads from github manually to get the workflow to run properly. Our ``issue_comment`` workflow is just such an example. Some event payloads are incredibly long, so the best thing to do is probably just to get a real payload and use that for testing. We did so by including a job in one of our existing actions to print the entire payloadand saved that as a test fixture (`tests/workflow_tests/test_mats/issue_comment.json`): `see here <https://stackoverflow.com/questions/63803136/how-to-get-my-own-github-events-payload-json-for-testing-github-actions-locally>`_. You can then pass a path to this payload using the `-e` flag. Definitely a big time saver. 
+
+Credentials
+~~~~~~~~~~~
+
+If your workflow invokes an external service (AWS, Docker), you will most likely need credentials for that service. You can pass these credentials with variable names, or in a file. However, even if you don't, there are many cases where you'll use the `secrets.GITHUB_TOKEN`, which on Github uses a personal access token activated on the fly and deactivated as soon as the workflow ends. You'll have to generate a token manually and pass it explicitly for act. 
+
+Debugging
+~~~~~~~~~
+
+In general, I found it useful to have verbose logs on with the `-v` flag. Debugging can also be achieved by including steps in jobs that echo the variables that you care about. 
+
+Workflow Gotchas 
+~~~~~~~~~~~~~~~~
+
+For some reason, I could not get the outputs of one job (deploy-check) to propagate to the next. This made it hard to evaluate full workflows, and I had to remove conditional statements to get things to work correctly. I also experienced trouble getting the event payload in a subsequent job (the comment body of an `issue_comment` event), so I had to hard code that for testing. Using the job flag `-j` explicitly did not help with this. It also seems like the real github runner can parse versioning wildcards for github actions, for example `@v2.x`, and act cannot. 
+
+Conclusion
+----------
+
+Despite these limitation, act is a great way to speed up my Continuous workflow, and makes it much easier to rely upon actions in more complex ways. Here's the command I ended up using: 
+
+.. code:: bash 
+
+   act -v issue_comment -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -e tests/workflow_tests/test_mats/issue_comment.json -s GITHUB_TOKEN=********
+
+Run from the root of the github repo I was testing. 
+
+
+
+
+
+
+
