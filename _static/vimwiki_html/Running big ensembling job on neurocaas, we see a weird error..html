@@ -1,0 +1,52 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Running big ensembling job on neurocaas, we see a weird error.</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+Job ids: job__ensemble-dgp_dgptest_5_seed{}, job__ensemble-dgp_dgptest_17_seed{}, where seeds are 2,7,12,17,22,27,32,37,42,52 
+
+<li>
+Group name: debuggers. 
+
+<li>
+The five frame jobs beyond seed 12 say the job was halted by the budget, but they have continued on anyway. . 
+
+<li>
+Many of the 17 frame jobs also claim to have been halted by the system.  
+
+<li>
+SOLUTION: You were looking at certificates and configs from different jobs. There is one set of jobs from 17:43, and another from 17:47? 
+
+<ul>
+<li>
+It looks like some at least had certificates updates 7 minutes later, and others did not. Is this bc of lambda retries? 
+
+</ul>
+<li>
+They continued onwards, with the correct command, and did not have to be halted by the system. (checked with cloudwatch logs: <a href="https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/">https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/</a>\(252Faws\)252Flambda\(252Fec2-rogue-killer/log-events/2021\)252F07\(252F18\)252F\(255B\)2524LATEST$255Dee149722d3954f2cb1fa68b48948765d)
+
+<li>
+FOR FUTURE: We could address this by making the timestamp for each job more relevant, and by reducing the lambda retries. 
+
+<ul>
+<li>
+Reducing lambda retries is a bad idea bc it can help us with long jobs. 
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-08-23</small></p>
+</body>
+</html>
