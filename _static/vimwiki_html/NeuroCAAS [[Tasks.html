@@ -78,13 +78,21 @@ create a submit file that contains 10 datasets, and a config file with duration 
 <li>
 We might have to mock out the pricing module for testing consistency.  
 
+<ul>
+<li>
+do that. you should price for 1 dollar per instance for big ones, and 0.1 cents for small ones. 
+
 </ul>
-<li class="done0">
+</ul>
+<li class="done4">
 active instances from other jobs. If tags can't be found for this job, we then compare against the entire current work load.  #e060d019
 
 <ul>
 <li>
 You can check this in two ways. 1. the other active instances logged in the "active" area. 2. the actual number of active instances.   
+
+<li>
+Even better- amis 
 
 </ul>
 <li class="done0">
@@ -100,7 +108,7 @@ deploy integration tests.  #62c18eb5
 
 </ul>
 </ul>
-<li class="done0">
+<li class="done4">
 figure out git commits in neurocaas_contrib for new tools.  #c672a2da
 
 <li class="done0">
@@ -150,61 +158,9 @@ Write CLI tools to launch remote AMI <img src="https://github.com/cunningham-lab
 <li class="done4">
 <a href="Adapt devami utils.html">Adapt devami utils. [time:30mins</a>] !!! <img src="" />  #6c543f0c
 
-<li class="done1">
-Some issues:  #bb9e7c1a
-
-<ul>
-<li class="done0">
-These issues could be handled by the tests that are failing right now in the neurocaasami branch. treat them there.  #a751e218
-
-<li class="done0">
-I have a blueprint in my repo, and when I run get-blueprint, it prints this blueprint. However, the actual jobs are deployed from the develop-dict that is being used to initialize the AMI state in .neurocaas_contrib_config.json. This is bad because you can't tell where your job is deploying from!  #0b969ca9
-
-<li class="done0">
-BIG: this issue fundamentally comes down tol I'm working ,and I need  to change the blueprint command. How do I do that?  #33260406
-
-<li class="done0">
-BIG: when I terminate an instance, that should clear the develop_hist field in your state command.  #313a787a
-
 <li class="done4">
-When I update an existing blueprint, the template has only one user. Overwriting the users existing in a template already is catastrophic!  #6bccec29
+<a href="Some issues:.html">Some issues:</a>  #bb9e7c1a
 
-<li>
-Current workflow:
-
-<ul>
-<li>
-1. I run neurocaas-contrib remote start-session
-
-<ul>
-<li>
-there is never a develop-history, because I don't save it. So, we initialize the develop_dict in the cli config from scratch. This is not a problem because we only run it once we want to flush.   
-
-<li>
-update-history goes basically unused because we don't call it. So, the development history exists only in the .contrib_config file. This seems fine.  
-
-</ul>
-</ul>
-<li class="done0">
-Proposed workflow:  #10bb0beb
-
-<ul>
-<li>
-1. delete the update-history function. history tracking can happen through ami updates 
-
-<ul>
-<li class="done4">
-make the git committing more robust.  #2e134f3f
-
-</ul>
-<li class="done0">
-2. rename develop-remote to start-session. This will look to see if you are developing something else (i.e. if init matches contents), and clean up relevant instances.  #f7fdfb26
-
-<li class="done0">
-3. create method end-session. This method will check your current file contents, and delete all instances contained within.  #a84c4649
-
-</ul>
-</ul>
 <li class="done4">
 Make the new logging tools in neurocaas_remote repo the default, even if not using docker.  #e38589db
 
@@ -718,8 +674,8 @@ Not triggered because:
 stopped instead of terminated? 
 
 </ul>
-<li>
-[] Instead, tag with the pipeline and job ids so that lambda can get from there. 
+<li class="done4">
+Instead, tag with the pipeline and job ids so that lambda can get from there.  #6404a035
 
 </ul>
 </ul>
@@ -855,7 +811,7 @@ S3 full access [but later in dev process, only with the requirements you have no
 Then hand off to be deployed elsewhere
 
 </ul>
-<li class="done0">
+<li>
 We need a good way to give bucket access contingent on pipeline name. [time:30mins]  #d7036c6e
 
 <ul>
@@ -964,6 +920,6 @@ Survey users: <a href="https://docs.google.com/forms/d/17y_ADgDmA-8asCBJLR8oqp1g
 </ul>
 
     </div>
-    <p><small>Page created on 2021-08-16</small></p>
+    <p><small>Page created on 2021-08-20</small></p>
 </body>
 </html>
