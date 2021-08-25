@@ -62,9 +62,9 @@ Despite these limitation, act is a great way to speed up my Continuous workflow,
 
 Run from the root of the github repo I was testing. 
 
+Update 8/24
+-----------
 
-
-
-
+It looks like many of the workflow gotchas can be resolved by updating to the newest version of act (it's still being actively dveloped). I still have to include versioning explicitly and pass comment ext, but otherwise it looks like you can keep actions workflows pretty much the same. I also was able to explicitly include credentials successfully from AWS and docker with additional -s flags. 
 
 

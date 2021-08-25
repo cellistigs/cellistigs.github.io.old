@@ -1,0 +1,24 @@
+.. post:: August 25, 2021
+   :tags: software, AWS, storage
+   :category: Doc
+
+AWS EC2 Storage (Volumes, AMIs and Snapshots)
+=======================================
+
+The AWS cloud has many different pieces and layers, but in general you can get by keeping track of a small number of foundational resources. One of these is the Elastic Compute Cloud (EC2)- a bunch of compute resources that can be accessed through a large collection of different virtualization configurations. This is probably the most complicated single resource in AWS EC2 (judging, for example, from boto3 api calls when working with individual servers, called EC2 instances). 
+
+For right now, I just want to focus on one part of EC2: the management of storage related to EC2 instances. EC2 instances can be ephemeral or backed by Elastic Block Storage (EBS) Volumes. EBS Volume backed instances let you "stop" an instance, and restart it again with the same file system configuration without paying for compute time in between (you'll still be paying for storage time). This is the simplest way to store the state of a server, but not the most cost efficient (something on the order of a few cents per GB). To further reduce costs, we can instead take a *snapshot* of an EBS volume. Snapshots come with two advantages: 1. they are incremental, meaning that you only store diffs off of other snapshots, potentially reducing costs if you have common ancestor snapshots. 2. they can be chunked and stored in S3, leading to a greatly reduced storage cost. 
+
+However, EBS snapshots on their own can't get you back to a running instance- you might have multiple volumes attached to a running instance, all of which need to be related to one another through a specific device mapping. You also need to specify launch permissions for the instance. EBS snapshots therefore form the core building blocks of an EC2 Amazon Machine Image (AMI) - this image is what you need to start up a new instance from the state of an old one.  
+
+We can work through the tradeoff here- storing EC2 instances as volumes will lead to faster startup, but will cost more and tie you to one particular set of hardware (although you can do things like add storage and copy an existing volume). In contrast, storing EC2 instances as AMIs (and therefore snapshots behind the scenes) are slower to set up, but are cheaper, and allow you to launch a swarm of instances with identical filesystems and potentially variable compute resources, all at once. For the NeuroCAAS project, we store all progress on analyses as AMIs. 
+
+
+Logistics
+---------
+
+One thing we have to be careful of when working with EC2 resources is making sure that we clean up after ourselves- sometimes, even after deleting an instance, the underlying volume will remain. This charges you at the same rate as having a stopped instance. 
+Additionally, when working with AMIs, you can deregsiter an AMI, but the underlying snapshots will remain. While not as much of a cost sink as EBS volumes, this is still annoying and the costs can add up. We use a `script <https://gist.github.com/Eyjafjallajokull/4e917414cfb191391f9e51f6a8c3e46a>`_  to periodically check for unused volumes and snapshots- volumes that are listed as "available", untied to any existing instance, or snapshots that are not associated with an existing instance, volume, or ami. Things can get a bit buggy when a snapshot is created from an ami and the tool can't find it, but this is still a great way to stay on top of costs.   
+
+
+

@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>AWS EC2 Storage (Volumes, AMIs and Snapshots) &#8212; taiga_projectdoc  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" /> 
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="taiga_projectdoc Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+             <section id="aws-ec2-storage-volumes-amis-and-snapshots">
+<h1>AWS EC2 Storage (Volumes, AMIs and Snapshots)<a class="headerlink" href="#aws-ec2-storage-volumes-amis-and-snapshots" title="Permalink to this headline">¶</a></h1>
+<p>The AWS cloud has many different pieces and layers, but in general you can get by keeping track of a small number of foundational resources. One of these is the Elastic Compute Cloud (EC2)- a bunch of compute resources that can be accessed through a large collection of different virtualization configurations. This is probably the most complicated single resource in AWS EC2 (judging, for example, from boto3 api calls when working with individual servers, called EC2 instances).</p>
+<p>For right now, I just want to focus on one part of EC2: the management of storage related to EC2 instances. EC2 instances can be ephemeral or backed by Elastic Block Storage (EBS) Volumes. EBS Volume backed instances let you “stop” an instance, and restart it again with the same file system configuration without paying for compute time in between (you’ll still be paying for storage time). This is the simplest way to store the state of a server, but not the most cost efficient (something on the order of a few cents per GB). To further reduce costs, we can instead take a <em>snapshot</em> of an EBS volume. Snapshots come with two advantages: 1. they are incremental, meaning that you only store diffs off of other snapshots, potentially reducing costs if you have common ancestor snapshots. 2. they can be chunked and stored in S3, leading to a greatly reduced storage cost.</p>
+<p>However, EBS snapshots on their own can’t get you back to a running instance- you might have multiple volumes attached to a running instance, all of which need to be related to one another through a specific device mapping. You also need to specify launch permissions for the instance. EBS snapshots therefore form the core building blocks of an EC2 Amazon Machine Image (AMI) - this image is what you need to start up a new instance from the state of an old one.</p>
+<p>We can work through the tradeoff here- storing EC2 instances as volumes will lead to faster startup, but will cost more and tie you to one particular set of hardware (although you can do things like add storage and copy an existing volume). In contrast, storing EC2 instances as AMIs (and therefore snapshots behind the scenes) are slower to set up, but are cheaper, and allow you to launch a swarm of instances with identical filesystems and potentially variable compute resources, all at once. For the NeuroCAAS project, we store all progress on analyses as AMIs.</p>
+<section id="logistics">
+<h2>Logistics<a class="headerlink" href="#logistics" title="Permalink to this headline">¶</a></h2>
+<p>One thing we have to be careful of when working with EC2 resources is making sure that we clean up after ourselves- sometimes, even after deleting an instance, the underlying volume will remain. This charges you at the same rate as having a stopped instance.
+Additionally, when working with AMIs, you can deregsiter an AMI, but the underlying snapshots will remain. While not as much of a cost sink as EBS volumes, this is still annoying and the costs can add up. We use a <a class="reference external" href="https://gist.github.com/Eyjafjallajokull/4e917414cfb191391f9e51f6a8c3e46a">script</a>  to periodically check for unused volumes and snapshots- volumes that are listed as “available”, untied to any existing instance, or snapshots that are not associated with an existing instance, volume, or ami. Things can get a bit buggy when a snapshot is created from an ami and the tool can’t find it, but this is still a great way to stay on top of costs.</p>
+</section>
+</section>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     Previous:
+    
+    <a href="../github_actions/">
+       Testing Github Actions Locally with Act
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "taiga_projdoc";
+      var disqus_identifier = "/Documentation/aws_volumes_snapshots/";
+      var disqus_title = "AWS EC2 Storage (Volumes, AMIs and Snapshots)";
+      var disqus_url = "https://cellistigs.github.io/Documentation/aws_volumes_snapshots";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">taiga_projectdoc</a></h1>
+
+
+
+
+
+
+
+
+  
+<h2>
+   
+  25 August 2021 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span
+    >Category:</span
+  >
+   
+  <a href="../../blog/category/doc/">Doc</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    >Tags: </span
+  >
+   
+  <a href="../../blog/tag/software/">software</a>   
+  <a href="../../blog/tag/aws/">AWS</a>   
+  <a href="../../blog/tag/storage/">storage</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "taiga_projdoc"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/Documentation/aws_volumes_snapshots/"
+  >
+    Comments</a
+  >
+</li>
+
+</ul>
+
+<h3>
+  <a href="../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../github_actions/"
+      >17 August - Testing Github Actions Locally with Act</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../Literature/piketty_capital/"
+      >12 August - Capital in the 21st Century: Notes</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../Research/samplesgood/"
+      >10 August - Are More Training Samples Always Good?</a
+    >
+  </li>
+  
+</ul>
+
+<h3><a href="../../blog/tag/">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/aws/">AWS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/continuous-deployment/">continuous deployment</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/continuous-integration/">continuous integration</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/data/">data</a>
+  </li>
+      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/economics/">economics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/ml/">ml</a>
+  </li>
+      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/software/">software</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/storage/">storage</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/testing/">testing</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../blog/category/">Categories</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/category/doc/">Doc (2)</a>
+  </li>
+    
+  <li>
+    <a href="../../blog/category/lit/">Lit (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../blog/category/res/">Res (1)</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2021/">2021 (2)</a>
+  </li>
+    
+  <li>
+    <a href="../../blog/2020/">2020 (2)</a>
+  </li>
+   
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Taiga Abe.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/Documentation/aws_volumes_snapshots.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

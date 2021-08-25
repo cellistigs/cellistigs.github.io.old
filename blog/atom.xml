@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://cellistigs.github.io</id>
   <title>taiga_projectdoc Blog</title>
-  <updated>2021-08-23T21:24:03.718853+00:00</updated>
+  <updated>2021-08-25T15:29:17.175853+00:00</updated>
   <link href="https://cellistigs.github.io"/>
   <link href="https://cellistigs.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.19">ABlog</generator>
@@ -48,5 +48,18 @@
     <category term="continuousintegration" label="continuous integration"/>
     <category term="continuousdeployment" label="continuous deployment"/>
     <published>2021-08-17T00:00:00-04:00</published>
+  </entry>
+  <entry>
+    <id>https://cellistigs.github.io/Documentation/aws_volumes_snapshots/</id>
+    <title>AWS EC2 Storage (Volumes, AMIs and Snapshots)</title>
+    <updated>2021-08-25T00:00:00-04:00</updated>
+    <content type="html">&lt;p&gt;Title underline too short.&lt;/p&gt;
+</content>
+    <link href="https://cellistigs.github.io/Documentation/aws_volumes_snapshots/" rel="alternate"/>
+    <summary>Title underline too short.</summary>
+    <category term="software" label="software"/>
+    <category term="AWS" label="AWS"/>
+    <category term="storage" label="storage"/>
+    <published>2021-08-25T00:00:00-04:00</published>
   </entry>
 </feed>
