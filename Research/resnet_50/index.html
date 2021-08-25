@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; taiga_projectdoc  documentation</title>
+    <title>ResNet-50 &#8212; taiga_projectdoc  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
@@ -63,9 +63,69 @@
           
 
           <div class="body" role="main">
-             
+             <section id="resnet-50">
+<h1>ResNet-50<a class="headerlink" href="#resnet-50" title="Permalink to this headline">¶</a></h1>
+<p>In the last few weeks I’ve gotten back into working directly with deep learning models, and I’ve been running into a lot of ResNet-50. It’s pretty interesting to me that this model developed in 2015 is still used as a standard benchmark in broad selection of different subfields of deep learning.</p>
+<p>The general layout of ResNet 50 incorporates the idea of “shortcut” identity connections that are added back to a representation after some degree of processing has been done to it. More concretely, we take some feature representation, apply a few rounds of convolutions, and then add back a (potentially up/downsampled) version of the features pre-convolution. This operation defines a single “block” within the ResNet. There are four blocks within ResNet architectures, with each block further chunked into “units” within the block. Each unit contains three convolution layers, with some amount of downsampling and upsampling to “bottleneck” the representation and encourage the learning of invariances. In the ResNet 50 architecture, these blocks contain 3,4,6, and 3 units each, giving 16*3 = 48 layers within the blocks. Considered with the 2 input processing layers that precede the blocks, we have 50 layers total, thus ResNet-50.</p>
+<p>There are a few different versions of ResNet floating around, and I think it would be good for me to document them here.</p>
+<section id="v1-vs-v2">
+<h2>V1 vs V2<a class="headerlink" href="#v1-vs-v2" title="Permalink to this headline">¶</a></h2>
+<p>The main difference between ResNet v1 and v2 is that v1 applies convolutions, then batch norm and relu, while v2 exposes the convolution as the last step before adding back in the identity transform (details <a class="reference external" href="https://cv-tricks.com/keras/understand-implement-resnets/">here</a>). In practice, I see a lot more of v1 resnets than v2 resnets.</p>
+</section>
+<section id="tweaks">
+<h2>Tweaks<a class="headerlink" href="#tweaks" title="Permalink to this headline">¶</a></h2>
+<p>There are a variety of other architectural tweaks that appear to be well known in the community- different ways of laying out the strides and convolutions of individual layers in order to improve performance. These are variously known as ResNet B-D (see details <a class="reference external" href="https://arxiv.org/pdf/1812.01187.pdf">here</a>); of these ResNet D seems popular as well. It’s unclear if we’ll be losing something by pasting ResNet-D weights into a ResNet A, for example- this is worth digging into more.</p>
+</section>
+</section>
+
 <div class="section">
-   
+     
+<div class="section">
+  <span style="float: left">
+     Previous:
+    
+    <a href="../../Documentation/aws_volumes_snapshots/">
+       AWS EC2 Storage (Volumes, AMIs and Snapshots)
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "taiga_projdoc";
+      var disqus_identifier = "/Research/resnet_50/";
+      var disqus_title = "ResNet-50";
+      var disqus_url = "https://cellistigs.github.io/Research/resnet_50";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
 </div>
 
           </div>
@@ -83,18 +143,87 @@
 
 
 
+  
+<h2>
+   
+  25 August 2021 
+</h2>
+
+<ul>
+   
+<li id="author">
+  <span
+    >Author:</span
+  >
+   
+  <a href="../../blog/author/me/">me</a>  
+</li>
+ 
+<li id="location">
+  <span
+    >Location:</span
+  >
+   
+  <a href="../../blog/location/nyc/">NYC</a>  
+</li>
+ 
+<li id="language">
+  <span
+    >Language:</span
+  >
+   
+  <a href="../../blog/language/en/">en</a>  
+</li>
+ 
+<li id="category">
+  <span
+    >Category:</span
+  >
+   
+  <a href="../../blog/category/res/">Res</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    >Tag:</span
+  >
+   
+  <a href="../../blog/tag/ml/">ml</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "taiga_projdoc"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/Research/resnet_50/"
+  >
+    Comments</a
+  >
+</li>
+
+</ul>
 
 <h3>
   <a href="../../blog/">Recent Posts</a>
 </h3>
 <ul>
    
-  <li>
-    <a href="../../Research/resnet_50/"
-      >25 August - ResNet-50</a
-    >
-  </li>
-  
   <li>
     <a href="../../Documentation/aws_volumes_snapshots/"
       >25 August - AWS EC2 Storage (Volumes, AMIs and Snapshots)</a
@@ -114,7 +243,7 @@
   </li>
   
   <li>
-    <a href="../../Research/samplesgood/"
+    <a href="../samplesgood/"
       >10 August - Are More Training Samples Always Good?</a
     >
   </li>
@@ -249,7 +378,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/todos/current_week.rst.txt"
+      <a href="../../_sources/Research/resnet_50.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

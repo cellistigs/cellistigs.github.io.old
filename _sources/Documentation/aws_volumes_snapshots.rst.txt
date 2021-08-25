@@ -14,11 +14,11 @@ However, EBS snapshots on their own can't get you back to a running instance- yo
 We can work through the tradeoff here- storing EC2 instances as volumes will lead to faster startup, but will cost more and tie you to one particular set of hardware (although you can do things like add storage and copy an existing volume). In contrast, storing EC2 instances as AMIs (and therefore snapshots behind the scenes) are slower to set up, but are cheaper, and allow you to launch a swarm of instances with identical filesystems and potentially variable compute resources, all at once. For the NeuroCAAS project, we store all progress on analyses as AMIs. 
 
 
-Logistics
----------
+The Nitty Gritty Logistics
+--------------------------
 
 One thing we have to be careful of when working with EC2 resources is making sure that we clean up after ourselves- sometimes, even after deleting an instance, the underlying volume will remain. This charges you at the same rate as having a stopped instance. 
-Additionally, when working with AMIs, you can deregsiter an AMI, but the underlying snapshots will remain. While not as much of a cost sink as EBS volumes, this is still annoying and the costs can add up. We use a `script <https://gist.github.com/Eyjafjallajokull/4e917414cfb191391f9e51f6a8c3e46a>`_  to periodically check for unused volumes and snapshots- volumes that are listed as "available", untied to any existing instance, or snapshots that are not associated with an existing instance, volume, or ami. Things can get a bit buggy when a snapshot is created from an ami and the tool can't find it, but this is still a great way to stay on top of costs.   
+Additionally, when working with AMIs, you can deregsiter an AMI, but the underlying snapshots will remain. While not as much of a cost sink as EBS volumes, this is still annoying and the costs can add up. We use a `script <https://gist.github.com/Eyjafjallajokull/4e917414cfb191391f9e51f6a8c3e46a>`_ from my local machine (`snapshot_utils`- requires boto3 and click) to periodically check for unused volumes and snapshots- volumes that are listed as "available", untied to any existing instance, or snapshots that are not associated with an existing instance, volume, or ami. Things can get a bit buggy when a snapshot is created from an ami and the tool can't find it, but this is still a great way to stay on top of costs. When I'm confident about the volume and snapshot finding, I'll automate this with a lambda function.  
 
 
 

@@ -1,0 +1,25 @@
+.. post:: August 25th, 2021
+   :tags: ml
+   :category: Res
+   :author: me
+   :location: NYC
+   :language: en
+
+ResNet-50
+=========
+
+In the last few weeks I've gotten back into working directly with deep learning models, and I've been running into a lot of ResNet-50. It's pretty interesting to me that this model developed in 2015 is still used as a standard benchmark in broad selection of different subfields of deep learning.  
+
+The general layout of ResNet 50 incorporates the idea of "shortcut" identity connections that are added back to a representation after some degree of processing has been done to it. More concretely, we take some feature representation, apply a few rounds of convolutions, and then add back a (potentially up/downsampled) version of the features pre-convolution. This operation defines a single "block" within the ResNet. There are four blocks within ResNet architectures, with each block further chunked into "units" within the block. Each unit contains three convolution layers, with some amount of downsampling and upsampling to "bottleneck" the representation and encourage the learning of invariances. In the ResNet 50 architecture, these blocks contain 3,4,6, and 3 units each, giving 16*3 = 48 layers within the blocks. Considered with the 2 input processing layers that precede the blocks, we have 50 layers total, thus ResNet-50.    
+
+There are a few different versions of ResNet floating around, and I think it would be good for me to document them here. 
+
+V1 vs V2 
+--------
+
+The main difference between ResNet v1 and v2 is that v1 applies convolutions, then batch norm and relu, while v2 exposes the convolution as the last step before adding back in the identity transform (details `here <https://cv-tricks.com/keras/understand-implement-resnets/>`_). In practice, I see a lot more of v1 resnets than v2 resnets. 
+
+Tweaks
+------ 
+
+There are a variety of other architectural tweaks that appear to be well known in the community- different ways of laying out the strides and convolutions of individual layers in order to improve performance. These are variously known as ResNet B-D (see details `here <https://arxiv.org/pdf/1812.01187.pdf>`_); of these ResNet D seems popular as well. It's unclear if we'll be losing something by pasting ResNet-D weights into a ResNet A, for example- this is worth digging into more.   

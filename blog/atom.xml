@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://cellistigs.github.io</id>
   <title>taiga_projectdoc Blog</title>
-  <updated>2021-08-25T15:29:17.175853+00:00</updated>
+  <updated>2021-08-25T21:43:16.174522+00:00</updated>
   <link href="https://cellistigs.github.io"/>
   <link href="https://cellistigs.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.19">ABlog</generator>
@@ -60,6 +60,20 @@
     <category term="software" label="software"/>
     <category term="AWS" label="AWS"/>
     <category term="storage" label="storage"/>
+    <published>2021-08-25T00:00:00-04:00</published>
+  </entry>
+  <entry>
+    <id>https://cellistigs.github.io/Research/resnet_50/</id>
+    <title>ResNet-50</title>
+    <updated>2021-08-25T00:00:00-04:00</updated>
+    <author>
+      <name>me</name>
+    </author>
+    <content type="html">&lt;p&gt;In the last few weeks I’ve gotten back into working directly with deep learning models, and I’ve been running into a lot of ResNet-50. It’s pretty interesting to me that this model developed in 2015 is still used as a standard benchmark in broad selection of different subfields of deep learning.&lt;/p&gt;
+</content>
+    <link href="https://cellistigs.github.io/Research/resnet_50/" rel="alternate"/>
+    <summary>In the last few weeks I’ve gotten back into working directly with deep learning models, and I’ve been running into a lot of ResNet-50. It’s pretty interesting to me that this model developed in 2015 is still used as a standard benchmark in broad selection of different subfields of deep learning.</summary>
+    <category term="ml" label="ml"/>
     <published>2021-08-25T00:00:00-04:00</published>
   </entry>
 </feed>
