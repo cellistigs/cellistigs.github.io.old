@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>AWS Sagemaker Neo &#8212; taiga_projectdoc  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" /> 
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="taiga_projectdoc Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+             <section id="aws-sagemaker-neo">
+<h1>AWS Sagemaker Neo<a class="headerlink" href="#aws-sagemaker-neo" title="Permalink to this headline">¶</a></h1>
+<p><em>The issue:</em> optimizing an ML model for different software, hardware etc. is really hard. This is especially true if you are trying to make your model work for inference on phones, laptops or some other device that does not have the same infrastructure stack that you developed your model on. Building out the conditional cases to support different combinatorial stacks is time consuming and requires the development of lots of expertise.</p>
+<p><em>Proposed solution</em>: A custom-built machine learning compiler and runtime environment, called AWS Sagemaker Neo (open sourced as the Neo-AI project). The runtime is built to be extremely lightweight (1 mb storage, and 2 mb memory), making it much easier to run on a variety of operating systems and processors. The compiler is built off of TVM, an open source machine learning compiler backend.</p>
+<section id="tvm">
+<h2>TVM<a class="headerlink" href="#tvm" title="Permalink to this headline">¶</a></h2>
+<p>The TVM compiler looks to be the driving force behind the inter-hardware, intersoftware operability that Sagemaker Neo is providing on AWS (at least for ANNs, they have a separate framework for decision trees). The goal of Apache TVM is to take a model that was created in a specific deep learning library, in a specific programming language on a specific hardware stack, and to translate it into an infrastructure agnostic representation called an IRModule. The initial transformation into an IR module contains a functional representation of a full model, and is entirely deterministic. Second, TVM takes this agnostic representation, decomposes it into individual components (e.g. conv layers) and optimizes each of these components for the hardware you have in mind. This process generates a second framework agnostic IRModule, but generally at a lower level of primitive functions. Finally, the optimized IRModule is translated to the right format for the target platform (a different OS, a phone) as a compiled artifact. This artifact can be accessed with an API available in a variety of different languages. An interesting question here is if the platform-agnostic nature of working with a compiled framekwork is itself already useful for us as a research group.</p>
+<img alt="../../_images/tvm_diagram.png" src="../../_images/tvm_diagram.png" />
+</section>
+<section id="back-to-sagemaker-neo">
+<h2>Back to Sagemaker Neo<a class="headerlink" href="#back-to-sagemaker-neo" title="Permalink to this headline">¶</a></h2>
+<p>With the understanding of TVM as a platform agnostic model compiler, we can understand Sagemaker Neo as a special case, where we are taking any existing model, and compiling it to work best on the Sagemaker Neo runtime (which presumably has been built to optimize the benefits of TVM on a variety of available devices). An immediate application for us would be to take containerized environments from Sagemaker Neo and host them on NeuroCAAS instances in an IaC framework for increaed efficiency.</p>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>For this to be useful for us, we would have to take a few steps first:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>understand how sagemaker containers can best host our existing (bare AMI) analyses, and choose some candidate analyses to try out.</p></li>
+<li><p>choose some hardware that we think would be a good candidate for Sagemaker Neo (p3? INF1?).</p></li>
+<li><p>determine where in our workflow the compilation process for our models should come. One option would be to return a compiled model post-training, instead of a model folder. This is in some senses more accessible, but would be less familiar to the neuroscience community.</p></li>
+</ol>
+</div></blockquote>
+<p>References:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://aws.amazon.com/blogs/machine-learning/aws-launches-open-source-neo-ai-project-to-accelerate-ml-deployments-on-edge-devices/">https://aws.amazon.com/blogs/machine-learning/aws-launches-open-source-neo-ai-project-to-accelerate-ml-deployments-on-edge-devices/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/neo-ai/tvm">https://github.com/neo-ai/tvm</a></p></li>
+<li><p><a class="reference external" href="https://tvm.apache.org">https://tvm.apache.org</a></p></li>
+</ul>
+</section>
+</section>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     Previous:
+    
+    <a href="../../Research/resnet_50/">
+       ResNet-50
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "taiga_projdoc";
+      var disqus_identifier = "/Documentation/sagemaker_neo/";
+      var disqus_title = "AWS Sagemaker Neo";
+      var disqus_url = "https://cellistigs.github.io/Documentation/sagemaker_neo";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">taiga_projectdoc</a></h1>
+
+
+
+
+
+
+
+
+  
+<h2>
+   
+  30 August 2021 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span
+    >Category:</span
+  >
+   
+  <a href="../../blog/category/doc/">Doc</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    >Tags: </span
+  >
+   
+  <a href="../../blog/tag/aws/">AWS</a>   
+  <a href="../../blog/tag/sagemaker/">Sagemaker</a>   
+  <a href="../../blog/tag/ml/">ML</a>   
+  <a href="../../blog/tag/hardware-agnostic/">hardware agnostic</a>   
+  <a href="../../blog/tag/model-compilation/">model compilation</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "taiga_projdoc"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/Documentation/sagemaker_neo/"
+  >
+    Comments</a
+  >
+</li>
+
+</ul>
+
+<h3>
+  <a href="../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../Research/resnet_50/"
+      >25 August - ResNet-50</a
+    >
+  </li>
+  
+  <li>
+    <a href="../aws_volumes_snapshots/"
+      >25 August - AWS EC2 Storage (Volumes, AMIs and Snapshots)</a
+    >
+  </li>
+  
+  <li>
+    <a href="../github_actions/"
+      >17 August - Testing Github Actions Locally with Act</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../Literature/piketty_capital/"
+      >12 August - Capital in the 21st Century: Notes</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../Research/samplesgood/"
+      >10 August - Are More Training Samples Always Good?</a
+    >
+  </li>
+  
+</ul>
+
+<h3><a href="../../blog/tag/">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/aws/">AWS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/ml/">ML</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/sagemaker/">Sagemaker</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/continuous-deployment/">continuous deployment</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/continuous-integration/">continuous integration</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/data/">data</a>
+  </li>
+      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/economics/">economics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/hardware-agnostic/">hardware agnostic</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/ml/">ml</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/model-compilation/">model compilation</a>
+  </li>
+      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/software/">software</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/storage/">storage</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/testing/">testing</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../blog/category/">Categories</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/category/doc/">Doc (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../blog/category/lit/">Lit (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../blog/category/res/">Res (2)</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2021/">2021 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../blog/2020/">2020 (2)</a>
+  </li>
+   
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Taiga Abe.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/Documentation/sagemaker_neo.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

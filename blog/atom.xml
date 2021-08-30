@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://cellistigs.github.io</id>
   <title>taiga_projectdoc Blog</title>
-  <updated>2021-08-25T21:43:16.174522+00:00</updated>
+  <updated>2021-08-30T17:55:36.808268+00:00</updated>
   <link href="https://cellistigs.github.io"/>
   <link href="https://cellistigs.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.19">ABlog</generator>
@@ -75,5 +75,20 @@
     <summary>In the last few weeks I’ve gotten back into working directly with deep learning models, and I’ve been running into a lot of ResNet-50. It’s pretty interesting to me that this model developed in 2015 is still used as a standard benchmark in broad selection of different subfields of deep learning.</summary>
     <category term="ml" label="ml"/>
     <published>2021-08-25T00:00:00-04:00</published>
+  </entry>
+  <entry>
+    <id>https://cellistigs.github.io/Documentation/sagemaker_neo/</id>
+    <title>AWS Sagemaker Neo</title>
+    <updated>2021-08-30T00:00:00-04:00</updated>
+    <content type="html">&lt;p&gt;&lt;em&gt;The issue:&lt;/em&gt; optimizing an ML model for different software, hardware etc. is really hard. This is especially true if you are trying to make your model work for inference on phones, laptops or some other device that does not have the same infrastructure stack that you developed your model on. Building out the conditional cases to support different combinatorial stacks is time consuming and requires the development of lots of expertise.&lt;/p&gt;
+</content>
+    <link href="https://cellistigs.github.io/Documentation/sagemaker_neo/" rel="alternate"/>
+    <summary>The issue: optimizing an ML model for different software, hardware etc. is really hard. This is especially true if you are trying to make your model work for inference on phones, laptops or some other device that does not have the same infrastructure stack that you developed your model on. Building out the conditional cases to support different combinatorial stacks is time consuming and requires the development of lots of expertise.</summary>
+    <category term="AWS" label="AWS"/>
+    <category term="Sagemaker" label="Sagemaker"/>
+    <category term="ML" label="ML"/>
+    <category term="hardwareagnostic" label="hardware agnostic"/>
+    <category term="modelcompilation" label="model compilation"/>
+    <published>2021-08-30T00:00:00-04:00</published>
   </entry>
 </feed>
