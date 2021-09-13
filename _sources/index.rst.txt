@@ -40,4 +40,5 @@ Documentation:
    about.rst
    README.md
    current_week.rst
+   mission_statement.rst
 

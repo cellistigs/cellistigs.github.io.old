@@ -1,0 +1,457 @@
+<html>
+<head>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+    <title>Google Research Fellowship</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body> 
+    <a href="index.html">Index</a> |
+    <a href="diary/diary.html">Diary</a>
+    <hr>
+    <div class="content">
+    
+<ul>
+<li>
+Research proposal 
+
+</ul>
+<p>
+Organize by aims: look at things you have already written for quals
+</p>
+
+<ul>
+<li>
+Deeplabcut
+
+<li>
+NeuroCAAS 
+
+<li>
+behavenet
+
+<li>
+Wfield
+
+<li>
+Dan’s arm wkshop paper
+
+<li>
+Zahra poster
+
+<li>
+Amy poster
+
+</ul>
+<p>
+Intro: 
++ neurocaas intro: the cutting edge neuroscience is increasingly defined by powerful machine learning based data analysis tools. 
++ however, the fast progress of this cutting edge ignores the time, capabilities, and resources of a large part of the community: not too many resources, high variability
++ furthermore, the data is different: often very different from benchmarks in size, quality, aims and diversity. 
++ there is a gap between the development of new tools and techniques and the application of those tools in novel data and application settings. 
++ real time feedback- is something going wrong? Does the analysis work? The experiment? The neural recordings? Hyperparameters? 
+</p>
+
+<p>
+Aim 1: build a cloud platform for neuroscience to offer standardized and high powered compute. This is a prereq to extend the results of standardization, analysis, both as your own toolkit and as a way to increase the accessibility of what follows. 
+</p>
+
+<p>
++ talk about neurocaas
++ use language from cs more actively 
++ mention importance of integrating ideas from iac, cutting edge of computer science (include your m1 graph?) 
++ the point is not deployment or experimentation with existing methods (a la google colab, research in machine learning directly)
+</p>
+
+<p>
+Aim 2: open up a new kind of data (smaller scientific datasets) to cutting edge techniques like self supervised learning and ensembling.
+</p>
+<ul>
+<li>
+Ml has become a cornerstone to modern. Analysis of behavioral data. 
+
+<li>
+scientific data is expensive to collect, often difficult to share, and pays a higher price for inaccuracies in downstream tasks and analysis - see propagation of post-hoc filtering methods around behavioral tracking alone. 
+
+<li>
+End: applications also to generative modeling
+
+</ul>
+<p>
+Current story: 
+</p>
+<ul>
+<li>
+Behavioral neuroscience uses animal behavior readouts collected with deep learning
+
+<li>
+Deep learning approaches depend upon transfer learning: initialize with pre-trained, then fine tune. 
+
+<li>
+many extensions to other contexts, increase accuracy exist. 
+
+<li>
+However, there are glitches that hurt in the context of movement science. 
+
+<li>
+Glitches are an example of miscalibrated model uncertainy. 
+
+<li>
+Improving uncertainy is a good idea bc it reduces errors, provides better robustness to changing data distribution, increases efficacy of human intervention, higher confidence downstream analysis. 
+
+<li>
+Three big improevements: 
+
+<ul>
+<li>
+better individual members. 
+
+<li>
+improve uncertainty estimates relative to hpt ensembles. 
+
+<li>
+better in iterative contexts. 
+
+</ul>
+</ul>
+<p>
+Questions: 
+</p>
+<ul>
+<li>
+how much do people know about ensembling on small datasets? 
+
+<li>
+some stuff on medical imaging, but this is still pretty big
+
+<li>
+<a href="https://www.mdpi.com/2076-3417/9/21/4500/htm">https://www.mdpi.com/2076-3417/9/21/4500/htm</a> clouds: 
+
+<li>
+Focus on ensembles: 
+
+<ul>
+<li>
+ensembles improve ood.
+
+<li>
+ensembles have been shown to improve uncertainty, but lots of that benefit is due to diversity in initialization. 
+
+<li>
+When we apply ensembling naively, we see that results are indeed pretty correlated. 
+
+<li>
+Mustafa 2020/Fort 2019: Diversity is a key part of the benefit of ensembles. How can we introduce diversity in the initialization while maintaining benefits of pretraining? We do not have the benefit of having many pre-trained models to select from, and the task of doing so is not so practical in essence. 
+
+<li>
+Furthermore, it has been shown (look in HPT paper) that pretraining on datasets that are not relevant are not that useful- we have to be careful in selecting pretraining when we have such a diversity of real datasets available with so few labels. 
+
+<li>
+Could it be enough to introduce diversity through the dataset itself? i.e., introduce diversity in the representation of a given dataset. Intuitively, this kind of makes sense.We can maintain diversity by including models not pretrained on self supervised networks, including those that are already pretrained on self-supervised networks, etc.  
+
+</ul>
+</ul>
+  
+<p>
+New Story:   
+</p>
+<ul>
+<li>
+What are you trying to do? 
+
+<li>
+I am trying to improve uncertainty estimates for automatic tracking of animal posture in behavioral neuroscience. Accurate uncertainty estimation can be used to make outputs more reliable, detect out of distribution data and dataset shift more generally, and provide a better backbone for probabilistic extensions.  
+
+<li>
+How is it done now? What are the limitations of current approaches? 
+
+</ul>
+<p>
+## in neuroscience:  
+</p>
+<ul>
+<li>
+The current baseline for uncertainty estimates in this field is the use of "heatmaps"- unnormalized likelihoods that are output by deep neural networks \citep{murthy}.However, uncertainty estimates are generally miscalibrated \citep{ovadia, model miscalibration}. Specific issues for neuroscience are seen as well.  
+
+</ul>
+<p>
+## in the broader machine learning literature:  
+</p>
+<ul>
+<li>
+The key approach to generating these is ensembles [Ovadia, Lakshminarayanan]. Ensembles have successfully been deployed on large models and datasets, and for a robust, general purpose method of improving uncertainty estimates even under dataset shift.  
+
+<li>
+However, we are bottlenecked by the fact that we are in a low-data setting requiring the use of transfer learning: pretrain networks on an appropriate source domain, and then fine tune networks with data from a target domain.
+
+<li>
+What is new in your approach? Why do you think it will be successful.  
+
+<li>
+I propose to use self-supervised pretraining to initialize members of the ensemble, instead of a single pretrained network. 
+
+<ul>
+<li>
+In self supervised pretraining, we take a base (potentially pretrained) network, and train it on an \emph{unlabeled} dataset, learning to discriminate features from individual datapoints in a framework called instance contrastive learning. I propose to take a network pretrained on a big collection like imagenet, and run several independent instances of instance contrastive learning on the video dataset of interest. This takes ideas in hierarchical pretraining (HPT, Azizi) and extends them to the ensemble setting. 
+
+<li>
+Self-supervised pretraining addresses key issues in the design of pretrained ensembles.  
+
+<ul>
+<li>
+First, it improves ensemble diversity. Instead of starting with a single network, and relying solely on the stochasticity of sgd to generate ensemble diversity, we can generate diversity through independent runs of instance contrastive learning. Because instance contrastive learning only cares about the relative distinguishability of different representations, I expect this to create more different networks than supervised pretraining. Ensemble diversity has been noted as an important goal in (fort,mustafa) 
+
+<li>
+Second, it improves the match between the source domain and the target domain. Because we don't require labels for instance-contrastive learning, we can use the actual dataset of interest- there is no better source domain. The importance of source and target domain agreement has been noted in (puigcever, ngiam 2018, reed 2021, and others). 
+
+</ul>
+<li>
+Existing solutions for pretrained ensembles collect a large number of pretrained networks, each with experience with different subsets of a generic input training set. This is expensive to train by yourself, and it is non-trivial to find multiple instances of the same model trained online and available in the same framework. For any given task, select from these experts using a proxy metric on label based clustering (which is itself pretty close to representation learning?). Note however, that this proxy only works for classification cases and requires a large computational budget. It's also not given that if the domain is far away, the kNN approach on untrained networks will work.     
+
+</ul>
+</ul>
+<pre><code>
+</pre></code>
+<ul>
+<li>
+What are analyzable milestones alon yor path? 
+
+</ul>
+<p>
+Diversity: 
+</p>
+<ul>
+<li>
+Ensemble diversity has been identified as a key factor that helps ensembles to generate better uncertainty estimates \citep{fort}. Thus, checking ensemble diversity will be a good intermediate goal. 
+
+<li>
+In order to investigate the diversity of ensemble outputs, I will analyze the distribution of both model weights and function outputs between different ensemble members, comparing members of a self-supervised ensemble after self-supervised pretraining and finetuning to an ensemble that has only been finetuned on different inputs. 
+
+<li>
+Preliminary analysis has shown that responses among members of an ensemble with only finetuning are very similar (Figure 3). Our hope would be that both weigths and responses among ensemble members would show greater diversity after undergoing self supervised pretraining. 
+
+<li>
+If we find that this does not increase diversity, we can use other approaches: subset the data for self-supervision, include subsets of other data (either domain related, or just imagenet subsets), or if necessary include other pretrained networks. Smart subsetting could generate experts, as is seen to be useful in other contexts.  
+
+</ul>
+<p>
+Source domain matching:
+</p>
+<ul>
+<li>
+We can identify source-domain matching even before ensembling, and identify if we see the hypothesized improvements in performance at a per-model scale. 
+
+<li>
+First, we can analyze the benefits to source domain matching for prediction accuracy. 
+
+<li>
+In order to analyze the fit between the source and target domain, we can analyze the benefits of including self-supervised learning in terms of simple mean squared error across a large test set. We can also study  label efficiency, and matched comparisons that control for the number of training iterations, matching benefits seen in \citep{azizi,Reed}.  
+
+<li>
+However, we are interested in the benefits of self-supervised ensembles for uncertainty estimation. 
+
+<li>
+relative to a baseline ensemble in terms of generalization to held-out data (i.e., not in the self-supervised dataset), corrupted data
+
+<li>
+If self-supervised pretraining on the video dataset of interest does not provide improved accuracy we could add additional stages of pretraining on other datasets, consider domain adaptive transfer learning, or incorporate heuristics to search from other models as is done in \citep{mustafa}. Note however, that this is tangential to our goal of improving uncertainty estimates. Metrics like generalization to held out data are more relevant to our goal of uncertainty estimation, but  
+
+</ul>
+ 
+  
+<p>
+Finally, we can look at how the benefits of diversity and source domain matching manifest in ensemble predictions of uncertainty:  
+</p>
+<ul>
+<li>
+Assess uncertainty estimate quality by application of downstream tasks: out of distribution detection via likelihood and ensemble disagreement, accuracy and uncertainty estimates under increasing dataset shift, compatibility with generative modeling approaches.   
+
+</ul>
+  
+<ul>
+<li>
+Who cares? What will be the impact? 
+
+<li>
+experimentalists will care becasue they care about quality control. Introducing an ensemble introduces the notion of within ensemble disagreement as a separate source of uncertainty, beyond the heatmaps that are output by individual models. Being able to trust model outputs means greater efficiency, a higher degree of scientific rigor, and easier postprocessing. Easier development of active learning methods, and easier to trust in real time contexts.    
+
+<li>
+Future directions: 
+
+<li>
+Other video focused contrastive losses. 
+
+<li>
+Incorporation of model-zoo type approaches. 
+
+<li>
+prescriptions for sequential: train, collect, retrain, collect again: what should we do with this data? 
+
+</ul>
+<p>
+#######################
+</p>
+
+<p>
+ Transfer learning introduces additional complications to the task of getting uncertainty outputs through ensembles.
+</p>
+<ul>
+<li>
+1. We are forced to start with a pretrained network, instead of random initialization. This reduces a major source of the model diversity ensembling such a powerful tool, and we see its effects (fort, 2019).   
+
+<li>
+2. Different tasks and datasets in the source domains can be more or less suited to any given dataset, and it is difficult to detect a priori what prior experience will lead to the best improvements in finetuning performance (Reed 2020,Mathis 2020). Constructing an ensemble with different source domains that are easier/harder to adapt could influence the value of an uncertainty estimate, and choosing a single source domain (as is currently done) could lead to large fluctuations in the usefulness of uncertainty estimates across datasets.   
+
+<li>
+Existing solutions to these issues leverage multiple separate Mustafa 2020 suggests an improvement: collect a large number of pretrained networks, each with experience with different subsets of a generic input training set. This is expensive to train by yourself, and it is non-trivial to find multiple instances of the same model trained online and available in the same framework. For any given task, select from these experts using a proxy metric on label based clustering (which is itself pretty close to representation learning?). Note however, that this proxy only works for classification cases and requires a large computational budget. It's also not given that if the domain is far away, the kNN approach on untrained networks will work.     
+
+<li>
+In general, for a given task it is still not clear how to best balance the requirement of model diversity in an ensemble with the requirement of pretraining on an appropriate source domain.   
+
+<li>
+In this work, we suggest using recent work in self-supervised learning to simultaneously increase model diversity the affinity between source and target domains for ensembles trained from pretrained networks. Using the framework of Hierarchical pretraining, we will designiate different portions of the unlabeled dataset of interest as training data for each member of an ensemble. Initializing from a single pretrained network, we will train this ensemble with instance contrastive learning, and finally fine tune each on a target dataset collection. 
+      Goal 1. Study diversity introduced by chunking the unlabeled data. We can also have different pretrained networks if needed. 
+      Goal 2. If structure is known in the dataset, use this to construct "experts" trained only on that part of the structure of the dataset. Adapt existing ssl techniques to optimize targeting of this structure (pose tracking? video? Jabri et al. 2020).  
+      Goal 3. Study the uncertainty estimates of these networks as measured through downstream performance.      
+      Goal 4. Generalize to multiple sessions, sequential data. How does new data get incorporated? Real time?  
+
+</ul>
+<li>
+While we could get other pretrained imagenets, it's not as easy as suggested by mustafa 2020, fort 2019. 
+
+<li>
+A different idea: how much of that diversity do we really need from Fort? Could we limit diversity to that which is relevant for the dataset of interest? I.e. through ssl? How much is known about introducing diversity through techniques like representation learning?  
+
+<li>
+point 1: how much does ssl help with model diversity for small datasets? show. 
+
+<li>
+point 2: how can we use the expert/upstream diversity framework for video data? 
+
+<li>
+point 3: how do we extend this framework to online applications, changes in the input distribution suggested by ovadia introduction? 
+
+  
+
+
+<p>
+Aim 3: closed loop? Connection to neural data? Finish later. 
+</p>
+
+<ul>
+<li>
+if closed loop, cite the posters you are a part of that support existence of collaborations
+
+<li>
+you already have concrete language RTMP servers, iac protocols, etc. 
+
+<li>
+Existing tools but without standardization will probably be a pain in the ass. This is a problem we know how to solve- the existence of commercial services that do this all the time say as much. 
+
+<li>
+Impact essay (350 words)
+
+</ul>
+<p>
+Describe the desired impact your research will make on the field and society, and why this is important to you. Include any personal, educational and/or professional experiences that have motivated your research interests.
+</p>
+
+<p>
+The below is already 222 words. 
+</p>
+<ul>
+<li>
+On the field: increased adoption, wider accessibility, more access to closed loop design. The faster and more equitable dissemination of valuable tools. 
+
+<li>
+Change in the paradigm of collaborative neuroscience: instead of siloed infrastructure, the results should be available, issues should be diagnosable in real time. 
+
+<li>
+Provide a solid foundation for computational science without further increasing technical debt on trainees. 
+
+<ul>
+<li>
+Experience seeing the massive excitement around a general purpose solution for a problem, and the benefits of making even existing techniques accessible to a wider audience
+
+<li>
+Experience seeing tool developers around me, seeing experimentalists struggle with differing expectations 
+
+</ul>
+<li>
+Background in classical music and increasingly insular nature of the results. This is an untenable system. The benefit of small groups and small moments of engagement, feeling inspired by something you did not expect. 
+
+<li>
+Background in psychology and the reckoning with regards to reproducibility we saw there
+
+<li>
+The field is moving towards larger collaborative team based science, but is resistant to standardization attempts from external forces. 
+
+<ul>
+<li>
+Was part of one major paradigm change already, seeing people work with all these new tools, driven by the availability of new methods. 
+
+</ul>
+<li>
+Increasing access for citizen scientists: the experience of being someone who has worked directly with algorithm development and the pipeline to make it accessible has been eye opening, influenced the ideas of what is actually possible
+
+<li>
+Leadership essay (350 words) 
+
+</ul>
+<p>
+Describe an example of your leadership experience in which you have positively influenced others, helped resolve disputes or contributed to group efforts over time. (A leadership role can mean more than just a title. It can mean being a mentor to others, acting as the person in charge of a specific task, or taking the lead role in organizing an event or project. Think about what you accomplished and what you learned from the experience. What were your responsibilities? Did you lead a team? How did your experience change your perspective on leading others? Did you help to resolve an important dispute at your school, church, in your community or an organization? And your leadership role doesn’t necessarily have to be limited to school activities. For example, do you help out or take care of your family?)
+</p>
+
+
+<p>
+The below is already 170 words. 
+</p>
+<ul>
+<li>
+Mentoring others through the NeuroCAAS project. Emphasize diversity of community. 
+
+<li>
+A humbling experience to work in a field where you have less experience; but also very valuable to understand the nature of leadership in most setting. 
+
+<li>
+The experience of leading a team in which people have diverse expertise: computational neuroscientists, experimental neuroscientists, software engineers and students. 
+
+<li>
+Creating a common language. 
+
+<li>
+Being open to the ideas of others, who may in fact know more than you about a given issue or feature of your project. This is a good thing. Knowing when to trust others and extend, and when to preserve the core of a project. 
+
+<li>
+Trusting others to take the lead for certain portions
+
+<li>
+Modular designs, incremental improvements, constantly asking for feedback, and understanding how to balance the priorities of many people similtaneously. 
+
+<li>
+I led the team in the development of a cloud platform. 
+
+<li>
+Early on, I recognized the value in infrastructure as code and redeveloped the project around this principle. This is important because it emphasizes the values of: 
+
+<ul>
+<li>
+Reproducibility
+
+<li>
+Accessibility
+
+<li>
+Transparency
+
+<li>
+Scale
+
+</ul>
+</ul>
+
+    </div>
+    <p><small>Page created on 2021-09-10</small></p>
+</body>
+</html>
